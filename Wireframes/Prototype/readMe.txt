@@ -1,5 +1,6 @@
 Link to Prototype Demonstration.
-Feel free to play around with the demo
+Feel free to play around with the demo.
+Reference to instruction pdf files.
 
 Link(Copy&Paste&Run on the browser):
 
