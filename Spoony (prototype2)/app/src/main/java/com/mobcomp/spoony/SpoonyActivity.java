@@ -11,20 +11,24 @@ import android.hardware.SensorManager;
 import android.hardware.SensorEvent;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.mobcomp.spoony.databinding.ActivityMainBinding;
 
 public class SpoonyActivity extends AppCompatActivity implements SensorEventListener {
 
-    private static final int SENSOR_DELAY = SensorManager.SENSOR_DELAY_NORMAL; // 200ms? the interval between sensor reports
+    private static final int SENSOR_DELAY = SensorManager.SENSOR_DELAY_UI; // 60ms, the interval between sensor reports
     private static final float TABLE_THRESHOLD = -20.f; // y-bearing above which the phone is considered 'on the table'
-    private static final float VIEW_DISTANCE = 60.0f; // degrees from player position that counts as being in their 'view'
+    private static final float VIEW_DISTANCE = 80.0f; // degrees from player position that counts as being in their 'view'
+    private static final float TRANSITION_FRAMES = 5; // the number of frames a new state must maintain before we change to it
 
     private AppBarConfiguration _appBarConfiguration;
     private ActivityMainBinding _binding;
 
     // fake state machine
     private SpoonyState _state = SpoonyState.DEFAULT;
+    private SpoonyState _prevState = SpoonyState.DEFAULT; // state must have changed for two frames to register (to avoid jitter)
+    private int framesInState = 0;
 
     // orientation sensors
     private SensorManager _sensorManager;
@@ -100,45 +104,35 @@ public class SpoonyActivity extends AppCompatActivity implements SensorEventList
 
             // TODO: just use radians in state calculation?
 
-            setState(deviceOrientation);
+            checkState(deviceOrientation);
             update();
         }
     }
 
-    private void setState(float[] orientation) {
+    private void checkState(float[] orientation) {
 
         // phone is within table surface rotation limit
         if (orientation[1] > TABLE_THRESHOLD) {
-            if (_state != SpoonyState.TABLE) {
-                exitState();
-                _state = SpoonyState.TABLE;
-                onEnterTable();
-            }
+            setState(SpoonyState.TABLE);
         }
 
         // phone is within VIEW_DISTANCE degrees of player 1's position
         else if (rotationDistance(orientation[0], _p1Position) < VIEW_DISTANCE) {
-            if (_state != SpoonyState.P1_VIEW) {
-                exitState();
-                _state = SpoonyState.P1_VIEW;
-                onEnterP1View();
-            }
+            // note that if the z-rotation leaves the bounds [-90, 90] then the x-rotation is flipped
+            if (orientation[2] > -90 && orientation[2] < 90) setState(SpoonyState.P1_VIEW);
+            else setState(SpoonyState.P2_VIEW);
         }
 
         // phone is within VIEW_DISTANCE degrees of player 2's position
         else if (rotationDistance(orientation[0], _p2Position) < VIEW_DISTANCE) {
-            if (_state != SpoonyState.P2_VIEW) {
-                exitState();
-                _state = SpoonyState.P2_VIEW;
-                onEnterP2View();
-            }
+            // again, handle flipping when leaving z-rot [-90, 90]
+            if (orientation[2] > -90 && orientation[2] < 90) setState(SpoonyState.P2_VIEW);
+            else setState(SpoonyState.P1_VIEW);
         }
 
-        // none of the above, drop back to default
+        // none of the above, fall back to default
         else {
-            exitState();
-            _state = SpoonyState.DEFAULT;
-            onEnterDefault();
+            setState(SpoonyState.DEFAULT);
         }
     }
 
@@ -147,14 +141,59 @@ public class SpoonyActivity extends AppCompatActivity implements SensorEventList
         return 180 - Math.abs((Math.abs(a - b) % 360) - 180);
     }
 
-    private void exitState() {
+    /**
+     * Checks to see if the new state has lasted at least TRANSITION_FRAMES frames - and if it has,
+     * changes to the new state, calling the appropriate transition functions as it does so.
+     * @param newState the state to transition to
+     */
+    private void setState(SpoonyState newState) {
+        if (newState == _state) return;
+
+        // check that the new state has persisted for enough frames that we can confidently change to it
+        // this should reduce jitter (i.e. cases where an incorrect state is detected for a single frame)
+        if (framesInState <= TRANSITION_FRAMES) {
+            if (newState == _prevState) framesInState++;
+            else {
+                _prevState = newState;
+            }
+            return;
+        }
+
+        Log.d("SpoonyState", "Changing to state " + newState);
+
+        // if it has, we can continue as normal
+        exitState(_state);
+        _state = newState;
+        enterState(_state);
+    }
+
+    private void enterState(SpoonyState state) {
         switch (_state) {
             case TABLE:
+                onEnterTable();
+                break;
+            case P1_VIEW:
+                onEnterP1View();
+                break;
+            case P2_VIEW:
+                onEnterP2View();
+                break;
+            default:
+                onEnterDefault();
+        }
+    }
+
+    private void exitState(SpoonyState state) {
+        switch (state) {
+            case TABLE:
                 onExitTable();
+                break;
             case P1_VIEW:
                 onExitP1View();
+                break;
             case P2_VIEW:
                 onExitP2View();
+                break;
             default:
                 onExitDefault();
         }
@@ -167,10 +206,13 @@ public class SpoonyActivity extends AppCompatActivity implements SensorEventList
         switch (_state) {
             case TABLE:
                 updateTable();
+                break;
             case P1_VIEW:
                 updateP1View();
+                break;
             case P2_VIEW:
                 updateP2View();
+                break;
             default:
                 updateDefault();
         }
