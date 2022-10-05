@@ -3,97 +3,119 @@ package com.mobcomp.spoony;
 import android.util.Log;
 
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.gson.Gson;
 
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class firebaseHandler {
 
-    private static final int UPDATEINTERVAL = 600;
+    private static final int UPDATEINTERVAL = 300;
 
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private final CollectionReference qdb = db.collection("questions");
     private final CollectionReference qcdb = db.collection("questionCount");
-    private Map<String, Object> questionCountDocument;
-    private Map<String, Object> questionDocument;
-    private String question;
-    public int numQuestion;
+    private Map<String, Object> qCountDoc;
+    private Map<String, Object> multiQDoc;
+    private int numQuestion;
     private java.util.Date lastUpdatedTime;
+    private boolean firstBoot;
 
     public firebaseHandler() {
+        qCountDoc = null;
+        multiQDoc = null;
+        firstBoot = true;
         getQuestionCount();
     }
 
+    public interface DocumentCallback {
+        void getDocumentSucess(boolean success);
+    }
+
+    // get number of questions in firestore
     private void getQuestionCount() {
-        qcdb.get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        for (QueryDocumentSnapshot document : task.getResult()) {
-                            questionCountDocument = document.getData();
-                            Log.d("QCInt", String.valueOf(questionCountDocument));
-                            if (questionCountDocument != null) {
-                                numQuestion = ((Long) questionCountDocument.get("amount")).intValue();
-                            }
-                        }
-                    } else {
-                        Log.w("QCIntErr", "Error getting documents.", task.getException());
+        qcdb.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                for (QueryDocumentSnapshot document : task.getResult()) {
+                    qCountDoc = document.getData();
+                    Log.d("FSQC", String.valueOf(qCountDoc));
+                    if (qCountDoc != null) {
+                        numQuestion = ((Long) qCountDoc.get("amount")).intValue();
                     }
-                });
+                }
+            } else {
+                Log.e("FSQCERR", "Error getting documents.", task.getException());
+            }
+        });
         lastUpdatedTime = new Date();
     }
 
+    // increment question count in firestore
     private void incrementQuestionCount() {
-        getQuestionCount();
         Map<String, Object> data = new HashMap<>();
+        getQuestionCount();
         data.put("amount", ++numQuestion);
-        qcdb.document("0").set(data);
+        qcdb.document("0").set(data).addOnSuccessListener(aVoid -> Log.d("FSQCADD", "DocumentSnapshot successfully written!"))
+                .addOnFailureListener(e -> Log.w("FSQCADDERR", "Error writing document", e));
     }
 
-    public String getNewQuestion() {
-        if (checkUpdateTime()) {
-            getQuestionCount();
-        }
-        int r = ThreadLocalRandom.current().nextInt(0, numQuestion);
-        qdb.document(String.valueOf(r)).get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        DocumentSnapshot document = task.getResult();
-                        if (document.exists()) {
-                            Log.d("QStr", "DocumentSnapshot data: " + document.getData());
-                            questionDocument = document.getData();
-                            if (questionDocument != null) {
-                                question = (String) questionDocument.get("question");
-                            }
-                        } else {
-                            Log.d("QStrErr", "No such document");
-                        }
-                    } else {
-                        Log.w("QStrErr", "Error getting documents.", task.getException());
-                    }
-                });
-        return question;
+    public Map<String, Object> getQuestions() {
+        return multiQDoc;
     }
 
-    public Boolean addNewQuestion(String question) {
+    // return a mapping of multiple questions
+    // key: id, val: question string
+    @SuppressWarnings (value="unchecked")
+    public void checkQuestions(String questionJSON, DocumentCallback documentCallback) {
         AtomicReference<Boolean> successFlag = new AtomicReference<>(false);
-        Map<String, Object> data = new HashMap<>();
-        data.put("question", question);
-        getQuestionCount();
-        qdb.document(String.valueOf(numQuestion))
-                .set(data)
-                .addOnSuccessListener(aVoid -> {
-                    Log.d("QAdd", "DocumentSnapshot successfully written!");
-                    incrementQuestionCount();
+        if (checkUpdateTime() || questionJSON == null || firstBoot) {
+            firstBoot = false;
+            getQuestionCount();
+
+            multiQDoc = new HashMap<>();
+
+            qdb.get().addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
                     successFlag.set(true);
-                })
-                .addOnFailureListener(e -> Log.w("QAddErr", "Error adding document", e));
-        return successFlag.get();
+                    for (QueryDocumentSnapshot document : task.getResult()) {
+                        multiQDoc.put(document.getId(), document.getData().get("question"));
+                    }
+                    Log.d("FSQ", String.valueOf(multiQDoc));
+                    documentCallback.getDocumentSucess(true);
+                } else {
+                    Log.e("FSQERR", "Error getting documents.", task.getException());
+                    documentCallback.getDocumentSucess(false);
+                }
+            });
+        } else if (questionJSON != null) {
+            multiQDoc = new Gson().fromJson(questionJSON, Map.class);
+            documentCallback.getDocumentSucess(true);
+        }
+    }
+
+    // return true or false if successfully added question
+    public void addNewQuestion(String question, DocumentCallback documentCallback) {
+        Map<String, Object> data = new HashMap<>();
+        getQuestionCount();
+
+        // no question cleaning implemented yet (nice-to-haves)
+        if (question == null || question.equals("")) {
+            documentCallback.getDocumentSucess(false);
+        } else {
+            data.put("question", question);
+            qdb.document(String.valueOf(numQuestion)).set(data).addOnSuccessListener(aVoid -> {
+                Log.d("FSQADD", "DocumentSnapshot successfully written!");
+                incrementQuestionCount();
+                documentCallback.getDocumentSucess(true);
+            }).addOnFailureListener(e -> {
+                Log.e("FSQADDERR", "Error adding document", e);
+                documentCallback.getDocumentSucess(false);
+            });
+        }
     }
 
     private boolean checkUpdateTime() {
