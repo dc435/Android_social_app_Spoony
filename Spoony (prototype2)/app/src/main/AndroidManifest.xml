@@ -14,11 +14,7 @@
         android:theme="@style/Theme.Spoony"
         tools:targetApi="31">
         <activity
-            android:name=".SpoonyActivity"
-            android:exported="false"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".MainActivity"
+            android:name=".FirebaseActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.Spoony.NoActionBar"
