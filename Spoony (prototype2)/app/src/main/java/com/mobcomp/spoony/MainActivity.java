@@ -22,8 +22,6 @@ public class MainActivity extends SpoonyActivity {
 
     private CoordinatorLayout _layout;
 
-    firebaseHandler fb = new firebaseHandler();
-
     // TEMP COLOURS TODO: remove
     private final int _p1Colour = Color.parseColor("#74D3A4");
     private final int _p2Colour = Color.parseColor("#ECC3E9");
@@ -69,7 +67,6 @@ public class MainActivity extends SpoonyActivity {
 
     @Override
     protected void onEnterP2View() {
-//        fb.getQuestion();
         if (_stateDisplay != null) _stateDisplay.setText("$$ " + _data.getString(Key.P2_NAME, ""));
         _layout.setBackgroundColor(_p2Colour);
     }
