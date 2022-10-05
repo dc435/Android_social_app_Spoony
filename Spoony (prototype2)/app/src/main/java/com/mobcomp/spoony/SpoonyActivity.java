@@ -11,7 +11,6 @@ import android.hardware.SensorManager;
 import android.hardware.SensorEvent;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import com.mobcomp.spoony.databinding.ActivityMainBinding;
 
@@ -20,7 +19,7 @@ public class SpoonyActivity extends AppCompatActivity implements SensorEventList
     private static final int SENSOR_DELAY = SensorManager.SENSOR_DELAY_UI; // 60ms, the interval between sensor reports
     private static final float TABLE_THRESHOLD = -20.f; // y-bearing above which the phone is considered 'on the table'
     private static final float VIEW_DISTANCE = 80.0f; // degrees from player position that counts as being in their 'view'
-    private static final float TRANSITION_FRAMES = 5; // the number of frames a new state must maintain before we change to it
+    private static final float TRANSITION_FRAMES = 3; // the number of frames a new state must maintain before we change to it
 
     private AppBarConfiguration _appBarConfiguration;
     private ActivityMainBinding _binding;
@@ -28,7 +27,7 @@ public class SpoonyActivity extends AppCompatActivity implements SensorEventList
     // fake state machine
     private SpoonyState _state = SpoonyState.DEFAULT;
     private SpoonyState _prevState = SpoonyState.DEFAULT; // state must have changed for two frames to register (to avoid jitter)
-    private int framesInState = 0;
+    private int _framesInState = 0;
 
     // orientation sensors
     private SensorManager _sensorManager;
@@ -38,7 +37,7 @@ public class SpoonyActivity extends AppCompatActivity implements SensorEventList
     // orientation calculation
     private final float[] _rotationMatrix = new float[9];
     private final float[] _deviceOrientationRadians = new float[3];
-    public float[] deviceOrientation = new float[3];
+    public float[] DeviceOrientation = new float[3];
 
     // player positions
     private SharedPreferences _data;
@@ -98,13 +97,13 @@ public class SpoonyActivity extends AppCompatActivity implements SensorEventList
             // only update on mag change
             SensorManager.getRotationMatrix(_rotationMatrix, null, _accelReading, _magReading); // uses gravity and geo readings to calculate orientation vectors
             SensorManager.getOrientation(_rotationMatrix, _deviceOrientationRadians); // convert orientation vectors into radians
-            deviceOrientation[0] = (float) Math.toDegrees(_deviceOrientationRadians[0]);
-            deviceOrientation[1] = (float) Math.toDegrees(_deviceOrientationRadians[1]);
-            deviceOrientation[2] = (float) Math.toDegrees(_deviceOrientationRadians[2]);
+            DeviceOrientation[0] = (float) Math.toDegrees(_deviceOrientationRadians[0]);
+            DeviceOrientation[1] = (float) Math.toDegrees(_deviceOrientationRadians[1]);
+            DeviceOrientation[2] = (float) Math.toDegrees(_deviceOrientationRadians[2]);
 
             // TODO: just use radians in state calculation?
 
-            checkState(deviceOrientation);
+            checkState(DeviceOrientation);
             update();
         }
     }
@@ -117,14 +116,14 @@ public class SpoonyActivity extends AppCompatActivity implements SensorEventList
         }
 
         // phone is within VIEW_DISTANCE degrees of player 1's position
-        else if (rotationDistance(orientation[0], _p1Position) < VIEW_DISTANCE) {
+        else if (rotationDistanceUnsigned(orientation[0], _p1Position) < VIEW_DISTANCE) {
             // note that if the z-rotation leaves the bounds [-90, 90] then the x-rotation is flipped
             if (orientation[2] > -90 && orientation[2] < 90) setState(SpoonyState.P1_VIEW);
             else setState(SpoonyState.P2_VIEW);
         }
 
         // phone is within VIEW_DISTANCE degrees of player 2's position
-        else if (rotationDistance(orientation[0], _p2Position) < VIEW_DISTANCE) {
+        else if (rotationDistanceUnsigned(orientation[0], _p2Position) < VIEW_DISTANCE) {
             // again, handle flipping when leaving z-rot [-90, 90]
             if (orientation[2] > -90 && orientation[2] < 90) setState(SpoonyState.P2_VIEW);
             else setState(SpoonyState.P1_VIEW);
@@ -134,11 +133,6 @@ public class SpoonyActivity extends AppCompatActivity implements SensorEventList
         else {
             setState(SpoonyState.DEFAULT);
         }
-    }
-
-    // calculates distance between two angles
-    private float rotationDistance(float a, float b) {
-        return 180 - Math.abs((Math.abs(a - b) % 360) - 180);
     }
 
     /**
@@ -151,17 +145,16 @@ public class SpoonyActivity extends AppCompatActivity implements SensorEventList
 
         // check that the new state has persisted for enough frames that we can confidently change to it
         // this should reduce jitter (i.e. cases where an incorrect state is detected for a single frame)
-        if (framesInState <= TRANSITION_FRAMES) {
-            if (newState == _prevState) framesInState++;
+        if (_framesInState <= TRANSITION_FRAMES) {
+            if (newState == _prevState) _framesInState++;
             else {
                 _prevState = newState;
             }
             return;
         }
 
-        Log.d("SpoonyState", "Changing to state " + newState);
-
         // if it has, we can continue as normal
+        _framesInState = 0;
         exitState(_state);
         _state = newState;
         enterState(_state);
@@ -218,16 +211,47 @@ public class SpoonyActivity extends AppCompatActivity implements SensorEventList
         }
     }
 
+    // ANGLE HELPERS
+
+    // calculates (unsigned) distance between two angles
+    public static float rotationDistanceUnsigned(float a, float b) {
+        return 180 - Math.abs((Math.abs(a - b) % 360) - 180);
+    }
+
+    // calculates signed distance between two angles TODO: this is borked
+    public static float rotationDistanceSigned(float a, float b) {
+        float d = rotationDistanceUnsigned(a, b);
+        int sign = 1;
+        if (d >= 180 || normaliseAngle(a) > normaliseAngle(b)) sign = -1;
+
+        return sign * d;
+    }
+
+    // returns angle within [0, 360)
+    public static float normaliseAngle(float a) {
+        return ((360 + (a % 360)) % 360);
+    }
+
+    // calculates angle relative to the screen given a real-world orientation angle TODO: also borked
+    public float worldToScreenRotation(float worldPosition) {
+        return rotationDistanceSigned(DeviceOrientation[0], worldPosition);
+    }
+
+
+    // STATE CALLS
+
     public SpoonyState getState() {
         return _state;
     }
 
     @Override
-    public void onAccuracyChanged(Sensor sensor, int i) {} // do nothing?
+    public void onAccuracyChanged(Sensor sensor, int i) {} // do nothing
 
+
+    // these methods are provided to child activities to easily change displayed information based on the device state
     protected void onEnterP1View() {}
     protected void updateP1View() {}
-    protected void onExitP1View() {} // exit methods possibly unnecessary
+    protected void onExitP1View() {}
 
     protected void onEnterP2View() {}
     protected void updateP2View() {}

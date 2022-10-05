@@ -4,6 +4,8 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -20,6 +22,9 @@ public class MainActivity extends SpoonyActivity {
     private TextView _yRot;
     private TextView _zRot;
 
+    private ImageView _p1Arrow;
+    private ImageView _p2Arrow;
+
     private CoordinatorLayout _layout;
 
     // TEMP COLOURS TODO: remove
@@ -27,6 +32,9 @@ public class MainActivity extends SpoonyActivity {
     private final int _p2Colour = Color.parseColor("#ECC3E9");
     private final int _tableColour = Color.parseColor("#A98D76");
     private final int _defaultColour = Color.parseColor("#f3f3f3");
+
+    private float _p1Position;
+    private float _p2Position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +47,8 @@ public class MainActivity extends SpoonyActivity {
         editor.apply();
         // ######### TEMP ##########
 
+
+
         _data = getSharedPreferences(Key.DEFAULT_PREFERENCES, MODE_PRIVATE);
 
         super.onCreate(savedInstanceState);
@@ -50,13 +60,22 @@ public class MainActivity extends SpoonyActivity {
         _xRot = findViewById(R.id.xrot);
         _yRot = findViewById(R.id.yrot);
         _zRot = findViewById(R.id.zrot);
+
+        _p1Arrow = findViewById(R.id.directionP1);
+        _p2Arrow = findViewById(R.id.directionP2);
+        _p1Arrow.setVisibility(View.GONE);
+        _p2Arrow.setVisibility(View.GONE);
+
+        _p1Position = _data.getFloat(Key.P1_POSITION, 0.0f);
+        _p2Position = _data.getFloat(Key.P2_POSITION, 0.0f);
+
     }
 
     @Override
     protected void updateAlways() {
-        _xRot.setText("$$xrot: " + Double.toString(deviceOrientation[0]));
-        _yRot.setText("$$yrot: " + Double.toString(deviceOrientation[1]));
-        _zRot.setText("$$zrot: " + Double.toString(deviceOrientation[2]));
+        _xRot.setText("$$xrot: " + Double.toString(DeviceOrientation[0]));
+        _yRot.setText("$$yrot: " + Double.toString(DeviceOrientation[1]));
+        _zRot.setText("$$zrot: " + Double.toString(DeviceOrientation[2]));
     }
 
     @Override
@@ -75,6 +94,21 @@ public class MainActivity extends SpoonyActivity {
     protected void onEnterTable() {
         if (_stateDisplay != null) _stateDisplay.setText("$$ TABLE");
         _layout.setBackgroundColor(_tableColour);
+
+        _p1Arrow.setVisibility(View.VISIBLE);
+        _p2Arrow.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    protected void updateTable() {
+        _p1Arrow.setRotation(worldToScreenRotation(_p1Position));
+        _p2Arrow.setRotation(worldToScreenRotation(_p2Position));
+    }
+
+    @Override
+    protected void onExitTable() {
+        _p1Arrow.setVisibility(View.GONE);
+        _p2Arrow.setVisibility(View.GONE);
     }
 
     @Override
