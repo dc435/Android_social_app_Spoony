@@ -25,7 +25,43 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity
+            android:name=".HomePage"
+            android:exported="false" />
+        
+        <activity
+            android:name=".PointTo_P1"
+            android:exported="false" />
+        
+        <activity
+            android:name=".PointTo_P2"
+            android:exported="false" />
+        
+        <activity
+            android:name=".NameEntry_P2"
+            android:exported="false" />
+        
+        <activity
+            android:name=".NameEntry_P1"
+            android:exported="false" />
 
+        <activity
+            android:name=".WhichAnswer"
+            android:exported="false" />
+        
+        <activity
+            android:name=".WhichQuestion"
+            android:exported="false" />
+        
+        <activity
+            android:name=".Question"
+            android:exported="false" />
+        
+        <activity
+            android:name=".Answer"
+            android:exported="false" />
+        
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
