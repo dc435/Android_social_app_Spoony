@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Question">
+
+    <View
+        android:id="@+id/view_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/default_background_style"
+        android:nestedScrollingEnabled="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView_question_title"
+        android:layout_width="185dp"
+        android:layout_height="67dp"
+        android:layout_gravity="center_horizontal|center"
+        android:fontFamily="@font/baloo"
+        android:gravity="center"
+        android:text="@string/question_string"
+        android:textColor="@color/spooner_color"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/view_background"
+        app:layout_constraintVertical_bias="0.138" />
+
+    <ImageView
+        android:id="@+id/imageView_question_background"
+        android:layout_width="280dp"
+        android:layout_height="182dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_question_title"
+        app:layout_constraintVertical_bias="0.246"
+        app:srcCompat="@drawable/question_box_default" />
+
+    <TextView
+        android:id="@+id/textView_question_content"
+        android:layout_width="219dp"
+        android:layout_height="113dp"
+        android:layout_gravity="center"
+        android:fontFamily="@font/baloo"
+        android:text="Q"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        app:autoSizeTextType="uniform"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView_question_background"
+        app:layout_constraintEnd_toEndOf="@+id/imageView_question_background"
+        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintStart_toStartOf="@+id/imageView_question_background"
+        app:layout_constraintTop_toTopOf="@+id/imageView_question_background"
+        app:layout_constraintVertical_bias="0.42" />
+
+    <Button
+        android:id="@+id/next_button"
+        android:layout_width="171dp"
+        android:layout_height="75dp"
+        android:background="@drawable/lock_rectangle_button"
+        android:fontFamily="@font/baloo"
+        android:text="@string/next_string"
+        android:textColor="@color/name_color"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView_question_background"
+        app:layout_constraintVertical_bias="0.465" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
