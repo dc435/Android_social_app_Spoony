@@ -1,4 +1,4 @@
-## Uploaded Basic Java activity file following in Week10 meeting 
+## Uploaded Basic Java activity files following Week10 meeting 
 
 ### HomePage.java layouts
 1. activity_home_page.xml
