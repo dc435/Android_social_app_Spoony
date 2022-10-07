@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Spoony</string>
+    <string name="app_name">SPOONY</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
@@ -15,4 +15,27 @@
     <string name="download">Download</string>
     <string name="question_input">Question Input</string>
     <string name="textview">TextView</string>
+    
+	<string name="ek_img_content">ExportKit Image</string>
+	<string name="name_string">Name</string>
+	<string name="_eg__anna_string">eg. Anna</string>
+	<string name="_eg__bill_string">eg. Bill</string>
+	<string name="setting_string">Setting</string>
+	<string name="start_string">Start</string>
+	<string name="firebase_string">Firebase</string>
+	<string name="next_string">NEXT</string>
+	<string name="lock_string">LOCK</string>
+	<string name="exit_string">EXIT</string>
+	<string name="play_again_string">Play Again</string>
+	<string name="question_string">Question</string>
+	<string name="place_flat_string">Place Me Flat</string>
+	<string name="which_did_string">Which did</string>
+	<string name="choose_string">choose</string>
+	<string name="spooner_1_string">Spooner 1</string>
+	<string name="spooner_2_string">Spooner 2</string>
+	<string name="wrong_string">Nice try, but Nope!</string>
+	<string name="correct_string">You got it!</string>
+	<string name="_eg__anna_underline"> <font color="#D5D2D2" size="25"> eg. <u>Anna</u> </font> </string>
+	<string name="_eg__bill_underline"> <font color="#D5D2D2" size="25"> eg. <u>Bill</u> </font> </string>
+	<string name="point_to_string">Point to</string>
 </resources>
