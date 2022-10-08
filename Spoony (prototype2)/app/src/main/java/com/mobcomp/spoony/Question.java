@@ -1,4 +1,4 @@
-package com.example.mobilecomp;
+package com.mobcomp.spoony;
 
 import androidx.appcompat.app.AppCompatActivity;
 
