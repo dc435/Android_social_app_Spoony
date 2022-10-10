@@ -70,7 +70,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/imageButton_q1"
+        android:id="@+id/btnA"
         android:layout_width="306dp"
         android:layout_height="135dp"
         android:background="@drawable/image_back_transparent"
@@ -83,7 +83,7 @@
         app:srcCompat="@drawable/choose_question_button" />
 
     <ImageButton
-        android:id="@+id/imageButton_q2"
+        android:id="@+id/btnB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/image_back_transparent"
@@ -91,12 +91,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton_q1"
+        app:layout_constraintTop_toBottomOf="@+id/btnA"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/choose_question_button" />
 
     <ImageButton
-        android:id="@+id/imageButton_q3"
+        android:id="@+id/btnC"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/image_back_transparent"
@@ -104,12 +104,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton_q2"
+        app:layout_constraintTop_toBottomOf="@+id/btnB"
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/choose_question_button" />
 
     <TextView
-        android:id="@+id/txt_q1"
+        android:id="@+id/txtQA"
         android:layout_width="233dp"
         android:layout_height="95dp"
         android:fontFamily="@font/baloo"
@@ -118,15 +118,15 @@
         android:textColor="@color/black"
         android:textSize="30sp"
         app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton_q1"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton_q1"
+        app:layout_constraintBottom_toBottomOf="@+id/btnA"
+        app:layout_constraintEnd_toEndOf="@+id/btnA"
         app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="@+id/imageButton_q1"
-        app:layout_constraintTop_toTopOf="@+id/imageButton_q1"
+        app:layout_constraintStart_toStartOf="@+id/btnA"
+        app:layout_constraintTop_toTopOf="@+id/btnA"
         app:layout_constraintVertical_bias="0.275" />
 
     <TextView
-        android:id="@+id/txt_q2"
+        android:id="@+id/txtQB"
         android:layout_width="233dp"
         android:layout_height="100dp"
         android:fontFamily="@font/baloo"
@@ -135,15 +135,15 @@
         android:textColor="@color/black"
         android:textSize="30sp"
         app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton_q2"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton_q2"
+        app:layout_constraintBottom_toBottomOf="@+id/btnB"
+        app:layout_constraintEnd_toEndOf="@+id/btnB"
         app:layout_constraintHorizontal_bias="0.52"
-        app:layout_constraintStart_toStartOf="@+id/imageButton_q2"
-        app:layout_constraintTop_toBottomOf="@+id/imageButton_q1"
+        app:layout_constraintStart_toStartOf="@+id/btnB"
+        app:layout_constraintTop_toBottomOf="@+id/btnA"
         app:layout_constraintVertical_bias="0.285" />
 
     <TextView
-        android:id="@+id/txt_q3"
+        android:id="@+id/txtQC"
         android:layout_width="238dp"
         android:layout_height="97dp"
         android:fontFamily="@font/baloo"
@@ -152,11 +152,11 @@
         android:textColor="@color/black"
         android:textSize="30sp"
         app:autoSizeTextType="uniform"
-        app:layout_constraintBottom_toBottomOf="@+id/imageButton_q3"
-        app:layout_constraintEnd_toEndOf="@+id/imageButton_q3"
+        app:layout_constraintBottom_toBottomOf="@+id/btnC"
+        app:layout_constraintEnd_toEndOf="@+id/btnC"
         app:layout_constraintHorizontal_bias="0.529"
-        app:layout_constraintStart_toStartOf="@+id/imageButton_q3"
-        app:layout_constraintTop_toTopOf="@+id/imageButton_q3"
+        app:layout_constraintStart_toStartOf="@+id/btnC"
+        app:layout_constraintTop_toTopOf="@+id/btnC"
         app:layout_constraintVertical_bias="0.342" />
 
 

@@ -29,8 +29,8 @@
 	<string name="play_again_string">Play Again</string>
 	<string name="question_string">Question</string>
 	<string name="place_flat_string">Place Me Flat</string>
-	<string name="which_did_string">Which did</string>
-	<string name="choose_string">choose</string>
+	<string name="which_did_string">Which question did</string>
+	<string name="choose_string">choose?</string>
 	<string name="spooner_1_string">Spooner 1</string>
 	<string name="spooner_2_string">Spooner 2</string>
 	<string name="wrong_string">Nice try, but Nope!</string>
