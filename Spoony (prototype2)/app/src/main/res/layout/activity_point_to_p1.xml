@@ -18,7 +18,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.881" />
 
     <TextView
         android:id="@+id/point_to_p1"
@@ -124,6 +124,7 @@
         android:layout_marginBottom="172dp"
         android:background="@drawable/lock_rectangle_button"
         android:fontFamily="@font/baloo"
+        android:onClick="nextToPointP2"
         android:text="@string/lock_string"
         android:textColor="@color/name_color"
         android:textSize="30sp"
