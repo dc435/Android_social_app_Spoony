@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class PointTo_P1 extends SpoonyActivity {
 
@@ -14,6 +15,8 @@ public class PointTo_P1 extends SpoonyActivity {
 
     private Button _confirmBtn;
     private Intent _intent;
+    private TextView _p1NameView;
+    private String _p1Name;
 
     private SharedPreferences _data;
     private SharedPreferences.Editor _editor;
@@ -26,6 +29,7 @@ public class PointTo_P1 extends SpoonyActivity {
         setContentView(_flatPromptLayout);
         _data = getSharedPreferences(Key.DEFAULT_PREFERENCES, MODE_PRIVATE);
         _editor = _data.edit();
+        _p1Name = _data.getString("p1Name", "Player 1");
         _intent = new Intent(this, PointTo_P2.class);
     }
 
@@ -42,6 +46,7 @@ public class PointTo_P1 extends SpoonyActivity {
     @Override
     protected void onEnterTable() {
         setContentView(_pointTo_P1Layout);
+        nameSetup();
         buttonSetup();
     }
 
@@ -50,12 +55,18 @@ public class PointTo_P1 extends SpoonyActivity {
         setContentView(_flatPromptLayout);
     }
 
+    private void nameSetup() {
+        _p1NameView = (TextView) findViewById(R.id.entry_name_p1);
+        _p1NameView.setText(_p1Name);
+    }
+
     private void buttonSetup() {
         _confirmBtn = (Button) findViewById(R.id.lock_button);
         _confirmBtn.setOnClickListener((View v) -> {
             float zOrientation = DeviceOrientation[0];
             Log.d("Orientation Prompt", String.valueOf(zOrientation));
             _editor.putFloat(Key.P1_POSITION, zOrientation);
+            _editor.apply();
             startActivity(_intent);
         });
     }

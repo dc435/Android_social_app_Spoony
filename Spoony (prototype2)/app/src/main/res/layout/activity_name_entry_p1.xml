@@ -58,6 +58,7 @@
         android:layout_marginTop="32dp"
         android:background="@drawable/cloud_next_button"
         android:fontFamily="@font/baloo"
+        android:onClick="next"
         android:text="@string/next_string"
         android:textColor="@color/name_color"
         android:textSize="35sp"
