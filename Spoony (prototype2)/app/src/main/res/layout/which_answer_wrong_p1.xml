@@ -110,7 +110,7 @@
         app:srcCompat="@drawable/cloud_back_8" />
 
     <TextView
-        android:id="@+id/txt_message"
+        android:id="@+id/txtOutcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/baloo"
@@ -126,7 +126,7 @@
         app:layout_constraintVertical_bias="0.294" />
 
     <Button
-        android:id="@+id/exit_button"
+        android:id="@+id/btnHome"
         android:layout_width="170dp"
         android:layout_height="68dp"
         android:layout_alignParentStart="true"
@@ -141,11 +141,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.516"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/play_again_button"
+        app:layout_constraintTop_toBottomOf="@+id/btnPlayAgain"
         app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/play_again_button"
+        android:id="@+id/btnPlayAgain"
         android:layout_width="237dp"
         android:layout_height="71dp"
         android:layout_alignParentStart="true"
