@@ -1,8 +1,10 @@
 package com.mobcomp.spoony;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.TextView;
 
 import android.os.Bundle;
@@ -11,23 +13,24 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 public class WhichQuestion extends SpoonyActivity {
 
     private GameDetails gd;
-    private TextView txtLeadName;
-    private TextView txtQA;
-    private TextView txtQB;
-    private TextView txtQC;
+    private TextView txtFollow_LeadName;
     private TextView txtLead_LeadName;
     private TextView txtLead_FollowName;
     private TextView txtTable_FollowName;
 
-    private ImageButton btnA;
-    private ImageButton btnB;
-    private ImageButton btnC;
-    private int colorBtnClicked;
-    private int colorBtnNormal;
+    private Button btnA;
+    private Button btnB;
+    private Button btnC;
+    private Button btnConfirm;
+
+    private Drawable drwBtnDefault;
+    private Drawable drwBtnClicked;
+    private int clrBlack;
 
     private ConstraintLayout lytFollow;
     private ConstraintLayout lytLead;
     private ConstraintLayout lytTable;
+    private ConstraintLayout lytTableInner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,10 +40,7 @@ public class WhichQuestion extends SpoonyActivity {
         Intent intent = getIntent();
         gd = (GameDetails) intent.getSerializableExtra("GameDetails");
 
-        txtLeadName = findViewById(R.id.txtLeadName);
-        txtQA = findViewById(R.id.txtQA);
-        txtQB = findViewById(R.id.txtQB);
-        txtQC = findViewById(R.id.txtQC);
+        txtFollow_LeadName = findViewById(R.id.txtFollow_LeadName);
 
         txtLead_LeadName = findViewById(R.id.txtLead_LeadName);
         txtLead_FollowName = findViewById(R.id.txtLead_FollowName);
@@ -50,18 +50,28 @@ public class WhichQuestion extends SpoonyActivity {
         btnA = findViewById(R.id.btnA);
         btnB = findViewById(R.id.btnB);
         btnC = findViewById(R.id.btnC);
+        btnConfirm = findViewById(R.id.btnConfirm);
 
         lytFollow = findViewById(R.id.lytFollow);
         lytLead = findViewById(R.id.lytLead);
         lytTable = findViewById(R.id.lytTable);
+        lytTableInner = findViewById(R.id.lytTableInner);
 
-        colorBtnClicked = getResources().getColor(R.color.spooner_color);
-        colorBtnNormal = 16777215; //HEX FFFFFFF (white)
+        drwBtnDefault = getResources().getDrawable(R.drawable.question_box_choose);
+        drwBtnClicked = getResources().getDrawable(R.drawable.question_box_choose_trans);
+        clrBlack = Color.BLACK;
 
         View.OnClickListener optionClick = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 optionClick(view);
+            }
+        };
+
+        View.OnClickListener confirmClick = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                confirmClick();
             }
         };
 
@@ -76,21 +86,20 @@ public class WhichQuestion extends SpoonyActivity {
     }
 
     private void setTexts() {
-        // TODO: the first question will currently always be the correct one
-        txtLeadName.setText(gd.getLead().getName());
-        txtQA.setText("A. " + gd.getCurrentQuestion().question);
-        txtQB.setText("B. " + gd.getQuestionNonDestructive().question);
-        txtQC.setText("C. " + gd.getQuestionNonDestructive().question);
-        txtLead_LeadName.setText(gd.getLead().getName());
-        txtLead_FollowName.setText(gd.getFollow().getName());
-        txtTable_FollowName.setText(gd.getFollow().getName());
+        txtFollow_LeadName.setText(gd.getLeadName());
+        btnA.setText("A. " + gd.QUESTIONS[0]);
+        btnB.setText("B. " + gd.QUESTIONS[1]);
+        btnC.setText("C. " + gd.QUESTIONS[2]);
+        txtLead_LeadName.setText(gd.getLeadName());
+        txtLead_FollowName.setText(gd.getFollowName());
+        txtTable_FollowName.setText(gd.getFollowName());
     }
 
     private void setFormats() {
-        txtLeadName.setTextColor(gd.getLead().getColour());
-        txtLead_LeadName.setTextColor(gd.getLead().getColour());
-        txtLead_FollowName.setTextColor(gd.getFollow().getColour());
-        txtTable_FollowName.setTextColor(gd.getFollow().getColour());
+        txtFollow_LeadName.setTextColor(gd.getLeadColor());
+        txtLead_LeadName.setTextColor(gd.getLeadColor());
+        txtLead_FollowName.setTextColor(gd.getFollowColor());
+        txtTable_FollowName.setTextColor(gd.getFollowColor());
     }
 
     private void makeAllInvisible(){
@@ -100,32 +109,53 @@ public class WhichQuestion extends SpoonyActivity {
     }
 
     private void optionClick(View view) {
-        ImageButton btnClicked = (ImageButton) view;
-        btnA.setBackgroundColor(colorBtnNormal);
-        btnB.setBackgroundColor(colorBtnNormal);
-        btnC.setBackgroundColor(colorBtnNormal);
-        btnClicked.setBackgroundColor(colorBtnClicked);
+        btnA.setBackground(drwBtnDefault);
+        btnB.setBackground(drwBtnDefault);
+        btnC.setBackground(drwBtnDefault);
+        Button btnClicked = (Button) view;
+        btnClicked.setBackground(drwBtnClicked);
+        btnConfirm.setClickable(true);
+        btnConfirm.setTextColor(clrBlack);
+
+        if (btnClicked.getId()==btnA.getId()) {
+            gd.QTN_GUESS = 0;
+        } else if (btnClicked.getId()==btnB.getId()) {
+            gd.QTN_GUESS = 1;
+        } else {
+            gd.QTN_GUESS = 2;
+        }
     }
 
-    protected void onEnterLeadView() {
+    private void confirmClick() {
+
+    }
+
+    protected void onEnterP1View() {
         makeAllInvisible();
         lytLead.setVisibility(View.VISIBLE);
     }
-    protected void updateLeadView() {}
-    protected void onExitLeadView() {}
 
-    protected void onEnterFollowView() {
+    protected void updateP1View() {}
+    protected void onExitP1View() {}
+
+    protected void onEnterP2View() {
         makeAllInvisible();
         lytFollow.setVisibility(View.VISIBLE);
     }
-    protected void updateFollowView() {}
-    protected void onExitFollowView() {}
+
+    protected void updateP2View() {}
+    protected void onExitP2View() {}
 
     protected void onEnterTable() {
         makeAllInvisible();
         lytTable.setVisibility(View.VISIBLE);
     }
-    protected void updateTable() {}
+
+    protected void updateTable() {
+        //TODO: Designed to display text pointing to Follow. Need to identify correct metric:
+        lytTableInner.setRotation(DeviceOrientation[0]);
+    }
+
     protected void onExitTable() {}
 
     protected void onEnterDefault() {}
@@ -133,5 +163,6 @@ public class WhichQuestion extends SpoonyActivity {
     protected void onExitDefault() {}
 
     protected void updateAlways() {}
+
 
 }
