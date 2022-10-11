@@ -78,6 +78,7 @@ public class WhichQuestion extends SpoonyActivity {
         btnA.setOnClickListener(optionClick);
         btnB.setOnClickListener(optionClick);
         btnC.setOnClickListener(optionClick);
+        btnConfirm.setOnClickListener(confirmClick);
 
         makeAllInvisible();
         setTexts();
@@ -127,7 +128,9 @@ public class WhichQuestion extends SpoonyActivity {
     }
 
     private void confirmClick() {
-
+        Intent intent = new Intent(this, WhichAnswer.class);
+        intent.putExtra("GameDetails", gd);
+        startActivity(intent);
     }
 
     protected void onEnterP1View() {
@@ -163,6 +166,5 @@ public class WhichQuestion extends SpoonyActivity {
     protected void onExitDefault() {}
 
     protected void updateAlways() {}
-
 
 }
