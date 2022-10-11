@@ -1,8 +1,5 @@
 package com.mobcomp.spoony;
 
-import android.graphics.Color;
-import android.util.Log;
-
 import java.io.Serializable;
 
 public class GameDetails implements Serializable {

@@ -8,205 +8,13 @@
                                                    tools:context=".WhichQuestion" android:id="@+id/lytMain"
 >
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context=".WhichQuestion" android:id="@+id/lytFollow" app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent">
-
-
-        <View
-                android:id="@+id/view_background"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/default_background_style"
-                android:nestedScrollingEnabled="false"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="1.0"/>
-
-        <TextView
-                android:id="@+id/txt_which_did"
-                android:layout_width="369dp"
-                android:layout_height="51dp"
-                android:fontFamily="@font/baloo"
-                android:text="@string/which_did_string"
-                android:textColor="@color/spooner_color"
-                android:textSize="40sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.497"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.12" android:textAlignment="center"/>
-
-        <TextView
-                android:id="@+id/txtLeadName"
-                android:layout_width="413dp"
-                android:layout_height="45dp"
-                android:layout_marginTop="4dp"
-                android:fontFamily="@font/baloo"
-                android:text="lead name"
-                android:textAlignment="center"
-                android:textColor="@color/p1_color"
-                android:textSize="40sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.51"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_which_did" android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp" app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintLeft_toLeftOf="parent" android:gravity="center"/>
-        <TextView
-                android:id="@+id/txt_choose"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="420dp"
-                android:fontFamily="@font/baloo"
-                android:text="@string/choose_string"
-                android:textColor="@color/spooner_color"
-                android:textSize="40sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtLeadName"
-                app:layout_constraintVertical_bias="0.0"/>
-
-        <ImageButton
-                android:id="@+id/btnA"
-                android:layout_width="306dp"
-                android:layout_height="135dp"
-                android:background="@drawable/image_back_transparent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_choose"
-                app:layout_constraintVertical_bias="0.048"
-                app:srcCompat="@drawable/choose_question_button"/>
-
-        <ImageButton
-                android:id="@+id/btnB"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/image_back_transparent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnA"
-                app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/choose_question_button"/>
-
-        <ImageButton
-                android:id="@+id/btnC"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/image_back_transparent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.495"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnB"
-                app:layout_constraintVertical_bias="0.0"
-                app:srcCompat="@drawable/choose_question_button"/>
-
-        <TextView
-                android:id="@+id/txtQA"
-                android:layout_width="233dp"
-                android:layout_height="95dp"
-                android:fontFamily="@font/baloo"
-                android:text="Q1"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="30sp"
-                app:autoSizeTextType="uniform"
-                app:layout_constraintBottom_toBottomOf="@+id/btnA"
-                app:layout_constraintEnd_toEndOf="@+id/btnA"
-                app:layout_constraintHorizontal_bias="0.506"
-                app:layout_constraintStart_toStartOf="@+id/btnA"
-                app:layout_constraintTop_toTopOf="@+id/btnA"
-                app:layout_constraintVertical_bias="0.275"/>
-
-        <TextView
-                android:id="@+id/txtQB"
-                android:layout_width="233dp"
-                android:layout_height="100dp"
-                android:fontFamily="@font/baloo"
-                android:text="Q2"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="30sp"
-                app:autoSizeTextType="uniform"
-                app:layout_constraintBottom_toBottomOf="@+id/btnB"
-                app:layout_constraintEnd_toEndOf="@+id/btnB"
-                app:layout_constraintHorizontal_bias="0.52"
-                app:layout_constraintStart_toStartOf="@+id/btnB"
-                app:layout_constraintTop_toBottomOf="@+id/btnA"
-                app:layout_constraintVertical_bias="0.285"/>
-
-        <TextView
-                android:id="@+id/txtQC"
-                android:layout_width="238dp"
-                android:layout_height="97dp"
-                android:fontFamily="@font/baloo"
-                android:text="Q3"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="30sp"
-                app:autoSizeTextType="uniform"
-                app:layout_constraintBottom_toBottomOf="@+id/btnC"
-                app:layout_constraintEnd_toEndOf="@+id/btnC"
-                app:layout_constraintHorizontal_bias="0.529"
-                app:layout_constraintStart_toStartOf="@+id/btnC"
-                app:layout_constraintTop_toTopOf="@+id/btnC"
-                app:layout_constraintVertical_bias="0.342"/>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-    <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" android:id="@+id/lytLead"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-                android:text="lead name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/txtLead_LeadName"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:textSize="40sp"
-                android:fontFamily="@font/baloo" android:textAlignment="center"
-                app:layout_constraintBottom_toTopOf="@+id/txtGiveMeTo" android:gravity="center"
-                android:layout_marginTop="64dp"/>
-        <TextView
-                android:text="give me to"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/txtGiveMeTo"
-                app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="8dp" android:layout_marginEnd="8dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:fontFamily="@font/baloo" android:textSize="40sp"
-                app:layout_constraintTop_toBottomOf="@id/txtLead_LeadName" android:layout_marginTop="8dp"
-                android:textAlignment="center" android:gravity="center"
-                app:layout_constraintBottom_toTopOf="@id/txtLead_FollowName"/>
-        <TextView
-                android:text="follow name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" android:id="@+id/txtLead_FollowName"
-                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent" app:layout_constraintTop_toBottomOf="@id/txtGiveMeTo"
-                android:textSize="40sp" android:fontFamily="@font/baloo" android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp" android:layout_marginTop="8dp" android:layout_marginBottom="64dp"/>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+            android:id="@+id/view_background"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/default_background_style"
+            android:nestedScrollingEnabled="false"
+    />
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent" android:id="@+id/lytTable"
@@ -217,7 +25,8 @@
                 android:layout_marginStart="32dp" app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginEnd="32dp" app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toTopOf="parent" android:layout_marginBottom="64dp"
-                android:layout_marginTop="64dp">
+                android:layout_marginTop="64dp" android:id="@+id/lytTableInner" android:rotationX="0"
+                android:rotation="0">
 
             <TextView
                     android:text="pick me up"
@@ -231,7 +40,6 @@
                     android:layout_marginTop="8dp" android:layout_marginBottom="8dp" android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"/>
             <TextView
-                    android:text="table follow name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/txtTable_FollowName"
                     android:textSize="40sp"
@@ -244,5 +52,138 @@
                     android:layout_marginBottom="8dp" android:layout_marginTop="32dp"
                     app:layout_constraintHorizontal_bias="0.515"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".WhichQuestion" android:id="@+id/lytFollow" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent">
+
+
+        <TextView
+                android:id="@+id/txt_which_did"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo"
+                android:text="@string/which_did_string"
+                android:textColor="@color/spooner_color"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="parent"
+                android:textAlignment="center" app:layout_constraintBottom_toTopOf="@id/txtFollow_LeadName"
+                app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintRight_toRightOf="parent"
+                android:layout_marginBottom="8dp"/>
+
+        <TextView
+                android:id="@+id/txtFollow_LeadName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo"
+                android:textAlignment="center"
+                android:textColor="@color/p1_color"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                app:layout_constraintHorizontal_bias="0.51"
+                app:layout_constraintTop_toBottomOf="@+id/txt_which_did"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent" android:gravity="center"
+                app:layout_constraintBottom_toTopOf="@id/txt_choose"/>
+        <TextView
+                android:id="@+id/txt_choose"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/baloo"
+                android:text="@string/choose_string"
+                android:textColor="@color/spooner_color"
+                android:textSize="40sp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@+id/txtFollow_LeadName"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" app:layout_constraintBottom_toTopOf="@id/btnA"
+                android:layout_marginBottom="8dp" android:gravity="center"/>
+
+        <Button
+                android:id="@+id/btnA"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:background="@drawable/choose_question_button"
+                app:layout_constraintTop_toBottomOf="@+id/txt_choose"
+                app:srcCompat="@drawable/choose_question_button" android:contentDescription="Q1"
+                android:fontFamily="@font/baloo" android:textSize="24sp" android:textAlignment="center"
+                android:textColor="@color/spooner_color" android:paddingLeft="20dp" android:paddingRight="20dp"
+                app:layout_constraintBottom_toTopOf="@id/btnB" app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"/>
+
+        <Button
+                android:id="@+id/btnB"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:background="@drawable/choose_question_button"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.495"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnA"
+                app:srcCompat="@drawable/choose_question_button" android:contentDescription="Q2"
+                android:textAlignment="center" android:textColor="@color/spooner_color" android:textSize="24sp"
+                android:fontFamily="@font/baloo" app:layout_constraintBottom_toTopOf="@id/btnC"
+                app:layout_constraintRight_toRightOf="parent" app:layout_constraintLeft_toLeftOf="parent"/>
+
+        <Button
+                android:id="@+id/btnC"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:background="@drawable/choose_question_button"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnB"
+                app:layout_constraintVertical_bias="0.0"
+                app:srcCompat="@drawable/choose_question_button" android:contentDescription="Q3"
+                android:textAlignment="center" android:textColor="@color/spooner_color" android:textSize="24sp"
+                android:fontFamily="@font/baloo" app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent" android:layout_marginBottom="200dp"/>
+        <Button
+                android:text="Confirm"
+                android:layout_width="238dp"
+                android:layout_height="98dp" android:id="@+id/btnConfirm"
+                app:layout_constraintTop_toBottomOf="@id/btnC" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintRight_toRightOf="parent"
+                android:fontFamily="@font/baloo" android:background="@drawable/cloud_back_2" android:textSize="24sp"
+                android:clickable="false" android:textColor="@android:color/darker_gray"/>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:id="@+id/lytLead"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" android:id="@+id/txtLead_LeadName"
+                android:textSize="40sp"
+                android:fontFamily="@font/baloo" android:textAlignment="center"
+                app:layout_constraintBottom_toTopOf="@+id/txtGiveMeTo" android:gravity="center"
+                android:layout_marginBottom="8dp" android:foregroundGravity="center"
+                app:layout_constraintTop_toTopOf="parent" app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" android:layout_marginTop="250dp"/>
+        <TextView
+                android:text="give me to"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" android:id="@+id/txtGiveMeTo"
+                android:fontFamily="@font/baloo" android:textSize="40sp"
+                app:layout_constraintTop_toBottomOf="@id/txtLead_LeadName" android:layout_marginTop="8dp"
+                android:textAlignment="center" android:gravity="center"
+                app:layout_constraintBottom_toTopOf="@id/txtLead_FollowName"
+                app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintRight_toRightOf="parent"
+                android:foregroundGravity="center"/>
+        <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" android:id="@+id/txtLead_FollowName"
+                app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" app:layout_constraintTop_toBottomOf="@id/txtGiveMeTo"
+                android:textSize="40sp" android:fontFamily="@font/baloo" android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp" android:layout_marginTop="16dp" android:layout_marginBottom="250dp"
+                android:gravity="center" android:foregroundGravity="center"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
