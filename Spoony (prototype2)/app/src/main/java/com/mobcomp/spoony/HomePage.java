@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 
 public class HomePage extends AppCompatActivity {
 
@@ -21,6 +20,15 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_page);
         setContentView(R.layout.activity_home_page);
+
+        start_button = findViewById(R.id.btnStart);
+        firebase_button = findViewById(R.id.firebase_button);
+
+//        setDefaultStatus();
+
+        start_button.setOnClickListener(this::jumpToStart);
+
+        firebase_button.setOnClickListener(this::jumpToFirebase);
     }
 
     /**

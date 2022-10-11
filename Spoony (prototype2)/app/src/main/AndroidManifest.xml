@@ -60,6 +60,10 @@
         <activity
             android:name=".Answer"
             android:exported="false" />
+
+        <activity
+            android:name=".FirebaseActivity"
+            android:exported="false" />
         
         <meta-data
             android:name="preloaded_fonts"
