@@ -1,55 +1,76 @@
 package com.mobcomp.spoony;
 
-import android.graphics.Color;
 import android.util.Log;
 
 import java.io.Serializable;
+import java.util.Collections;
+import java.util.LinkedList;
+import java.util.Random;
 
 public class GameDetails implements Serializable {
 
-    public String P1_NAME;
-    public String P2_NAME;
-    public int P1_COLOR;
-    public int P2_COLOR;
-    public String[] QUESTIONS;
-    public int QTN_INDEX;
-    public int QTN_GUESS;
-    private int LEAD;
+    private LinkedList<Question> freshQuestions;
+    private LinkedList<Question> usedQuestions;
+    private Question currentQuestion;
+    private Player lead;
+    private Player follow;
+    private int round;
+
     public GameDetails() {
-        QUESTIONS = new String[3];
-        LEAD = 1;
+        freshQuestions = new LinkedList<Question>();
+        usedQuestions = new LinkedList<Question>();
+        lead = null;
+        follow = null;
     }
 
-    public String getLeadName() {
-        if (LEAD == 1) {
-            return P1_NAME;
-        } else {
-            return P2_NAME;
-        }
+    public void addPlayer(Player player) {
+        if (lead == null) lead = player;
+        else if (follow == null) follow = player;
+        else Log.e("GameDetails", "No player slots free to add new player " + player.getName());
     }
 
-    public String getFollowName() {
-        if (LEAD == 1) {
-            return P2_NAME;
-        } else {
-            return P1_NAME;
-        }
+    public void clearPlayers() {
+        lead = null;
+        follow = null;
     }
 
-    public int getLeadColor() {
-        if (LEAD == 1) {
-            return P1_COLOR;
-        } else {
-            return P2_COLOR;
-        }
+    public void addQuestion(String question) {
+        freshQuestions.add(new Question(question));
     }
 
-    public int getFollowColor() {
-        if (LEAD == 1) {
-            return P2_COLOR;
-        } else {
-            return P1_COLOR;
-        }
+    public void addQuestion(Question question) {
+        freshQuestions.add(question);
     }
 
+    // retrieves a random new question and removes it from the list
+    public Question newQuestion() {
+        Collections.shuffle(freshQuestions);
+        currentQuestion = freshQuestions.pop();
+        return currentQuestion;
+    }
+
+    // retrieves a random new question without removing it from the list
+    public Question getQuestionNonDestructive() {
+        Random random = new Random();
+        return freshQuestions.get(random.nextInt(freshQuestions.size()));
+    }
+
+    public void discardQuestion(Question question) {
+        usedQuestions.add(question);
+    }
+
+    public Question getCurrentQuestion() { return currentQuestion; }
+    public Player getLead() { return lead; }
+    public Player getFollow() { return follow; }
+
+    public int getRound() {
+        return round;
+    }
+
+    public void nextRound() {
+        round++;
+        Player temp = lead;
+        lead = follow;
+        follow = temp;
+    }
 }

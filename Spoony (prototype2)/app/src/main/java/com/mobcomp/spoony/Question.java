@@ -1,15 +1,13 @@
 package com.mobcomp.spoony;
 
-import androidx.appcompat.app.AppCompatActivity;
+import java.io.Serializable;
 
-import android.os.Bundle;
+public class Question implements Serializable {
+    public String question;
+    public Player answer;
 
-public class Question extends AppCompatActivity {
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_question);
-
+    public Question(String question) {
+        this.question = question;
+        answer = null;
     }
 }

@@ -8,7 +8,7 @@
 
 
     <View
-        android:id="@+id/view_background"
+        android:id="@+id/answer_view_background"
         android:layout_width="409dp"
         android:layout_height="849dp"
         android:background="@drawable/default_background_style"
@@ -34,7 +34,7 @@
         android:textColor="@color/spooner_color"
         android:textSize="40sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/view_background"
+        app:layout_constraintBottom_toBottomOf="@+id/answer_view_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
@@ -113,7 +113,7 @@
         app:srcCompat="@drawable/compass_arrow_default" />
 
     <Button
-        android:id="@+id/lock_button"
+        android:id="@+id/answer_lock_button"
         android:layout_width="171dp"
         android:layout_height="75dp"
         android:layout_alignParentStart="true"

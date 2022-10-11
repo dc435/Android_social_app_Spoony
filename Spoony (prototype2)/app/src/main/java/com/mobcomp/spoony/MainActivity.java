@@ -73,19 +73,19 @@ public class MainActivity extends SpoonyActivity {
 
     @Override
     protected void updateAlways() {
-        _xRot.setText("$$xrot: " + Double.toString(DeviceOrientation[0]));
-        _yRot.setText("$$yrot: " + Double.toString(DeviceOrientation[1]));
-        _zRot.setText("$$zrot: " + Double.toString(DeviceOrientation[2]));
+        _xRot.setText("$$xrot: " + Double.toString(deviceOrientation[0]));
+        _yRot.setText("$$yrot: " + Double.toString(deviceOrientation[1]));
+        _zRot.setText("$$zrot: " + Double.toString(deviceOrientation[2]));
     }
 
     @Override
-    protected void onEnterP1View() {
+    protected void onEnterLeadView() {
         if (_stateDisplay != null) _stateDisplay.setText("$$ " + _data.getString(Key.P1_NAME, ""));
         _layout.setBackgroundColor(_p1Colour);
     }
 
     @Override
-    protected void onEnterP2View() {
+    protected void onEnterFollowView() {
         if (_stateDisplay != null) _stateDisplay.setText("$$ " + _data.getString(Key.P2_NAME, ""));
         _layout.setBackgroundColor(_p2Colour);
     }

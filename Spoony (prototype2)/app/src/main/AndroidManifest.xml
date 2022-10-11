@@ -31,39 +31,50 @@
 
         <activity
             android:name=".PointTo_P1"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+
         
         <activity
             android:name=".PointTo_P2"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         
         <activity
             android:name=".NameEntry_P2"
-            android:exported="false" />
-        
+            android:exported="false"
+            android:screenOrientation="portrait"/>
+
+
         <activity
             android:name=".NameEntry_P1"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".WhichAnswer"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         
         <activity
             android:name=".WhichQuestion"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         
         <activity
-            android:name=".Question"
-            android:exported="false" />
+            android:name=".QuestionActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         
         <activity
-            android:name=".Answer"
-            android:exported="false" />
+            android:name=".AnswerActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"/>
 
         <activity
             android:name=".FirebaseActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"/>
         
         <meta-data
             android:name="preloaded_fonts"

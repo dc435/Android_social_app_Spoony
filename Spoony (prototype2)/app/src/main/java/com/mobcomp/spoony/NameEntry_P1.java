@@ -10,7 +10,6 @@ import android.widget.EditText;
 
 public class NameEntry_P1 extends AppCompatActivity {
 
-    public static final String EXTRA_MESSAGE1 = "p1Name" ;
     private SharedPreferences data;
     private SharedPreferences.Editor editor;
 
@@ -26,7 +25,7 @@ public class NameEntry_P1 extends AppCompatActivity {
         Intent intent = new Intent(this, NameEntry_P2.class);
         EditText editText = (EditText) findViewById(R.id.name_input_p1);
         String p1Name = editText.getText().toString();
-        editor.putString(EXTRA_MESSAGE1, p1Name);
+        editor.putString(Key.P1_NAME, p1Name);
         editor.apply();
         startActivity(intent);
     }

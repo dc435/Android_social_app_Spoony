@@ -76,20 +76,21 @@ public class WhichQuestion extends SpoonyActivity {
     }
 
     private void setTexts() {
-        txtLeadName.setText(gd.getLeadName());
-        txtQA.setText("A. " + gd.QUESTIONS[0]);
-        txtQB.setText("B. " + gd.QUESTIONS[1]);
-        txtQC.setText("C. " + gd.QUESTIONS[2]);
-        txtLead_LeadName.setText(gd.getLeadName());
-        txtLead_FollowName.setText(gd.getFollowName());
-        txtTable_FollowName.setText(gd.getFollowName());
+        // TODO: the first question will currently always be the correct one
+        txtLeadName.setText(gd.getLead().getName());
+        txtQA.setText("A. " + gd.getCurrentQuestion().question);
+        txtQB.setText("B. " + gd.getQuestionNonDestructive().question);
+        txtQC.setText("C. " + gd.getQuestionNonDestructive().question);
+        txtLead_LeadName.setText(gd.getLead().getName());
+        txtLead_FollowName.setText(gd.getFollow().getName());
+        txtTable_FollowName.setText(gd.getFollow().getName());
     }
 
     private void setFormats() {
-        txtLeadName.setTextColor(gd.getLeadColor());
-        txtLead_LeadName.setTextColor(gd.getLeadColor());
-        txtLead_FollowName.setTextColor(gd.getFollowColor());
-        txtTable_FollowName.setTextColor(gd.getFollowColor());
+        txtLeadName.setTextColor(gd.getLead().getColour());
+        txtLead_LeadName.setTextColor(gd.getLead().getColour());
+        txtLead_FollowName.setTextColor(gd.getFollow().getColour());
+        txtTable_FollowName.setTextColor(gd.getFollow().getColour());
     }
 
     private void makeAllInvisible(){
@@ -106,19 +107,19 @@ public class WhichQuestion extends SpoonyActivity {
         btnClicked.setBackgroundColor(colorBtnClicked);
     }
 
-    protected void onEnterP1View() {
+    protected void onEnterLeadView() {
         makeAllInvisible();
         lytLead.setVisibility(View.VISIBLE);
     }
-    protected void updateP1View() {}
-    protected void onExitP1View() {}
+    protected void updateLeadView() {}
+    protected void onExitLeadView() {}
 
-    protected void onEnterP2View() {
+    protected void onEnterFollowView() {
         makeAllInvisible();
         lytFollow.setVisibility(View.VISIBLE);
     }
-    protected void updateP2View() {}
-    protected void onExitP2View() {}
+    protected void updateFollowView() {}
+    protected void onExitFollowView() {}
 
     protected void onEnterTable() {
         makeAllInvisible();
