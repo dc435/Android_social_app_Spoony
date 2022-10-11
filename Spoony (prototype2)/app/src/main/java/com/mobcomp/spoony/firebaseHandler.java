@@ -1,5 +1,6 @@
 package com.mobcomp.spoony;
 
+import android.content.Context;
 import android.util.Log;
 
 import com.google.firebase.firestore.CollectionReference;
@@ -7,6 +8,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.gson.Gson;
 
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -121,5 +127,40 @@ public class firebaseHandler {
     private boolean checkUpdateTime() {
         int timeDiff = (int) ((new Date().getTime() - lastUpdatedTime.getTime()) / 1000);
         return timeDiff >= UPDATEINTERVAL;
+    }
+
+    protected String loadQuestionFromJSONFile(Context c, boolean firstBoot) {
+        String json;
+        InputStream is;
+        try {
+            if (firstBoot) {
+                is = c.getAssets().open("questions.json");
+                Log.d("QFILEIN1", c.getAssets().toString() + "/questions.json");
+            } else {
+                is = new FileInputStream(c.getFilesDir() + "/questions.json");
+                Log.d("QFILEIN2", c.getFilesDir() + "/questions.json");
+            }
+            int size = is.available();
+            byte[] buffer = new byte[size];
+            is.read(buffer);
+            is.close();
+            json = new String(buffer, StandardCharsets.UTF_8);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+        return json;
+    }
+
+    protected void saveQuestionToJSONFile(Context c, Map<String, Object> q) {
+        try {
+            FileWriter file = new FileWriter(c.getFilesDir() + "/questions.json");
+            file.write(q.toString());
+            file.flush();
+            file.close();
+            Log.d("QFILEOUT", c.getFilesDir() + "/questions.json");
+        } catch (IOException e) {
+            Log.e("QFILEOUTERR", "Error in Writing: " + e.getLocalizedMessage());
+        }
     }
 }
