@@ -29,7 +29,7 @@ public class PointTo_P1 extends SpoonyActivity {
         setContentView(_flatPromptLayout);
         _data = getSharedPreferences(Key.DEFAULT_PREFERENCES, MODE_PRIVATE);
         _editor = _data.edit();
-        _p1Name = _data.getString("p1Name", "Player 1");
+        _p1Name = _data.getString(Key.P1_NAME, "Player 1");
         _intent = new Intent(this, PointTo_P2.class);
     }
 
@@ -61,9 +61,9 @@ public class PointTo_P1 extends SpoonyActivity {
     }
 
     private void buttonSetup() {
-        _confirmBtn = (Button) findViewById(R.id.lock_button);
+        _confirmBtn = (Button) findViewById(R.id.answer_lock_button);
         _confirmBtn.setOnClickListener((View v) -> {
-            float zOrientation = DeviceOrientation[0];
+            float zOrientation = deviceOrientation[0];
             Log.d("Orientation Prompt", String.valueOf(zOrientation));
             _editor.putFloat(Key.P1_POSITION, zOrientation);
             _editor.apply();

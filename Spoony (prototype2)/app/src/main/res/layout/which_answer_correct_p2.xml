@@ -7,7 +7,7 @@
     tools:context=".WhichAnswer">
 
     <View
-        android:id="@+id/view_background"
+        android:id="@+id/answer_view_background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/default_background_style"
@@ -117,7 +117,7 @@
         android:textColor="@color/p2_color"
         android:textSize="40sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/view_background"
+        app:layout_constraintBottom_toBottomOf="@+id/answer_view_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

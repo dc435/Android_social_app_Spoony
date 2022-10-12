@@ -9,7 +9,27 @@
         <entry key="..\:/Documents/unimelb/y4sem2/Mobile Computing Systems Programming/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/fragment_first.xml" value="0.1" />
         <entry key="..\:/Documents/unimelb/y4sem2/Mobile Computing Systems Programming/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/fragment_second.xml" value="0.24728260869565216" />
         <entry key="..\:/Documents/unimelb/y4sem2/Mobile Computing Systems Programming/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/menu/menu_main.xml" value="0.27447916666666666" />
-        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/activity_main.xml" value="0.9" />
+        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/drawable/spinner_gradient.xml" value="0.306" />
+        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/activity_answer.xml" value="0.33" />
+        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/activity_firebase.xml" value="0.31354166666666666" />
+        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/activity_home_page.xml" value="0.31354166666666666" />
+        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/activity_main.xml" value="0.3485813549507817" />
+        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/activity_name_entry_p2.xml" value="0.31354166666666666" />
+        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/activity_point_to_p1.xml" value="0.31354166666666666" />
+        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/activity_point_to_p2.xml" value="0.31354166666666666" />
+        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/activity_question.xml" value="0.33" />
+        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/fragment_first.xml" value="0.31354166666666666" />
+        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/fragment_second.xml" value="0.31354166666666666" />
+        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/give_to_xxx.xml" value="0.33" />
+        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/place_flat_flat.xml" value="0.31354166666666666" />
+        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/place_flat_stand.xml" value="0.31354166666666666" />
+        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/rotate_default.xml" value="0.31354166666666666" />
+        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/rotate_left.xml" value="0.31354166666666666" />
+        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/rotate_right.xml" value="0.31354166666666666" />
+        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/which_answer_correct_p1.xml" value="0.31354166666666666" />
+        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/which_answer_correct_p2.xml" value="0.31354166666666666" />
+        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/which_answer_wrong_p1.xml" value="0.31354166666666666" />
+        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/which_question.xml" value="0.31354166666666666" />
         <entry key="..\:/Users/Ben/AndroidStudioProjects/Spoony/app/src/main/res/layout/activity_main.xml" value="0.26851851851851855" />
         <entry key="..\:/Users/Ben/AndroidStudioProjects/Spoony/app/src/main/res/layout/content_main.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/Ben/AndroidStudioProjects/Spoony/app/src/main/res/layout/fragment_first.xml" value="0.5541666666666667" />
