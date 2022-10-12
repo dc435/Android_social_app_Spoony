@@ -7,12 +7,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class HomePage extends AppCompatActivity {
+public class HomePage extends SpoonyActivity {
 
     public static final String EXTRA_MESSAGE = "hello...";
     Button setting_button;
     Button start_button;
     Button firebase_button;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +23,13 @@ public class HomePage extends AppCompatActivity {
         setContentView(R.layout.activity_home_page);
 
         start_button = findViewById(R.id.btnStart);
+        setting_button = findViewById(R.id.setting_button);
         firebase_button = findViewById(R.id.firebase_button);
 
 //        setDefaultStatus();
 
         start_button.setOnClickListener(this::jumpToStart);
-
+        setting_button.setOnClickListener(this::jumpToSetting);
         firebase_button.setOnClickListener(this::jumpToFirebase);
     }
 
@@ -40,7 +42,7 @@ public class HomePage extends AppCompatActivity {
     }
 
     public void jumpToStart(View view){
-        Intent intent = new Intent(this, NameEntry_P1.class);
+        Intent intent = new Intent(this, name.class);
         startActivity(intent);
     }
 
@@ -48,6 +50,8 @@ public class HomePage extends AppCompatActivity {
         Intent intent = new Intent(this, FirebaseActivity.class);
         startActivity(intent);
     }
+
+
 
     // these are changes from main branch, save them in case of future use
 //    btnStart = findViewById(R.id.btnStart);

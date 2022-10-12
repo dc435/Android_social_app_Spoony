@@ -16,6 +16,8 @@ import com.mobcomp.spoony.databinding.ActivityMainBinding;
 
 public class SpoonyActivity extends AppCompatActivity implements SensorEventListener {
 
+    private static GameDetails gameDetails;
+
     private static final int SENSOR_DELAY = SensorManager.SENSOR_DELAY_UI; // 60ms, the interval between sensor reports
     private static final float TABLE_THRESHOLD = -20.f; // y-bearing above which the phone is considered 'on the table'
     private static final float VIEW_DISTANCE = 80.0f; // degrees from player position that counts as being in their 'view'
@@ -50,6 +52,8 @@ public class SpoonyActivity extends AppCompatActivity implements SensorEventList
         _sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
         _data = getSharedPreferences(Key.DEFAULT_PREFERENCES, MODE_PRIVATE);
+
+        gameDetails = new GameDetails();
 
         _p1Position = _data.getFloat(Key.P1_POSITION, 0.0f);
         _p2Position = _data.getFloat(Key.P2_POSITION, 0.0f);
@@ -209,6 +213,10 @@ public class SpoonyActivity extends AppCompatActivity implements SensorEventList
             default:
                 updateDefault();
         }
+    }
+
+    public static GameDetails getGameDetails() {
+        return gameDetails;
     }
 
     // ANGLE HELPERS

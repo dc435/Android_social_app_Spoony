@@ -36,13 +36,9 @@
         <activity
             android:name=".PointTo_P2"
             android:exported="false" />
-        
+
         <activity
-            android:name=".NameEntry_P2"
-            android:exported="false" />
-        
-        <activity
-            android:name=".NameEntry_P1"
+            android:name=".name"
             android:exported="false" />
 
         <activity

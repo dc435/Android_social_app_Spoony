@@ -20,6 +20,14 @@ public class GameDetails implements Serializable {
         LEAD = 1;
     }
 
+    public void setLeadName(String name) {
+        P1_NAME = name;
+    }
+
+    public void setFollowName(String name) {
+        P2_NAME = name;
+    }
+
     public String getLeadName() {
         if (LEAD == 1) {
             return P1_NAME;
