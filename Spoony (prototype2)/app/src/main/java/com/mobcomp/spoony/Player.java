@@ -10,6 +10,10 @@ public class Player implements Serializable {
     private int colour;
     private int score;
 
+    public Player(String name){
+        this.name = name;
+    }
+
     public Player(String name, float direction, int colour) {
         this.name = name;
         this.direction = direction;

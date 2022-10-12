@@ -16,7 +16,7 @@ public class name extends AppCompatActivity {
     Button name_btn_next;
     TextView name_txt_getName;
     TextView name_txt_p1p2;
-
+    GameDetails gameDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,8 +31,9 @@ public class name extends AppCompatActivity {
             name_txt_getName = findViewById(R.id.name_input_p1);
             String p1Name = name_txt_getName.getText().toString();
 
-            GameDetails gameDetails = SpoonyActivity.getGameDetails();
-            gameDetails.setLeadName(p1Name);
+            gameDetails = SpoonyActivity.getGameDetails();
+            Player player1 = new Player(p1Name);
+            gameDetails.addPlayer(player1);
             Log.d("P1 name saved", p1Name);
             nextPlayerEntry(v);
         });
@@ -47,8 +48,9 @@ public class name extends AppCompatActivity {
             name_txt_getName = findViewById(R.id.name_input_p1);
             String p2Name = name_txt_getName.getText().toString();
 
-            GameDetails gameDetails = SpoonyActivity.getGameDetails();
-            gameDetails.setFollowName(p2Name);
+            gameDetails = SpoonyActivity.getGameDetails();
+            Player player2 = new Player(p2Name);
+            gameDetails.addPlayer(player2);
 
             Log.d("P2 name saved", p2Name);
             name_btn_next.setOnClickListener(this::nextPage);
