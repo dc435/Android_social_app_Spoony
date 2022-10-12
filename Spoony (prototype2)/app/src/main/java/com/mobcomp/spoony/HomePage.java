@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -29,6 +30,9 @@ public class HomePage extends AppCompatActivity {
         setting_button.setOnClickListener(this::jumpToSetting);
         start_button.setOnClickListener(this::jumpToStart);
         firebase_button.setOnClickListener(this::jumpToFirebase);
+
+        gd = new GameDetails();
+        gd.addQuestion(this);
     }
 
     /**
@@ -43,6 +47,8 @@ public class HomePage extends AppCompatActivity {
     }
 
     public void jumpToStart(View view){
+
+        //test get question
         setDefaultStatus();
         Intent intent = new Intent(this, NameEntry_P1.class);
         startActivity(intent);
@@ -65,11 +71,8 @@ public class HomePage extends AppCompatActivity {
 //}
 //
     private void setDefaultStatus() {
+        Log.d("GDQUESTION", gd.newQuestion().question);
 
-        gd = new GameDetails();
-
-        // test add question from db/local file
-        gd.addQuestion(this);
 //        gd.P1_NAME = "Bobby";
 //        gd.P2_NAME = "Anna";
 //        gd.QUESTIONS[0] = "Who is more a cat or dog person?";

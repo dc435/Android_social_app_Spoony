@@ -39,12 +39,8 @@ public class GameDetails implements Serializable {
         follow = null;
     }
 
-//    public void addQuestion(String question) {
-//        freshQuestions.add(new Question(question));
-//    }
-
     public void addQuestion(Context c) {
-        AtomicReference<HashMap<String, Object>> qs = new AtomicReference<>(new HashMap<>());
+//        AtomicReference<HashMap<String, Object>> qs = new AtomicReference<>(new HashMap<>());
         fb.updateQuestions(fb.loadQuestionFromJSONFile(c, fb.isFirstBoot()), success -> {
             if (success) {
                 freshQuestions = fb.getQuestions();
@@ -64,6 +60,7 @@ public class GameDetails implements Serializable {
     // retrieves a random new question and removes it from the list
     public Question newQuestion() {
         Collections.shuffle(freshQuestions);
+        Log.d("GDQUESTION", String.valueOf(freshQuestions));
         currentQuestion = freshQuestions.pop();
         if (freshQuestions.size() < MINQUESTIONLEFT) {
             // TODO: implement add new questions
