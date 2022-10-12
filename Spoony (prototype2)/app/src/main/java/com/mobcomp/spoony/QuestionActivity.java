@@ -58,12 +58,12 @@ public class QuestionActivity extends SpoonyActivity {
         gameDetails.addPlayer(lead);
         gameDetails.addPlayer(follow);
 
-        gameDetails.addQuestion("Who is more like a cat?");
-        gameDetails.addQuestion("How much does each player talk?");
-        gameDetails.addQuestion("Who is more likely to eat a raw onion?");
-        gameDetails.addQuestion("Who is more like their mother?");
-        gameDetails.addQuestion("Who is more like a dog");
-        gameDetails.addQuestion("Who eats more?");
+//        gameDetails.addQuestion("Who is more like a cat?");
+//        gameDetails.addQuestion("How much does each player talk?");
+//        gameDetails.addQuestion("Who is more likely to eat a raw onion?");
+//        gameDetails.addQuestion("Who is more like their mother?");
+//        gameDetails.addQuestion("Who is more like a dog");
+//        gameDetails.addQuestion("Who eats more?");
     }
 
     @Override

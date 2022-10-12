@@ -1,24 +1,29 @@
 package com.mobcomp.spoony;
 
+import android.content.Context;
 import android.util.Log;
 
 import java.io.Serializable;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class GameDetails implements Serializable {
 
+    private static final int MINQUESTIONLEFT = 3;
     private LinkedList<Question> freshQuestions;
-    private LinkedList<Question> usedQuestions;
+    private final LinkedList<Question> usedQuestions;
     private Question currentQuestion;
     private Player lead;
     private Player follow;
     private int round;
+    firebaseHandler fb = new firebaseHandler();
 
     public GameDetails() {
-        freshQuestions = new LinkedList<Question>();
-        usedQuestions = new LinkedList<Question>();
+        freshQuestions = new LinkedList<>();
+        usedQuestions = new LinkedList<>();
         lead = null;
         follow = null;
     }
@@ -34,18 +39,35 @@ public class GameDetails implements Serializable {
         follow = null;
     }
 
-    public void addQuestion(String question) {
-        freshQuestions.add(new Question(question));
-    }
+//    public void addQuestion(String question) {
+//        freshQuestions.add(new Question(question));
+//    }
 
-    public void addQuestion(Question question) {
-        freshQuestions.add(question);
-    }
+    public void addQuestion(Context c) {
+        AtomicReference<HashMap<String, Object>> qs = new AtomicReference<>(new HashMap<>());
+        fb.updateQuestions(fb.loadQuestionFromJSONFile(c, fb.isFirstBoot()), success -> {
+            if (success) {
+                freshQuestions = fb.getQuestions();
+                fb.saveQuestionToJSONFile(c, freshQuestions);
+                Log.d("GDQ", String.valueOf(freshQuestions));
+            }
+            else {
+                Log.e("GDQERR", "SOMETHING VERY WRONG HAS HAPPENED WITH ADDING QUESTIONS OH GOD");
+                }
+            });
+        }
+
+//    public void addQuestion(Question question) {
+//        freshQuestions.add(new Question(question));
+//    }
 
     // retrieves a random new question and removes it from the list
     public Question newQuestion() {
         Collections.shuffle(freshQuestions);
         currentQuestion = freshQuestions.pop();
+        if (freshQuestions.size() < MINQUESTIONLEFT) {
+            // TODO: implement add new questions
+        }
         return currentQuestion;
     }
 
