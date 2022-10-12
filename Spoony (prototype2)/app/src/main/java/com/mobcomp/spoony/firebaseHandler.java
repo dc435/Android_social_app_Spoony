@@ -50,7 +50,7 @@ public class firebaseHandler {
         qcdb = db.collection("questionCount");
         qCountDoc = null;
         multiQDoc = null;
-        firstBoot = false;
+        firstBoot = true;
         getQuestionCount();
     }
 
