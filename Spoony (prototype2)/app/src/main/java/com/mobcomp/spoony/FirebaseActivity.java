@@ -26,7 +26,7 @@ public class FirebaseActivity extends AppCompatActivity {
 
     private CoordinatorLayout _layout;
 
-    firebaseHandler fb = new firebaseHandler();
+    FirebaseHandler fb = new FirebaseHandler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

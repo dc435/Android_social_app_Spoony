@@ -19,7 +19,7 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
-public class firebaseHandler {
+public class FirebaseHandler {
 
     private final static String ASSETQFILESTR = "questions.json";
     private final static String QFILESTR = "/questions.json";
@@ -40,7 +40,7 @@ public class firebaseHandler {
         return firstBoot;
     }
 
-    public firebaseHandler() {
+    public FirebaseHandler() {
         // disable firestore caching by default
 //        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
 //                .setPersistenceEnabled(false)

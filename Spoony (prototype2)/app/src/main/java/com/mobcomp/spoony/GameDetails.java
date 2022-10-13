@@ -5,10 +5,8 @@ import android.util.Log;
 
 import java.io.Serializable;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Random;
-import java.util.concurrent.atomic.AtomicReference;
 
 public class GameDetails implements Serializable {
 
@@ -19,7 +17,7 @@ public class GameDetails implements Serializable {
     private Player lead;
     private Player follow;
     private int round;
-    firebaseHandler fb = new firebaseHandler();
+    FirebaseHandler fb = new FirebaseHandler();
 
     public GameDetails() {
         freshQuestions = new LinkedList<>();
