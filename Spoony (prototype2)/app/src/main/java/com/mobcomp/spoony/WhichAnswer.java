@@ -1,6 +1,7 @@
 package com.mobcomp.spoony;
 
 import android.content.Intent;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,37 +11,56 @@ import android.os.Bundle;
 public class WhichAnswer extends AppCompatActivity {
 
     private GameDetails gd;
-    private TextView txtLeadName;
-    private TextView txtAnswer;
-    private TextView txtOutcome;
-    private Button btnHome;
-    private Button btnPlayAgain;
-
+    private TextView result_txt_leadName;
+    private TextView result_txt_question;
+    private TextView result_txt_outcome;
+    private Button result_btn_home;
+    private Button result_btn_playAgain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.which_answer);
+        setContentView(R.layout.result);
 
         Intent intent = getIntent();
         gd = (GameDetails) intent.getSerializableExtra("GameDetails");
 
-        txtLeadName = findViewById(R.id.txtLeadName);
-        txtAnswer = findViewById(R.id.txtAnswer);
-        txtOutcome = findViewById(R.id.txtOutcome);
-        btnHome = findViewById(R.id.btnHome);
-        btnPlayAgain = findViewById(R.id.btnPlayAgain);
+        result_txt_leadName = findViewById(R.id.result_txt_leadName);
+        result_txt_question = findViewById(R.id.result_txt_question);
+        result_txt_outcome = findViewById(R.id.result_txt_outcome);
+        result_btn_home = findViewById(R.id.result_btn_home);
+        result_btn_playAgain = findViewById(R.id.result_btn_playAgain);
 
-        txtLeadName.setText(gd.getLeadName());
-        txtLeadName.setTextColor(gd.getLeadColor());
-        txtAnswer.setText(gd.QUESTIONS[gd.QTN_INDEX]);
+        result_txt_leadName.setText(gd.getLead().getName());
+        result_txt_leadName.setTextColor(gd.getLead().getColour());
+        result_txt_question.setText(gd.getCurrentQuestion().question);
 
-        if (gd.QTN_GUESS==gd.QTN_INDEX) {
-            txtOutcome.setText("YOU GOT IT!");
+        if (gd.isCorrectGuess()) {
+            result_txt_outcome.setText("YOU GOT IT!");
         } else {
-            txtOutcome.setText("MAYBE NEXT TIME");
+            result_txt_outcome.setText("MAYBE NEXT TIME");
         }
 
+        result_btn_home = findViewById(R.id.result_btn_home);
+        result_btn_playAgain = findViewById(R.id.result_btn_playAgain);
+        View.OnClickListener jumpToHome = view -> jumpToHome();
+        View.OnClickListener playAgain = view -> playAgain();
+        result_btn_home.setOnClickListener(jumpToHome);
+        result_btn_playAgain.setOnClickListener(playAgain);
+
+    }
+
+    private void jumpToHome() {
+        Intent intent = new Intent(this, HomePage.class);
+        intent.putExtra("GameDetails", gd);
+        startActivity(intent);
+
+    }
+
+    private void playAgain() {
+        Intent intent = new Intent(this, Question.class);
+        intent.putExtra("GameDetails", gd);
+        startActivity(intent);
     }
 
 }

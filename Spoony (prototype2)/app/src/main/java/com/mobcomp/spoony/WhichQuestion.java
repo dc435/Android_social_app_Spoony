@@ -8,163 +8,104 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import android.os.Bundle;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 public class WhichQuestion extends SpoonyActivity {
 
     private GameDetails gd;
-    private TextView txtFollow_LeadName;
-    private TextView txtLead_LeadName;
-    private TextView txtLead_FollowName;
-    private TextView txtTable_FollowName;
-
-    private Button btnA;
-    private Button btnB;
-    private Button btnC;
-    private Button btnConfirm;
-
+    private TextView text_txt_center;
+    private TextView whichq_txt_leadName;
+    private Button whichq_btn_OptA;
+    private Button whichq_btn_OptB;
+    private Button whichq_btn_OptC;
+    private Button whichq_btn_next;
+    private Question[] questionSet;
     private Drawable drwBtnDefault;
     private Drawable drwBtnClicked;
     private int clrBlack;
 
-    private ConstraintLayout lytFollow;
-    private ConstraintLayout lytLead;
-    private ConstraintLayout lytTable;
-    private ConstraintLayout lytTableInner;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.which_question);
-
         Intent intent = getIntent();
         gd = (GameDetails) intent.getSerializableExtra("GameDetails");
 
-        txtFollow_LeadName = findViewById(R.id.txtFollow_LeadName);
-
-        txtLead_LeadName = findViewById(R.id.txtLead_LeadName);
-        txtLead_FollowName = findViewById(R.id.txtLead_FollowName);
-
-        txtTable_FollowName = findViewById(R.id.txtTable_FollowName);
-
-        btnA = findViewById(R.id.btnA);
-        btnB = findViewById(R.id.btnB);
-        btnC = findViewById(R.id.btnC);
-        btnConfirm = findViewById(R.id.btnConfirm);
-
-        lytFollow = findViewById(R.id.lytFollow);
-        lytLead = findViewById(R.id.lytLead);
-        lytTable = findViewById(R.id.lytTable);
-        lytTableInner = findViewById(R.id.lytTableInner);
+        int correctIndex = (int)(Math.random() * 3);
+        gd.setCorrectIndex(correctIndex);
+        questionSet = new Question[3];
+        for (int i = 0; i < 3; i ++) {
+            if (i == correctIndex) {
+                questionSet[i] = gd.getCurrentQuestion();
+            } else {
+                questionSet[i] = gd.getQuestionNonDestructive();
+            }
+        }
 
         drwBtnDefault = getResources().getDrawable(R.drawable.question_box_choose);
         drwBtnClicked = getResources().getDrawable(R.drawable.question_box_choose_trans);
         clrBlack = Color.BLACK;
 
-        View.OnClickListener optionClick = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                optionClick(view);
-            }
-        };
-
-        View.OnClickListener confirmClick = new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                confirmClick();
-            }
-        };
-
-        btnA.setOnClickListener(optionClick);
-        btnB.setOnClickListener(optionClick);
-        btnC.setOnClickListener(optionClick);
-        btnConfirm.setOnClickListener(confirmClick);
-
-        makeAllInvisible();
-        setTexts();
-        setFormats();
-
-    }
-
-    private void setTexts() {
-        txtFollow_LeadName.setText(gd.getLeadName());
-        btnA.setText("A. " + gd.QUESTIONS[0]);
-        btnB.setText("B. " + gd.QUESTIONS[1]);
-        btnC.setText("C. " + gd.QUESTIONS[2]);
-        txtLead_LeadName.setText(gd.getLeadName());
-        txtLead_FollowName.setText(gd.getFollowName());
-        txtTable_FollowName.setText(gd.getFollowName());
-    }
-
-    private void setFormats() {
-        txtFollow_LeadName.setTextColor(gd.getLeadColor());
-        txtLead_LeadName.setTextColor(gd.getLeadColor());
-        txtLead_FollowName.setTextColor(gd.getFollowColor());
-        txtTable_FollowName.setTextColor(gd.getFollowColor());
-    }
-
-    private void makeAllInvisible(){
-        lytFollow.setVisibility(View.INVISIBLE);
-        lytLead.setVisibility(View.INVISIBLE);
-        lytTable.setVisibility(View.INVISIBLE);
     }
 
     private void optionClick(View view) {
-        btnA.setBackground(drwBtnDefault);
-        btnB.setBackground(drwBtnDefault);
-        btnC.setBackground(drwBtnDefault);
+        whichq_btn_OptA.setBackground(drwBtnDefault);
+        whichq_btn_OptB.setBackground(drwBtnDefault);
+        whichq_btn_OptC.setBackground(drwBtnDefault);
         Button btnClicked = (Button) view;
         btnClicked.setBackground(drwBtnClicked);
-        btnConfirm.setClickable(true);
-        btnConfirm.setTextColor(clrBlack);
+        whichq_btn_next.setClickable(true);
+        whichq_btn_next.setTextColor(clrBlack);
 
-        if (btnClicked.getId()==btnA.getId()) {
-            gd.QTN_GUESS = 0;
-        } else if (btnClicked.getId()==btnB.getId()) {
-            gd.QTN_GUESS = 1;
+        if (btnClicked.getId()==whichq_btn_OptA.getId()) {
+            gd.setGuessIndex(0);
+        } else if (btnClicked.getId()==whichq_btn_OptB.getId()) {
+            gd.setGuessIndex(1);
         } else {
-            gd.QTN_GUESS = 2;
+            gd.setGuessIndex(2);
         }
+
     }
 
-    private void confirmClick() {
+    private void nextClick() {
         Intent intent = new Intent(this, WhichAnswer.class);
         intent.putExtra("GameDetails", gd);
         startActivity(intent);
     }
 
-    protected void onEnterP1View() {
-        makeAllInvisible();
-        lytLead.setVisibility(View.VISIBLE);
+    protected void onEnterLeadView() {
+        setContentView(R.layout.text);
+        text_txt_center = findViewById(R.id.text_txt_center);
+        text_txt_center.setText(gd.getLead().getName() + ", give me to " + gd.getFollow().getName());
     }
 
-    protected void updateP1View() {}
-    protected void onExitP1View() {}
+    protected void updateLeadView() {}
+    protected void onExitLeadView() {}
 
-    protected void onEnterP2View() {
-        makeAllInvisible();
-        lytFollow.setVisibility(View.VISIBLE);
+    protected void onEnterFollowView() {
+        setContentView(R.layout.whichq);
+        whichq_txt_leadName = findViewById(R.id.whichq_txt_leadName);
+        whichq_txt_leadName.setText(gd.getLead().getName());
+        whichq_txt_leadName.setTextColor(gd.getLead().getColour());
+        whichq_btn_OptA = findViewById(R.id.whichq_btn_OptA);
+        whichq_btn_OptB = findViewById(R.id.whichq_btn_OptB);
+        whichq_btn_OptC = findViewById(R.id.whichq_btn_OptC);
+        whichq_btn_next = findViewById(R.id.whichq_btn_next);
+        View.OnClickListener optionClick = view -> optionClick(view);
+        View.OnClickListener nextClick = view -> nextClick();
+        whichq_btn_OptA.setOnClickListener(optionClick);
+        whichq_btn_OptB.setOnClickListener(optionClick);
+        whichq_btn_OptC.setOnClickListener(optionClick);
+        whichq_btn_next.setOnClickListener(nextClick);
+
+        whichq_btn_OptA.setText("A. " + questionSet[0].question);
+        whichq_btn_OptB.setText("B. " + questionSet[1].question);
+        whichq_btn_OptC.setText("C. " + questionSet[2].question);
+
     }
-
-    protected void updateP2View() {}
-    protected void onExitP2View() {}
 
     protected void onEnterTable() {
-        makeAllInvisible();
-        lytTable.setVisibility(View.VISIBLE);
+        setContentView(R.layout.text);
+        text_txt_center = findViewById(R.id.text_txt_center);
+        text_txt_center.setText(gd.getLead().getName() + " pick me up!");
     }
-
-    protected void updateTable() {
-        //TODO: Designed to display text pointing to Follow. Need to identify correct metric:
-        lytTableInner.setRotation(DeviceOrientation[0]);
-    }
-
-    protected void onExitTable() {}
-
-    protected void onEnterDefault() {}
-    protected void updateDefault() {}
-    protected void onExitDefault() {}
-
-    protected void updateAlways() {}
 
 }
