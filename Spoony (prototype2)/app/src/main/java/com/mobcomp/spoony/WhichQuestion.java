@@ -13,7 +13,7 @@ public class WhichQuestion extends SpoonyActivity {
 
     private GameDetails gd;
     private TextView text_txt_center;
-    private TextView whichq_txt_whichqdid;
+    private TextView whichq_txt_leadName;
     private Button whichq_btn_OptA;
     private Button whichq_btn_OptB;
     private Button whichq_btn_OptC;
@@ -82,8 +82,9 @@ public class WhichQuestion extends SpoonyActivity {
 
     protected void onEnterFollowView() {
         setContentView(R.layout.whichq);
-        whichq_txt_whichqdid = findViewById(R.id.whichq_txt_whichqdid);
-        whichq_txt_whichqdid.setText("Which question did " + gd.getLead().getName() + " answer?");
+        whichq_txt_leadName = findViewById(R.id.whichq_txt_leadName);
+        whichq_txt_leadName.setText(gd.getLead().getName());
+        whichq_txt_leadName.setTextColor(gd.getLead().getColour());
         whichq_btn_OptA = findViewById(R.id.whichq_btn_OptA);
         whichq_btn_OptB = findViewById(R.id.whichq_btn_OptB);
         whichq_btn_OptC = findViewById(R.id.whichq_btn_OptC);
