@@ -87,12 +87,12 @@ public class GameDetails implements Serializable {
 
     private void populate() {
         // pull from firebase here?
-        freshQuestions.add(new Question("Who is more like a cat?"));
-        freshQuestions.add(new Question("How much does each player talk?"));
-        freshQuestions.add(new Question("Who is more likely to eat a raw onion?"));
-        freshQuestions.add(new Question("Who is more like their mother?"));
-        freshQuestions.add(new Question("Who is more like a dog"));
-        freshQuestions.add(new Question("Who eats more?"));
+//        freshQuestions.add(new Question("Who is more like a cat?"));
+//        freshQuestions.add(new Question("How much does each player talk?"));
+//        freshQuestions.add(new Question("Who is more likely to eat a raw onion?"));
+//        freshQuestions.add(new Question("Who is more like their mother?"));
+//        freshQuestions.add(new Question("Who is more like a dog"));
+//        freshQuestions.add(new Question("Who eats more?"));
     }
 
     public Question getCurrentQuestion() {

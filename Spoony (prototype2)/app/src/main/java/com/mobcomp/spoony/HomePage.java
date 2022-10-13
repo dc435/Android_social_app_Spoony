@@ -47,9 +47,10 @@ public class HomePage extends AppCompatActivity {
     }
 
     public void jumpToStart(View view) {
-        GameDetails gameDetails = new GameDetails();
+//        GameDetails gameDetails = new GameDetails();
+        Log.d("GDQ", gd.newQuestion().question);
         Intent intent = new Intent(this, Name.class);
-        intent.putExtra("GameDetails", gameDetails);
+        intent.putExtra("GameDetails", gd);
         startActivity(intent);
     }
 
