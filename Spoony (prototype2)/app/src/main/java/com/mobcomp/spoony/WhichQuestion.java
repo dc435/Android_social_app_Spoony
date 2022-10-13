@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import android.os.Bundle;
 
+import java.util.Collections;
+import java.util.LinkedList;
+
 public class WhichQuestion extends SpoonyActivity {
 
     private GameDetails gd;
@@ -18,31 +21,26 @@ public class WhichQuestion extends SpoonyActivity {
     private Button whichq_btn_OptB;
     private Button whichq_btn_OptC;
     private Button whichq_btn_next;
-    private Question[] questionSet;
+    private LinkedList<Question> questionSet;
     private Drawable drwBtnDefault;
     private Drawable drwBtnClicked;
-    private int clrBlack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Intent intent = getIntent();
-        gd = (GameDetails) intent.getSerializableExtra("GameDetails");
 
-        int correctIndex = (int)(Math.random() * 3);
-        gd.setCorrectIndex(correctIndex);
-        questionSet = new Question[3];
-        for (int i = 0; i < 3; i ++) {
-            if (i == correctIndex) {
-                questionSet[i] = gd.getCurrentQuestion();
-            } else {
-                questionSet[i] = gd.getQuestionNonDestructive();
-            }
-        }
+        gd = getGameDetails();
+
+        // fetch and shuffle questions
+        questionSet = new LinkedList<Question>();
+        questionSet.add(gd.getCurrentQuestion());
+        questionSet.add(gd.getQuestionNonDestructive());
+        questionSet.add(gd.getQuestionNonDestructive());
+
+        Collections.shuffle(questionSet);
 
         drwBtnDefault = getResources().getDrawable(R.drawable.question_box_choose);
         drwBtnClicked = getResources().getDrawable(R.drawable.question_box_choose_trans);
-        clrBlack = Color.BLACK;
 
     }
 
@@ -53,14 +51,14 @@ public class WhichQuestion extends SpoonyActivity {
         Button btnClicked = (Button) view;
         btnClicked.setBackground(drwBtnClicked);
         whichq_btn_next.setClickable(true);
-        whichq_btn_next.setTextColor(clrBlack);
+        whichq_btn_next.setTextColor(Color.BLACK);
 
         if (btnClicked.getId()==whichq_btn_OptA.getId()) {
-            gd.setGuessIndex(0);
+            gd.setGuessedQuestion(questionSet.get(0));
         } else if (btnClicked.getId()==whichq_btn_OptB.getId()) {
-            gd.setGuessIndex(1);
+            gd.setGuessedQuestion(questionSet.get(1));
         } else {
-            gd.setGuessIndex(2);
+            gd.setGuessedQuestion(questionSet.get(2));
         }
 
     }
@@ -96,9 +94,9 @@ public class WhichQuestion extends SpoonyActivity {
         whichq_btn_OptC.setOnClickListener(optionClick);
         whichq_btn_next.setOnClickListener(nextClick);
 
-        whichq_btn_OptA.setText("A. " + questionSet[0].question);
-        whichq_btn_OptB.setText("B. " + questionSet[1].question);
-        whichq_btn_OptC.setText("C. " + questionSet[2].question);
+        whichq_btn_OptA.setText("A. " + questionSet.get(0).question);
+        whichq_btn_OptB.setText("B. " + questionSet.get(1).question);
+        whichq_btn_OptC.setText("C. " + questionSet.get(2).question);
 
     }
 

@@ -35,7 +35,7 @@ public class WhichAnswer extends AppCompatActivity {
         result_txt_leadName.setTextColor(gd.getLead().getColour());
         result_txt_question.setText(gd.getCurrentQuestion().question);
 
-        if (gd.isCorrectGuess()) {
+        if (gd.getGuessedQuestion() == gd.getCurrentQuestion()) {
             result_txt_outcome.setText("YOU GOT IT!");
         } else {
             result_txt_outcome.setText("MAYBE NEXT TIME");
@@ -54,13 +54,12 @@ public class WhichAnswer extends AppCompatActivity {
         Intent intent = new Intent(this, HomePage.class);
         intent.putExtra("GameDetails", gd);
         startActivity(intent);
-
     }
 
     private void playAgain() {
-        Intent intent = new Intent(this, Question.class);
+        gd.nextRound();
+        Intent intent = new Intent(this, QuestionActivity.class);
         intent.putExtra("GameDetails", gd);
         startActivity(intent);
     }
-
 }

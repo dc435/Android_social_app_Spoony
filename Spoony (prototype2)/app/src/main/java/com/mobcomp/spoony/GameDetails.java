@@ -12,11 +12,10 @@ public class GameDetails implements Serializable {
     private LinkedList<Question> freshQuestions;
     private LinkedList<Question> usedQuestions;
     private Question currentQuestion;
+    private Question guessedQuestion;
     private Player lead;
     private Player follow;
     private int round;
-    private int guessIndex;
-    private int correctIndex;
 
     public GameDetails() {
         freshQuestions = new LinkedList<Question>();
@@ -24,6 +23,7 @@ public class GameDetails implements Serializable {
         lead = null;
         follow = null;
 
+        populate();
     }
 
     public void addPlayer(Player player) {
@@ -48,6 +48,8 @@ public class GameDetails implements Serializable {
     // retrieves a random new question and removes it from the list
     public Question newQuestion() {
         Collections.shuffle(freshQuestions);
+
+        if (freshQuestions.size() == 0) populate();
         currentQuestion = freshQuestions.pop();
         return currentQuestion;
     }
@@ -55,6 +57,7 @@ public class GameDetails implements Serializable {
     // retrieves a random new question without removing it from the list
     public Question getQuestionNonDestructive() {
         Random random = new Random();
+        if (freshQuestions.size() == 0) populate();
         return freshQuestions.get(random.nextInt(freshQuestions.size()));
     }
 
@@ -62,7 +65,19 @@ public class GameDetails implements Serializable {
         usedQuestions.add(question);
     }
 
+    private void populate() {
+        // pull from firebase here?
+        freshQuestions.add(new Question("Who is more like a cat?"));
+        freshQuestions.add(new Question("How much does each player talk?"));
+        freshQuestions.add(new Question("Who is more likely to eat a raw onion?"));
+        freshQuestions.add(new Question("Who is more like their mother?"));
+        freshQuestions.add(new Question("Who is more like a dog"));
+        freshQuestions.add(new Question("Who eats more?"));
+    }
+
     public Question getCurrentQuestion() { return currentQuestion; }
+    public Question getGuessedQuestion() { return currentQuestion; }
+    public void setGuessedQuestion(Question question) { guessedQuestion = question; }
     public Player getLead() { return lead; }
     public Player getFollow() { return follow; }
 
@@ -77,11 +92,6 @@ public class GameDetails implements Serializable {
         follow = temp;
     }
 
-    public void setCorrectIndex(int correctIndex){
-        this.correctIndex = correctIndex;
-    }
-    public void setGuessIndex(int guessIndex){
-        this.guessIndex = guessIndex;
-    }
+
 
 }
