@@ -14,12 +14,12 @@ public class PointTo_P2 extends SpoonyActivity {
     private int _flatPromptLayout;
 
     private Button _confirmBtn;
-    private Intent _intent;
     private TextView _p2NameView;
-    private String _p2Name;
 
     private SharedPreferences _data;
     private SharedPreferences.Editor _editor;
+
+    private GameDetails gameDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,10 +29,9 @@ public class PointTo_P2 extends SpoonyActivity {
         setContentView(_pointTo_P2Layout);
         nameSetup();
         buttonSetup();
-        _data = getSharedPreferences(Key.DEFAULT_PREFERENCES, MODE_PRIVATE);
-        _editor = _data.edit();
-        _p2Name = _data.getString(Key.P2_NAME, "Player 2");
-        _intent = new Intent(this, QuestionActivity.class);
+
+        Intent intent = getIntent();
+        gameDetails = (GameDetails) intent.getSerializableExtra("GameDetails");
     }
 
     @Override
@@ -59,7 +58,7 @@ public class PointTo_P2 extends SpoonyActivity {
 
     private void nameSetup() {
         _p2NameView = (TextView) findViewById(R.id.entry_name_p2);
-        _p2NameView.setText(_p2Name);
+        _p2NameView.setText(getGameDetails().getFollow().getName());
     }
 
     private void buttonSetup() {
@@ -67,9 +66,11 @@ public class PointTo_P2 extends SpoonyActivity {
         _confirmBtn.setOnClickListener((View v) -> {
             float zOrientation = deviceOrientation[0];
             Log.d("Orientation Prompt", String.valueOf(zOrientation));
-            _editor.putFloat(Key.P2_POSITION, zOrientation);
-            _editor.apply();
-            startActivity(_intent);
+            getGameDetails().getFollow().setDirection(zOrientation);
+
+            Intent intent = new Intent(this, QuestionActivity.class);
+            intent.putExtra("GameDetails", gameDetails);
+            startActivity(intent);
         });
     }
 }

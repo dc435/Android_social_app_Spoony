@@ -14,12 +14,13 @@ public class PointTo_P1 extends SpoonyActivity {
     private int _flatPromptLayout;
 
     private Button _confirmBtn;
-    private Intent _intent;
     private TextView _p1NameView;
     private String _p1Name;
 
     private SharedPreferences _data;
     private SharedPreferences.Editor _editor;
+
+    private GameDetails gameDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,20 +28,10 @@ public class PointTo_P1 extends SpoonyActivity {
         _pointTo_P1Layout = R.layout.activity_point_to_p1;
         _flatPromptLayout = R.layout.place_flat_flat;
         setContentView(_flatPromptLayout);
-        _data = getSharedPreferences(Key.DEFAULT_PREFERENCES, MODE_PRIVATE);
-        _editor = _data.edit();
-        _p1Name = _data.getString(Key.P1_NAME, "Player 1");
-        _intent = new Intent(this, PointTo_P2.class);
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-    }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
+        Intent intent = getIntent();
+        gameDetails = (GameDetails) intent.getSerializableExtra("GameDetails");
     }
 
     @Override
@@ -57,7 +48,7 @@ public class PointTo_P1 extends SpoonyActivity {
 
     private void nameSetup() {
         _p1NameView = (TextView) findViewById(R.id.entry_name_p1);
-        _p1NameView.setText(_p1Name);
+        _p1NameView.setText(getGameDetails().getLead().getName());
     }
 
     private void buttonSetup() {
@@ -65,9 +56,11 @@ public class PointTo_P1 extends SpoonyActivity {
         _confirmBtn.setOnClickListener((View v) -> {
             float zOrientation = deviceOrientation[0];
             Log.d("Orientation Prompt", String.valueOf(zOrientation));
-            _editor.putFloat(Key.P1_POSITION, zOrientation);
-            _editor.apply();
-            startActivity(_intent);
+            getGameDetails().getLead().setDirection(zOrientation);
+
+            Intent intent = new Intent(this, PointTo_P2.class);
+            intent.putExtra("GameDetails", gameDetails);
+            startActivity(intent);
         });
     }
 }

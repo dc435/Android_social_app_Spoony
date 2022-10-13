@@ -1,5 +1,7 @@
 package com.mobcomp.spoony;
 
+import static com.mobcomp.spoony.Angle.rotationDistanceUnsigned;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -13,8 +15,6 @@ import android.hardware.SensorEvent;
 import android.os.Bundle;
 
 public class SpoonyActivity extends AppCompatActivity implements SensorEventListener {
-
-    private static GameDetails gameDetails;
 
     private static final int SENSOR_DELAY = SensorManager.SENSOR_DELAY_UI; // 60ms, the interval between sensor reports
     private static final float TABLE_THRESHOLD = -20.f; // y-bearing above which the phone is considered 'on the table'
@@ -37,7 +37,6 @@ public class SpoonyActivity extends AppCompatActivity implements SensorEventList
     public float[] deviceOrientation = new float[3];
 
     // player positions
-    private SharedPreferences data;
     private float leadPosition = 0.0f;
     private float followPosition = 180.0f;
 
@@ -51,19 +50,10 @@ public class SpoonyActivity extends AppCompatActivity implements SensorEventList
         // fetch game details
         Intent intent = getIntent();
         gameDetails = (GameDetails) intent.getSerializableExtra("GameDetails");
+        if (gameDetails == null) gameDetails = new GameDetails();
 
-        gameDetails = new GameDetails();
-
-        _p1Position = _data.getFloat(Key.P1_POSITION, 0.0f);
-        _p2Position = _data.getFloat(Key.P2_POSITION, 0.0f);
-        data = getSharedPreferences(Key.DEFAULT_PREFERENCES, MODE_PRIVATE);
-
-        //leadPosition = data.getFloat(Key.P1_POSITION, 0.0f);
-        //followPosition = data.getFloat(Key.P2_POSITION, 0.0f);
-        if (gameDetails != null) {
-            leadPosition = gameDetails.getLead().getDirection();
-            followPosition = gameDetails.getFollow().getDirection();
-        }
+        if (gameDetails.getLead() != null) leadPosition = gameDetails.getLead().getDirection();
+        if (gameDetails.getFollow() != null) followPosition = gameDetails.getFollow().getDirection();
     }
 
     // this gets called on creation (later than onCreate), or when the user returns to the app after minimising it
@@ -222,46 +212,21 @@ public class SpoonyActivity extends AppCompatActivity implements SensorEventList
         }
     }
 
-    public static GameDetails getGameDetails() {
+    public GameDetails getGameDetails() {
         return gameDetails;
     }
 
-    // ANGLE HELPERS
-
-    // calculates (unsigned) distance between two angles
-    public static float rotationDistanceUnsigned(float a, float b) {
-        return 180 - Math.abs((Math.abs(a - b) % 360) - 180);
+    public void changeActivity(Class<?> cls) {
+        Intent intent = new Intent(this, cls);
+        intent.putExtra("GameDetails", gameDetails);
+        startActivity(intent);
     }
-
-    // calculates signed distance between two angles TODO: this is borked
-    public static float rotationDistanceSigned(float a, float b) {
-        float d = rotationDistanceUnsigned(a, b);
-        int sign = 1;
-        if (d >= 180 || normaliseAngle(a) > normaliseAngle(b)) sign = -1;
-
-        return sign * d;
-    }
-
-    // returns angle within [0, 360)
-    public static float normaliseAngle(float a) {
-        return ((360 + (a % 360)) % 360);
-    }
-
-    // calculates angle relative to the screen given a real-world orientation angle TODO: also borked
-    public float worldToScreenRotation(float worldPosition) {
-        return rotationDistanceSigned(deviceOrientation[0], worldPosition);
-    }
-
 
     // STATE CALLS
 
     public SpoonyState getState() {
         return state;
     }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int i) {} // do nothing
-
 
     // these methods are provided to child activities to easily change displayed information based on the device state
     protected void onEnterLeadView() {}
@@ -281,4 +246,7 @@ public class SpoonyActivity extends AppCompatActivity implements SensorEventList
     protected void onExitDefault() {}
 
     protected void updateAlways() {}
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int i) {} // do nothing
 }

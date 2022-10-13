@@ -39,15 +39,10 @@
             android:name=".PointTo_P2"
             android:exported="false"
             android:screenOrientation="portrait"/>
-        
-        <activity
-            android:name=".NameEntry_P2"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
 
 
         <activity
-            android:name=".NameEntry_P1"
+            android:name=".Name"
             android:exported="false"
             android:screenOrientation="portrait"/>
 

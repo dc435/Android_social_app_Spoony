@@ -46,7 +46,7 @@ public class AnswerActivity extends SpoonyActivity {
 
     @Override
     protected void updateTable() {
-        spinner.setRotation(worldToScreenRotation(gameDetails.getLead().getDirection()));
+        spinner.setRotation(Angle.rotationDistanceSigned(deviceOrientation[0], gameDetails.getLead().getDirection()));
     }
 
     private void displaySpinnerScreen() {

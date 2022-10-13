@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class name extends AppCompatActivity {
+public class Name extends AppCompatActivity {
 
     Button name_btn_next;
     TextView name_txt_getName;
@@ -23,6 +23,9 @@ public class name extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_name_entry_p1);
 
+        Intent intent = getIntent();
+        gameDetails = (GameDetails) intent.getSerializableExtra("GameDetails");
+
         name_txt_p1p2 = findViewById(R.id.textView_p1p2);
         name_txt_p1p2.setText("Spooner 1");
         // save player names to GameDetails
@@ -31,7 +34,6 @@ public class name extends AppCompatActivity {
             name_txt_getName = findViewById(R.id.name_input_p1);
             String p1Name = name_txt_getName.getText().toString();
 
-            gameDetails = SpoonyActivity.getGameDetails();
             Player player1 = new Player(p1Name);
             gameDetails.addPlayer(player1);
             Log.d("P1 name saved", p1Name);
@@ -48,7 +50,6 @@ public class name extends AppCompatActivity {
             name_txt_getName = findViewById(R.id.name_input_p1);
             String p2Name = name_txt_getName.getText().toString();
 
-            gameDetails = SpoonyActivity.getGameDetails();
             Player player2 = new Player(p2Name);
             gameDetails.addPlayer(player2);
 
@@ -59,7 +60,7 @@ public class name extends AppCompatActivity {
 
     public void nextPage(View view){
         Intent intent = new Intent(this, PointTo_P1.class);
+        intent.putExtra("GameDetails", gameDetails);
         startActivity(intent);
     }
-
 }
