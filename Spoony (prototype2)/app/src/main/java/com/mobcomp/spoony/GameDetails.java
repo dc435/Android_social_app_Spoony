@@ -1,5 +1,6 @@
 package com.mobcomp.spoony;
 
+import android.content.Context;
 import android.util.Log;
 
 import java.io.Serializable;
@@ -9,17 +10,19 @@ import java.util.Random;
 
 public class GameDetails implements Serializable {
 
+    private static final int MINQUESTIONLEFT = 3;
     private LinkedList<Question> freshQuestions;
-    private LinkedList<Question> usedQuestions;
+    private final LinkedList<Question> usedQuestions;
     private Question currentQuestion;
     private Question guessedQuestion;
     private Player lead;
     private Player follow;
     private int round;
+    FirebaseHandler fb = new FirebaseHandler();
 
     public GameDetails() {
-        freshQuestions = new LinkedList<Question>();
-        usedQuestions = new LinkedList<Question>();
+        freshQuestions = new LinkedList<>();
+        usedQuestions = new LinkedList<>();
         lead = null;
         follow = null;
 
@@ -27,9 +30,12 @@ public class GameDetails implements Serializable {
     }
 
     public void addPlayer(Player player) {
-        if (lead == null) lead = player;
-        else if (follow == null) follow = player;
-        else Log.e("GameDetails", "No player slots free to add new player " + player.getName());
+        if (lead == null)
+            lead = player;
+        else if (follow == null)
+            follow = player;
+        else
+            Log.e("GameDetails", "No player slots free to add new player " + player.getName());
     }
 
     public void clearPlayers() {
@@ -37,27 +43,41 @@ public class GameDetails implements Serializable {
         follow = null;
     }
 
-    public void addQuestion(String question) {
-        freshQuestions.add(new Question(question));
+    public void addQuestion(Context c) {
+        fb.updateQuestions(fb.loadQuestionFromJSONFile(c, fb.isFirstBoot()), success -> {
+            if (success) {
+                freshQuestions = fb.getQuestions();
+                fb.saveQuestionToJSONFile(c, freshQuestions);
+                Log.d("GDQ", String.valueOf(freshQuestions));
+            } else {
+                Log.e("GDQERR", "SOMETHING VERY WRONG HAS HAPPENED WITH ADDING QUESTIONS OH GOD");
+            }
+        });
     }
 
-    public void addQuestion(Question question) {
-        freshQuestions.add(question);
-    }
+    // public void addQuestion(Question question) {
+    // freshQuestions.add(new Question(question));
+    // }
 
     // retrieves a random new question and removes it from the list
     public Question newQuestion() {
         Collections.shuffle(freshQuestions);
+        Log.d("GDQUESTION", String.valueOf(freshQuestions));
 
-        if (freshQuestions.size() == 0) populate();
+        if (freshQuestions.size() == 0)
+            populate();
         currentQuestion = freshQuestions.pop();
+        if (freshQuestions.size() < MINQUESTIONLEFT) {
+            // TODO: implement add new questions
+        }
         return currentQuestion;
     }
 
     // retrieves a random new question without removing it from the list
     public Question getQuestionNonDestructive() {
         Random random = new Random();
-        if (freshQuestions.size() == 0) populate();
+        if (freshQuestions.size() == 0)
+            populate();
         return freshQuestions.get(random.nextInt(freshQuestions.size()));
     }
 
@@ -67,19 +87,33 @@ public class GameDetails implements Serializable {
 
     private void populate() {
         // pull from firebase here?
-        freshQuestions.add(new Question("Who is more like a cat?"));
-        freshQuestions.add(new Question("How much does each player talk?"));
-        freshQuestions.add(new Question("Who is more likely to eat a raw onion?"));
-        freshQuestions.add(new Question("Who is more like their mother?"));
-        freshQuestions.add(new Question("Who is more like a dog"));
-        freshQuestions.add(new Question("Who eats more?"));
+//        freshQuestions.add(new Question("Who is more like a cat?"));
+//        freshQuestions.add(new Question("How much does each player talk?"));
+//        freshQuestions.add(new Question("Who is more likely to eat a raw onion?"));
+//        freshQuestions.add(new Question("Who is more like their mother?"));
+//        freshQuestions.add(new Question("Who is more like a dog"));
+//        freshQuestions.add(new Question("Who eats more?"));
     }
 
-    public Question getCurrentQuestion() { return currentQuestion; }
-    public Question getGuessedQuestion() { return currentQuestion; }
-    public void setGuessedQuestion(Question question) { guessedQuestion = question; }
-    public Player getLead() { return lead; }
-    public Player getFollow() { return follow; }
+    public Question getCurrentQuestion() {
+        return currentQuestion;
+    }
+
+    public Question getGuessedQuestion() {
+        return currentQuestion;
+    }
+
+    public void setGuessedQuestion(Question question) {
+        guessedQuestion = question;
+    }
+
+    public Player getLead() {
+        return lead;
+    }
+
+    public Player getFollow() {
+        return follow;
+    }
 
     public int getRound() {
         return round;
@@ -91,7 +125,5 @@ public class GameDetails implements Serializable {
         lead = follow;
         follow = temp;
     }
-
-
 
 }

@@ -15,23 +15,39 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
-public class firebaseHandler {
+public class FirebaseHandler {
 
+    private final static String ASSETQFILESTR = "questions.json";
+    private final static String QFILESTR = "/questions.json";
     private static final int UPDATEINTERVAL = 300;
 
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private final CollectionReference qdb = db.collection("questions");
-    private final CollectionReference qcdb = db.collection("questionCount");
+    private final CollectionReference qdb;
+    private final CollectionReference qcdb;
     private Map<String, Object> qCountDoc;
-    private Map<String, Object> multiQDoc;
+    private LinkedList<Question> multiQDoc;
+//     TODO: TBD if necessary
+//    private Map<String, Object> fullQDoc;
     private int numQuestion;
     private java.util.Date lastUpdatedTime;
     private boolean firstBoot;
 
-    public firebaseHandler() {
+    public boolean isFirstBoot() {
+        return firstBoot;
+    }
+
+    public FirebaseHandler() {
+        // disable firestore caching by default
+//        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+//                .setPersistenceEnabled(false)
+//                .build();
+//        db.setFirestoreSettings(settings);
+        qdb = db.collection("questions");
+        qcdb = db.collection("questionCount");
         qCountDoc = null;
         multiQDoc = null;
         firstBoot = true;
@@ -69,26 +85,25 @@ public class firebaseHandler {
                 .addOnFailureListener(e -> Log.w("FSQCADDERR", "Error writing document", e));
     }
 
-    public Map<String, Object> getQuestions() {
+    public LinkedList<Question> getQuestions() {
         return multiQDoc;
     }
 
     // return a mapping of multiple questions
     // key: id, val: question string
     @SuppressWarnings (value="unchecked")
-    public void checkQuestions(String questionJSON, DocumentCallback documentCallback) {
+    public void updateQuestions(String questionJSON, DocumentCallback documentCallback) {
         AtomicReference<Boolean> successFlag = new AtomicReference<>(false);
+        multiQDoc = new LinkedList<>();
         if (checkUpdateTime() || questionJSON == null || firstBoot) {
             firstBoot = false;
             getQuestionCount();
-
-            multiQDoc = new HashMap<>();
 
             qdb.get().addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
                     successFlag.set(true);
                     for (QueryDocumentSnapshot document : task.getResult()) {
-                        multiQDoc.put(document.getId(), document.getData().get("question"));
+                        multiQDoc.add(new Question(Integer.parseInt(document.getId()), (String) document.getData().get("question")));
                     }
                     Log.d("FSQ", String.valueOf(multiQDoc));
                     documentCallback.getDocumentSucess(true);
@@ -98,13 +113,15 @@ public class firebaseHandler {
                 }
             });
         } else if (questionJSON != null) {
-            multiQDoc = new Gson().fromJson(questionJSON, Map.class);
+            Map<String, Object> data = new Gson().fromJson(questionJSON, Map.class);
+            data.forEach((qid, qstr) -> multiQDoc.add(new Question(Integer.parseInt(qid), (String) qstr)));
+            Log.d("FSQ", String.valueOf(multiQDoc));
             documentCallback.getDocumentSucess(true);
         }
     }
 
     // return true or false if successfully added question
-    public void addNewQuestion(String question, DocumentCallback documentCallback) {
+    protected void addNewQuestion(String question, DocumentCallback documentCallback) {
         Map<String, Object> data = new HashMap<>();
         getQuestionCount();
 
@@ -134,17 +151,19 @@ public class firebaseHandler {
         InputStream is;
         try {
             if (firstBoot) {
-                is = c.getAssets().open("questions.json");
-                Log.d("QFILEIN1", c.getAssets().toString() + "/questions.json");
+                is = c.getAssets().open(ASSETQFILESTR);
+                Log.d("QFILEIN1", c.getAssets().toString() + QFILESTR);int size = is.available();
+
             } else {
-                is = new FileInputStream(c.getFilesDir() + "/questions.json");
-                Log.d("QFILEIN2", c.getFilesDir() + "/questions.json");
+                is = new FileInputStream(c.getFilesDir() + QFILESTR);
+                Log.d("QFILEIN2", c.getFilesDir() + QFILESTR);
             }
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);
             is.close();
             json = new String(buffer, StandardCharsets.UTF_8);
+            Log.d("FSQ", json);
         } catch (IOException ex) {
             ex.printStackTrace();
             return null;
@@ -152,13 +171,17 @@ public class firebaseHandler {
         return json;
     }
 
-    protected void saveQuestionToJSONFile(Context c, Map<String, Object> q) {
+    protected void saveQuestionToJSONFile(Context c, LinkedList<Question> qlist) {
+        AtomicReference<Map<String, Object>> qmap = new AtomicReference<>(new HashMap<>());
+        for (int i = 0; i < qlist.size(); i++) {
+            qmap.get().put(String.valueOf(qlist.get(i).id), qlist.get(i).question);
+        }
         try {
-            FileWriter file = new FileWriter(c.getFilesDir() + "/questions.json");
-            file.write(q.toString());
+            FileWriter file = new FileWriter(c.getFilesDir() + QFILESTR);
+            new Gson().toJson(qmap.get(), file);
             file.flush();
             file.close();
-            Log.d("QFILEOUT", c.getFilesDir() + "/questions.json");
+            Log.d("QFILEOUT", c.getFilesDir() + QFILESTR);
         } catch (IOException e) {
             Log.e("QFILEOUTERR", "Error in Writing: " + e.getLocalizedMessage());
         }

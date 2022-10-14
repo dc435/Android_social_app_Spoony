@@ -17,50 +17,46 @@ public class FirebaseActivity extends AppCompatActivity {
 
     private Map<String, Object> qs;
 
-    private TextView qTextView;
-    private Button dButton;
+//    private Button dButton;
     private Button uButton;
+//    private TextView qTextView;
     private EditText qTextInput;
     private TextView outputTextView;
-
     private String questionJSON;
-    private boolean firstBootFlag;
 
     private CoordinatorLayout _layout;
 
-    firebaseHandler fb = new firebaseHandler();
+    FirebaseHandler fb = new FirebaseHandler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        firstBootFlag = true;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_firebase);
 
         _layout = findViewById(R.id.firebaseLayout);
-        dButton = findViewById(R.id.downloadButton);
+//        dButton = findViewById(R.id.downloadButton);
         uButton = findViewById(R.id.uploadButton);
-        qTextView = findViewById(R.id.questionTextView);
+//        qTextView = findViewById(R.id.questionTextView);
         qTextInput = findViewById(R.id.questionTextInput);
         outputTextView = findViewById(R.id.outputTextView);
 
-        fb.checkQuestions(fb.loadQuestionFromJSONFile(this, firstBootFlag), success -> {
-            qs = fb.getQuestions();
-            qTextView.setText((CharSequence) String.valueOf(qs));
-            Log.d("QFILEIN", String.valueOf(qs));
-            firstBootFlag = false;
-        });
-
-        dButton.setOnClickListener(view -> {
-            fb.loadQuestionFromJSONFile(this, firstBootFlag);
-            fb.checkQuestions(questionJSON, success -> {
-                if (success) {
-                    qs = fb.getQuestions();
-                    qTextView.setText((CharSequence) String.valueOf(qs));
-                    Log.d("QOUT", String.valueOf(qs));
-                    fb.saveQuestionToJSONFile(this, qs);
-                }
-            });
-        });
+//        fb.updateQuestions(fb.loadQuestionFromJSONFile(this, fb.isFirstBoot()), success -> {
+//            qs = fb.getQuestions();
+//            qTextView.setText((CharSequence) String.valueOf(qs));
+//            Log.d("QFILEIN", String.valueOf(qs));
+//        });
+//
+//        dButton.setOnClickListener(view -> {
+//            fb.loadQuestionFromJSONFile(this, fb.isFirstBoot());
+//            fb.updateQuestions(questionJSON, success -> {
+//                if (success) {
+//                    qs = fb.getQuestions();
+//                    qTextView.setText((CharSequence) String.valueOf(qs));
+//                    Log.d("QOUT", String.valueOf(qs));
+//                    fb.saveQuestionToJSONFile(this, qs);
+//                }
+//            });
+//        });
 
         uButton.setOnClickListener(view -> {
             String input = qTextInput.getText().toString();

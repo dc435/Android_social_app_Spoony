@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Documents/unimelb/y4sem2/Mobile Computing Systems Programming/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/drawable/ic_launcher_background.xml" value="0.201" />
+        <entry key="..\:/Documents/unimelb/y4sem2/Mobile Computing Systems Programming/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/activity_firebase.xml" value="0.1334853090172239" />
         <entry key="..\:/Documents/unimelb/y4sem2/Mobile Computing Systems Programming/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/activity_main.xml" value="0.2" />
         <entry key="..\:/Documents/unimelb/y4sem2/Mobile Computing Systems Programming/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/content_main.xml" value="0.24728260869565216" />
         <entry key="..\:/Documents/unimelb/y4sem2/Mobile Computing Systems Programming/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/fragment_first.xml" value="0.1" />
@@ -34,7 +35,6 @@
         <entry key="..\:/Users/Ben/AndroidStudioProjects/Spoony/app/src/main/res/layout/content_main.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/Ben/AndroidStudioProjects/Spoony/app/src/main/res/layout/fragment_first.xml" value="0.5541666666666667" />
         <entry key="..\:/Users/Ben/AndroidStudioProjects/Spoony/app/src/main/res/layout/fragment_second.xml" value="0.5541666666666667" />
-        <entry key="..\:/Users/damia/OneDrive/Uni Coursework MC-IT/Sem2-22/COMP90018 - Mobile Computing/Assignments/Assignment 2/Local/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/drawable/choose_question_button.xml" value="0.2265" />
         <entry key="..\:/Users/damia/OneDrive/Uni Coursework MC-IT/Sem2-22/COMP90018 - Mobile Computing/Assignments/Assignment 2/Local/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/activity_answer.xml" value="0.22735507246376813" />
         <entry key="..\:/Users/damia/OneDrive/Uni Coursework MC-IT/Sem2-22/COMP90018 - Mobile Computing/Assignments/Assignment 2/Local/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/activity_home_page.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/damia/OneDrive/Uni Coursework MC-IT/Sem2-22/COMP90018 - Mobile Computing/Assignments/Assignment 2/Local/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
@@ -43,21 +43,12 @@
         <entry key="..\:/Users/damia/OneDrive/Uni Coursework MC-IT/Sem2-22/COMP90018 - Mobile Computing/Assignments/Assignment 2/Local/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/content_main.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/damia/OneDrive/Uni Coursework MC-IT/Sem2-22/COMP90018 - Mobile Computing/Assignments/Assignment 2/Local/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/fragment_second.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/damia/OneDrive/Uni Coursework MC-IT/Sem2-22/COMP90018 - Mobile Computing/Assignments/Assignment 2/Local/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/give_to_xxx.xml" value="0.22826086956521738" />
-        <entry key="..\:/Users/damia/OneDrive/Uni Coursework MC-IT/Sem2-22/COMP90018 - Mobile Computing/Assignments/Assignment 2/Local/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/which_answer.xml" value="0.264" />
-        <entry key="..\:/Users/damia/OneDrive/Uni Coursework MC-IT/Sem2-22/COMP90018 - Mobile Computing/Assignments/Assignment 2/Local/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/which_answer_correct_p1.xml" value="0.12360688956433637" />
-        <entry key="..\:/Users/damia/OneDrive/Uni Coursework MC-IT/Sem2-22/COMP90018 - Mobile Computing/Assignments/Assignment 2/Local/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/which_question.xml" value="0.2" />
         <entry key="..\:/Users/damia/OneDrive/Uni Coursework MC-IT/Sem2-22/COMP90018 - Mobile Computing/Assignments/Assignment 2/Local/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/which_question_p1.xml" value="0.2" />
         <entry key="..\:/Users/damia/OneDrive/Uni Coursework MC-IT/Sem2-22/COMP90018 - Mobile Computing/Assignments/Assignment 2/Local/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/which_question_p2.xml" value="0.22826086956521738" />
-        <entry key="app/src/main/res/layout/activity_name_entry_p1.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_name_entry_p2.xml" value="0.26296296296296295" />
-        <entry key="app/src/main/res/layout/activity_point_to_p1.xml" value="0.10740740740740741" />
-        <entry key="app/src/main/res/layout/activity_question.xml" value="0.4036458333333333" />
-        <entry key="app/src/main/res/layout/place_flat_flat.xml" value="0.3974358974358974" />
-        <entry key="app/src/main/res/layout/which_question.xml" value="0.4036458333333333" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_17_PREVIEW" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
