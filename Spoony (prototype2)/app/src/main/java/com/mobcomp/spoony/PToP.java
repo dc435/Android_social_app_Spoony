@@ -3,10 +3,8 @@ package com.mobcomp.spoony;
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,7 +12,7 @@ import android.widget.TextView;
 public class PToP extends SpoonyActivity {
 
     private int POINT_TO_PLR_LAYOUT = R.layout.activity_point_to_p1;
-    private int FALT_PROMPT_LAYOUT = R.layout.place_flat_flat;
+    private int FLAT_PROMPT_LAYOUT = R.layout.place_flat_flat;
     private int currentLayout;
 
     private Button confirmBtn;
@@ -27,7 +25,7 @@ public class PToP extends SpoonyActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        currentLayout = FALT_PROMPT_LAYOUT;
+        currentLayout = FLAT_PROMPT_LAYOUT;
         setContentView(currentLayout);
 
         p1Located = false;
@@ -58,7 +56,7 @@ public class PToP extends SpoonyActivity {
 
     @Override
     protected void onExitTable() {
-        currentLayout = FALT_PROMPT_LAYOUT;
+        currentLayout = FLAT_PROMPT_LAYOUT;
         setContentView(currentLayout);
     }
 
