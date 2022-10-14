@@ -18,7 +18,6 @@ public class GameDetails implements Serializable {
     private Player lead;
     private Player follow;
     private int round;
-    FirebaseHandler fb = new FirebaseHandler();
 
     public GameDetails() {
         freshQuestions = new LinkedList<>();
@@ -43,16 +42,8 @@ public class GameDetails implements Serializable {
         follow = null;
     }
 
-    public void addQuestion(Context c) {
-        fb.updateQuestions(fb.loadQuestionFromJSONFile(c, fb.isFirstBoot()), success -> {
-            if (success) {
-                freshQuestions = fb.getQuestions();
-                fb.saveQuestionToJSONFile(c, freshQuestions);
-                Log.d("GDQ", String.valueOf(freshQuestions));
-            } else {
-                Log.e("GDQERR", "SOMETHING VERY WRONG HAS HAPPENED WITH ADDING QUESTIONS OH GOD");
-            }
-        });
+    public void setQuestions(LinkedList<Question> qs) {
+        freshQuestions = qs;
     }
 
     // public void addQuestion(Question question) {
