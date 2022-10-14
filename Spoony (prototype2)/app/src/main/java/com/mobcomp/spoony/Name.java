@@ -59,7 +59,7 @@ public class Name extends AppCompatActivity {
     }
 
     public void nextPage(View view){
-        Intent intent = new Intent(this, PointTo_P1.class);
+        Intent intent = new Intent(this, PToP.class);
         intent.putExtra("GameDetails", gameDetails);
         startActivity(intent);
     }

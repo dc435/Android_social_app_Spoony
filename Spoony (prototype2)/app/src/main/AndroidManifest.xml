@@ -30,13 +30,7 @@
 <!--            android:exported="false" />-->
 
         <activity
-            android:name=".PointTo_P1"
-            android:exported="false"
-            android:screenOrientation="portrait"/>
-
-        
-        <activity
-            android:name=".PointTo_P2"
+            android:name=".PToP"
             android:exported="false"
             android:screenOrientation="portrait"/>
 
