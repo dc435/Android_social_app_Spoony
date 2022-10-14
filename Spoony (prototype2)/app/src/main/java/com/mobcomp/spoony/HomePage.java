@@ -7,7 +7,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+
+import java.util.LinkedList;
 
 public class HomePage extends AppCompatActivity {
 
@@ -15,8 +16,10 @@ public class HomePage extends AppCompatActivity {
     Button setting_button;
     Button start_button;
     Button firebase_button;
+    LinkedList<Question> questions;
     GameDetails gd;
-    
+    FirebaseHandler fb = new FirebaseHandler();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -35,7 +38,17 @@ public class HomePage extends AppCompatActivity {
         firebase_button.setOnClickListener(this::jumpToFirebase);
 
         gd = new GameDetails();
-        gd.addQuestion(this);
+        questions = new LinkedList<>();
+        fb.updateQuestions(fb.loadQuestionFromJSONFile(this, fb.isFirstBoot()), success -> {
+            if (success) {
+                questions = fb.getQuestions();
+                fb.saveQuestionToJSONFile(this, questions);
+                gd.setQuestions(questions);
+                Log.d("GDQ", String.valueOf(questions));
+            } else {
+                Log.e("GDQERR", "SOMETHING VERY WRONG HAS HAPPENED WITH ADDING QUESTIONS OH GOD");
+            }
+        });
     }
 
     /**
@@ -47,8 +60,6 @@ public class HomePage extends AppCompatActivity {
     }
 
     public void jumpToStart(View view) {
-//        GameDetails gameDetails = new GameDetails();
-        Log.d("GDQ", gd.newQuestion().question);
         Intent intent = new Intent(this, Name.class);
         intent.putExtra("GameDetails", gd);
         startActivity(intent);
