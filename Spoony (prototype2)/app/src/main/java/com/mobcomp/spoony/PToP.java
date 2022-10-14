@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+
 public class PToP extends SpoonyActivity {
 
     private int POINT_TO_PLR_LAYOUT = R.layout.activity_point_to_p1;
@@ -65,8 +67,14 @@ public class PToP extends SpoonyActivity {
             nameView = (TextView) findViewById(R.id.entry_name_p1);
             if (!p1Located) {
                 nameView.setText(getGameDetails().getLead().getName());
+                // hardcode the color for now
+                nameView.setTextColor(ContextCompat.getColor(this, R.color.p1_color));
+//                nameView.setTextColor(getGameDetails().getLead().getColour());
             } else {
                 nameView.setText(getGameDetails().getFollow().getName());
+                // hardcode the color for now
+                nameView.setTextColor(ContextCompat.getColor(this, R.color.p2_color));
+//                nameView.setTextColor(getGameDetails().getFollow().getColour());
             }
         }
     }
