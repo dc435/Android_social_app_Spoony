@@ -1,9 +1,6 @@
 package com.mobcomp.spoony;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -20,8 +17,8 @@ public class QuestionActivity extends SpoonyActivity {
         super.onCreate(savedInstanceState);
 
         // fetch layout ids
-        questionDisplay = R.layout.activity_question;
-        giveToDisplay = R.layout.give_to_xxx;
+        questionDisplay = R.layout.askq;
+        giveToDisplay = R.layout.text;
 
         // fetch question
         question = getGameDetails().newQuestion();
@@ -42,7 +39,7 @@ public class QuestionActivity extends SpoonyActivity {
 
     private void displayGiveToScreen() {
         setContentView(giveToDisplay);
-        TextView giveToText = findViewById(R.id.give_to_text);
+        TextView giveToText = findViewById(R.id.txt);
         giveToText.setText(String.format("Give the phone to %s, silly!",
                 getGameDetails().getLead().getName()));
     }

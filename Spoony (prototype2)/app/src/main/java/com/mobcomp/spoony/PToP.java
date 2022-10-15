@@ -6,18 +6,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 
 public class PToP extends SpoonyActivity {
 
-    private int POINT_TO_PLR_LAYOUT = R.layout.activity_point_to_p1;
-    private int FLAT_PROMPT_LAYOUT = R.layout.place_flat_flat;
+    private int POINT_TO_PLR_LAYOUT = R.layout.ptp;
+    private int FLAT_PROMPT_LAYOUT = R.layout.down;
     private int currentLayout;
 
-    private Button confirmBtn;
+    private ImageButton confirmBtn;
     private TextView nameView;
 
     private boolean p1Located;
@@ -80,7 +80,7 @@ public class PToP extends SpoonyActivity {
     }
 
     private void buttonSetup() {
-        confirmBtn = (Button) findViewById(R.id.answer_lock_button);
+        confirmBtn = (ImageButton) findViewById(R.id.lock_button);
         confirmBtn.setOnClickListener((View v) -> {
             float zOrientation = deviceOrientation[0];
             Log.d("Orientation Prompt", String.valueOf(zOrientation));

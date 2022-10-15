@@ -3,19 +3,21 @@ package com.mobcomp.spoony;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import java.util.LinkedList;
 
 public class HomePage extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE = "hello...";
-    Button setting_button;
-    Button start_button;
-    Button firebase_button;
+    ImageButton setting_button;
+    ImageButton start_button;
+    ImageButton firebase_button;
     LinkedList<Question> questions;
     GameDetails gd;
     FirebaseHandler fb = new FirebaseHandler();
@@ -24,13 +26,13 @@ public class HomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash_page);
-        setContentView(R.layout.activity_home_page);
+        //setContentView(R.layout.splash);
+        setContentView(R.layout.home);
 
-        setting_button = findViewById(R.id.setting_button);
-        start_button = findViewById(R.id.btnStart);
-        setting_button = findViewById(R.id.setting_button);
-        firebase_button = findViewById(R.id.firebase_button);
+        setting_button = (ImageButton)findViewById(R.id.btnSetting);
+        start_button = (ImageButton)findViewById(R.id.btnStart);
+        setting_button = (ImageButton)findViewById(R.id.btnSetting);
+        firebase_button = (ImageButton)findViewById(R.id.btnLibrary);
 
         setting_button.setOnClickListener(this::jumpToSetting);
         start_button.setOnClickListener(this::jumpToStart);

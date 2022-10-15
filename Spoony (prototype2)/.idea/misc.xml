@@ -45,6 +45,40 @@
         <entry key="..\:/Users/damia/OneDrive/Uni Coursework MC-IT/Sem2-22/COMP90018 - Mobile Computing/Assignments/Assignment 2/Local/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/give_to_xxx.xml" value="0.22826086956521738" />
         <entry key="..\:/Users/damia/OneDrive/Uni Coursework MC-IT/Sem2-22/COMP90018 - Mobile Computing/Assignments/Assignment 2/Local/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/which_question_p1.xml" value="0.2" />
         <entry key="..\:/Users/damia/OneDrive/Uni Coursework MC-IT/Sem2-22/COMP90018 - Mobile Computing/Assignments/Assignment 2/Local/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/which_question_p2.xml" value="0.22826086956521738" />
+        <entry key="app/src/main/res/drawable-v24/_rectangle_4_shape.xml" value="0.2455" />
+        <entry key="app/src/main/res/drawable-v24/default_background_style.xml" value="0.2455" />
+        <entry key="app/src/main/res/drawable/back_button_effect.xml" value="0.2455" />
+        <entry key="app/src/main/res/drawable/choose_question_button.xml" value="0.2455" />
+        <entry key="app/src/main/res/drawable/entrypage_button.xml" value="0.2455" />
+        <entry key="app/src/main/res/drawable/name_entry_style.xml" value="0.2455" />
+        <entry key="app/src/main/res/drawable/play_again_button.xml" value="0.2455" />
+        <entry key="app/src/main/res/drawable/spinner_gradient.xml" value="0.221" />
+        <entry key="app/src/main/res/layout/activity_answer.xml" value="0.44961499200350996" />
+        <entry key="app/src/main/res/layout/activity_firebase.xml" value="0.21822916666666667" />
+        <entry key="app/src/main/res/layout/activity_home_page.xml" value="0.22056159420289856" />
+        <entry key="app/src/main/res/layout/activity_name_entry_p1.xml" value="0.26487311764039856" />
+        <entry key="app/src/main/res/layout/activity_name_entry_p2.xml" value="0.22056159420289856" />
+        <entry key="app/src/main/res/layout/activity_point_to_p1.xml" value="0.259361922583923" />
+        <entry key="app/src/main/res/layout/activity_point_to_p2.xml" value="0.19630192502532928" />
+        <entry key="app/src/main/res/layout/activity_question.xml" value="0.19630192502532928" />
+        <entry key="app/src/main/res/layout/activity_setting.xml" value="0.19630192502532928" />
+        <entry key="app/src/main/res/layout/activity_splash_page.xml" value="0.22303990109954802" />
+        <entry key="app/src/main/res/layout/ansq.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/askq.xml" value="0.20153985507246377" />
+        <entry key="app/src/main/res/layout/down.xml" value="0.20153985507246377" />
+        <entry key="app/src/main/res/layout/give_to_xxx.xml" value="0.21822916666666667" />
+        <entry key="app/src/main/res/layout/home.xml" value="0.16443634033203128" />
+        <entry key="app/src/main/res/layout/place_flat_flat.xml" value="0.21822916666666667" />
+        <entry key="app/src/main/res/layout/place_flat_stand.xml" value="0.21822916666666667" />
+        <entry key="app/src/main/res/layout/ptp.xml" value="0.271270751953125" />
+        <entry key="app/src/main/res/layout/result.xml" value="0.19590555826822914" />
+        <entry key="app/src/main/res/layout/rotate_default.xml" value="0.21822916666666667" />
+        <entry key="app/src/main/res/layout/rotate_left.xml" value="0.21822916666666667" />
+        <entry key="app/src/main/res/layout/rotate_right.xml" value="0.21822916666666667" />
+        <entry key="app/src/main/res/layout/setting.xml" value="0.20153985507246377" />
+        <entry key="app/src/main/res/layout/splash.xml" value="0.21822916666666667" />
+        <entry key="app/src/main/res/layout/text.xml" value="0.23571879069010415" />
+        <entry key="app/src/main/res/layout/whichq.xml" value="0.1" />
       </map>
     </option>
   </component>

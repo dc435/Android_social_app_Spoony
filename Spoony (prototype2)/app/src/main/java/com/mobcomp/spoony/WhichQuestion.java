@@ -17,6 +17,7 @@ public class WhichQuestion extends SpoonyActivity {
     private GameDetails gd;
     private TextView text_txt_center;
     private TextView whichq_txt_leadName;
+    private TextView OptA;
     private Button whichq_btn_OptA;
     private Button whichq_btn_OptB;
     private Button whichq_btn_OptC;
@@ -71,7 +72,7 @@ public class WhichQuestion extends SpoonyActivity {
 
     protected void onEnterLeadView() {
         setContentView(R.layout.text);
-        text_txt_center = findViewById(R.id.text_txt_center);
+        text_txt_center = findViewById(R.id.txt);
         text_txt_center.setText(gd.getLead().getName() + ", give me to " + gd.getFollow().getName());
     }
 
@@ -83,6 +84,7 @@ public class WhichQuestion extends SpoonyActivity {
         whichq_txt_leadName = findViewById(R.id.whichq_txt_leadName);
         whichq_txt_leadName.setText(gd.getLead().getName());
         whichq_txt_leadName.setTextColor(gd.getLead().getColour());
+        OptA = findViewById(R.id.Qa);
         whichq_btn_OptA = findViewById(R.id.whichq_btn_OptA);
         whichq_btn_OptB = findViewById(R.id.whichq_btn_OptB);
         whichq_btn_OptC = findViewById(R.id.whichq_btn_OptC);
@@ -94,6 +96,7 @@ public class WhichQuestion extends SpoonyActivity {
         whichq_btn_OptC.setOnClickListener(optionClick);
         whichq_btn_next.setOnClickListener(nextClick);
 
+        OptA.setText("A. " + questionSet.get(0).question);
         whichq_btn_OptA.setText("A. " + questionSet.get(0).question);
         whichq_btn_OptB.setText("B. " + questionSet.get(1).question);
         whichq_btn_OptC.setText("C. " + questionSet.get(2).question);
@@ -102,7 +105,7 @@ public class WhichQuestion extends SpoonyActivity {
 
     protected void onEnterTable() {
         setContentView(R.layout.text);
-        text_txt_center = findViewById(R.id.text_txt_center);
+        text_txt_center = findViewById(R.id.txt);
         text_txt_center.setText(gd.getLead().getName() + " pick me up!");
     }
 

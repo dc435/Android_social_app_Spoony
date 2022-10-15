@@ -1,13 +1,12 @@
 package com.mobcomp.spoony;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class AnswerActivity extends SpoonyActivity {
@@ -23,13 +22,13 @@ public class AnswerActivity extends SpoonyActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_answer);
+        setContentView(R.layout.ansq);
 
         Intent intent = getIntent();
         gameDetails = (GameDetails) intent.getSerializableExtra("GameDetails");
 
-        answerDisplay = R.layout.activity_answer;
-        putDownDisplay = R.layout.place_flat_flat;
+        answerDisplay = R.layout.ansq;
+        putDownDisplay = R.layout.down;
 
         displayPutDownScreen();
     }
@@ -52,7 +51,7 @@ public class AnswerActivity extends SpoonyActivity {
     private void displaySpinnerScreen() {
         setContentView(answerDisplay);
 
-        Button lockInButton = findViewById(R.id.answer_lock_button);
+        ImageButton lockInButton = (ImageButton)findViewById(R.id.lock_button);
         lockInButton.setOnClickListener(this::lockInAnswer);
 
         TextView leadText = findViewById(R.id.answer_lead_text);

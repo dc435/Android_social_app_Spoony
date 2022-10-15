@@ -31,7 +31,7 @@ public class FirebaseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_firebase);
+        setContentView(R.layout.lib);
 
         _layout = findViewById(R.id.firebaseLayout);
 //        dButton = findViewById(R.id.downloadButton);

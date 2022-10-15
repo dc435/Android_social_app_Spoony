@@ -18,17 +18,20 @@
     
 	<string name="ek_img_content">ExportKit Image</string>
 	<string name="name_string">Name</string>
+	<string name="home_string">Home</string>
 	<string name="_eg__anna_string">eg. Anna</string>
 	<string name="_eg__bill_string">eg. Bill</string>
 	<string name="setting_string">Setting</string>
 	<string name="start_string">Start</string>
-	<string name="firebase_string">Firebase</string>
+	<string name="library_string">Library</string>
+	<string name="instruction_string">Instruction</string>
 	<string name="next_string">NEXT</string>
 	<string name="lock_string">LOCK</string>
 	<string name="exit_string">EXIT</string>
 	<string name="play_again_string">Play Again</string>
 	<string name="question_string">Question</string>
 	<string name="place_flat_string">Place Me Flat</string>
+	<string name="pick_me_up_string">Pick Me Up</string>
 	<string name="which_did_string">Which question did</string>
 	<string name="choose_string">choose?</string>
 	<string name="spooner_1_string">Spooner 1</string>
