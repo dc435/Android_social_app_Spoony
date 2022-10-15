@@ -3,21 +3,28 @@ package com.mobcomp.spoony;
 public class Angle {
 
     // calculates (unsigned) distance between two angles
-    public static float rotationDistanceUnsigned(float a, float b) {
-        return 180 - Math.abs((Math.abs(a - b) % 360) - 180);
+    public static float rotationDistanceUnsigned(float from, float to) {
+        return 180 - Math.abs((Math.abs(to - from) % 360) - 180);
     }
 
-    // calculates signed distance between two angles TODO: this is borked
-    public static float rotationDistanceSigned(float a, float b) {
-        float d = rotationDistanceUnsigned(a, b);
-        int sign = 1;
-        if (d >= 180 || normaliseAngle(a) > normaliseAngle(b)) sign = -1;
-
-        return sign * d;
+    // returns the percentage [0.0, 1.0] along a path between angles a and b the given angle lies on
+    public static float percentageBetween(float target, float from, float to) {
+        return rotationDistanceUnsigned(target, from) /
+                (rotationDistanceUnsigned(target, from) + rotationDistanceUnsigned(target, to));
     }
 
-    // returns angle within [0, 360)
+    // calculates signed distance from one angle to the other (+ clockwise, - counter-clockwise)
+    // normalise angles first (instead of in method to reduce overhead)
+    public static float rotationDistanceSigned(float from, float to) {
+        float rotation = to - from;
+
+        if (rotation > 180) return rotation - 360f;
+        if (rotation < -180) return rotation + 360f;
+        else return rotation;
+    }
+
+    // returns angle within (-180, 180]
     public static float normaliseAngle(float a) {
-        return ((360 + (a % 360)) % 360);
+        return (360 + ((a + 180) % 360)) % 360 - 180f;
     }
 }
