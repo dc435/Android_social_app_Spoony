@@ -13,11 +13,13 @@ import androidx.core.content.ContextCompat;
 
 public class PToP extends SpoonyActivity {
 
-    private int POINT_TO_PLR_LAYOUT = R.layout.ptp;
-    private int FLAT_PROMPT_LAYOUT = R.layout.down;
+    private final int POINT_TO_PLR_LAYOUT = R.layout.ptp;
+    private final int FLAT_PROMPT_LAYOUT = R.layout.down;
     private int currentLayout;
 
     private ImageButton confirmBtn;
+    private ImageButton backBtn;
+    private ImageButton homeBtn;
     private TextView nameView;
 
     private boolean p1Located;
@@ -29,6 +31,7 @@ public class PToP extends SpoonyActivity {
         super.onCreate(savedInstanceState);
         currentLayout = FLAT_PROMPT_LAYOUT;
         setContentView(currentLayout);
+        commonBtnSetup();
 
         p1Located = false;
 
@@ -53,13 +56,19 @@ public class PToP extends SpoonyActivity {
         currentLayout = POINT_TO_PLR_LAYOUT;
         setContentView(currentLayout);
         nameSetup();
-        buttonSetup();
+        exclusiveBtnSetup();
+    }
+
+    @Override
+    protected void updateTable() {
+
     }
 
     @Override
     protected void onExitTable() {
         currentLayout = FLAT_PROMPT_LAYOUT;
         setContentView(currentLayout);
+        commonBtnSetup();
     }
 
     private void nameSetup() {
@@ -79,21 +88,36 @@ public class PToP extends SpoonyActivity {
         }
     }
 
-    private void buttonSetup() {
+    private void exclusiveBtnSetup() {
         confirmBtn = (ImageButton) findViewById(R.id.lock_button);
-        confirmBtn.setOnClickListener((View v) -> {
-            float zOrientation = deviceOrientation[0];
-            Log.d("Orientation Prompt", String.valueOf(zOrientation));
-            if (!p1Located) {
-                getGameDetails().getLead().setDirection(zOrientation);
-                p1Located = true;
-                nameSetup();
-            } else {
-                getGameDetails().getFollow().setDirection(zOrientation);
-                Intent intent = new Intent(this, QuestionActivity.class);
-                intent.putExtra("GameDetails", gameDetails);
-                startActivity(intent);
-            }
+        confirmBtn.setOnClickListener((View v) -> onConfirmPressed());
+        commonBtnSetup();
+    }
+
+    private void commonBtnSetup() {
+        backBtn = (ImageButton) findViewById(R.id.back_btn);
+        backBtn.setOnClickListener((View v) -> onBackPressed());
+        homeBtn = (ImageButton) findViewById(R.id.home_btn);
+        homeBtn.setOnClickListener((View v) -> {
+            Intent intent = new Intent(this, HomePage.class);
+            intent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
         });
     }
+
+    private void onConfirmPressed() {
+        float zOrientation = deviceOrientation[0];
+        Log.d("Orientation Prompt", String.valueOf(zOrientation));
+        if (!p1Located) {
+            getGameDetails().getLead().setDirection(zOrientation);
+            p1Located = true;
+            nameSetup();
+        } else {
+            getGameDetails().getFollow().setDirection(zOrientation);
+            Intent intent = new Intent(this, QuestionActivity.class);
+            intent.putExtra("GameDetails", gameDetails);
+            startActivity(intent);
+        }
+    }
+
 }
