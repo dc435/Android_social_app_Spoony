@@ -77,8 +77,9 @@
         <entry key="app/src/main/res/layout/rotate_right.xml" value="0.21822916666666667" />
         <entry key="app/src/main/res/layout/setting.xml" value="0.20153985507246377" />
         <entry key="app/src/main/res/layout/splash.xml" value="0.21822916666666667" />
+        <entry key="app/src/main/res/layout/splash_screen.xml" value="0.2171875" />
         <entry key="app/src/main/res/layout/text.xml" value="0.23571879069010415" />
-        <entry key="app/src/main/res/layout/whichq.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/whichq.xml" value="0.22" />
       </map>
     </option>
   </component>
