@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class WhichAnswer extends AppCompatActivity {
+public class WhichAnswer extends GameActivity {
 
     private GameDetails gd;
     private TextView result_txt_leadName;

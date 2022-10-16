@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class Name extends AppCompatActivity {
+public class Name extends GameActivity {
 
     Button name_btn_next;
     TextView name_txt_getName;

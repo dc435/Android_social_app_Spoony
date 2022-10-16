@@ -33,20 +33,20 @@ public class PToP extends SpoonyActivity {
 
     private GameDetails gameDetails;
 
-    private AudioService audioService;
-    private ServiceConnection connection = new ServiceConnection() {
-
-        @Override
-        public void onServiceConnected(ComponentName className, IBinder service) {
-            AudioService.AudioBinder binder = (AudioService.AudioBinder) service;
-            audioService = binder.getService();
-            audioService.start();
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName arg0) {
-        }
-    };
+//    private AudioService audioService;
+//    private ServiceConnection connection = new ServiceConnection() {
+//
+//        @Override
+//        public void onServiceConnected(ComponentName className, IBinder service) {
+//            AudioService.AudioBinder binder = (AudioService.AudioBinder) service;
+//            audioService = binder.getService();
+//            audioService.startGame();
+//        }
+//
+//        @Override
+//        public void onServiceDisconnected(ComponentName arg0) {
+//        }
+//    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,18 +62,18 @@ public class PToP extends SpoonyActivity {
         gameDetails = (GameDetails) intent.getSerializableExtra("GameDetails");
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Intent intent = new Intent(this, AudioService.class);
-        bindService(intent, connection, Context.BIND_AUTO_CREATE);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        unbindService(connection);
-    }
+//    @Override
+//    protected void onStart() {
+//        super.onStart();
+//        Intent intent = new Intent(this, AudioService.class);
+//        bindService(intent, connection, Context.BIND_AUTO_CREATE);
+//    }
+//
+//    @Override
+//    protected void onStop() {
+//        super.onStop();
+//        unbindService(connection);
+//    }
 
     @Override
     public void onBackPressed() {

@@ -14,7 +14,7 @@ import android.hardware.SensorEvent;
 
 import android.os.Bundle;
 
-public class SpoonyActivity extends AppCompatActivity implements SensorEventListener {
+public class SpoonyActivity extends GameActivity implements SensorEventListener {
 
     private static final int SENSOR_DELAY = SensorManager.SENSOR_DELAY_UI; // 60ms, the interval between sensor reports
     private static final float TABLE_THRESHOLD = -20.f; // y-bearing above which the phone is considered 'on the table'

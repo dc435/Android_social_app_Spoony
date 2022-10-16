@@ -9,7 +9,9 @@ import android.os.IBinder;
 public class AudioService extends Service {
 
     private final IBinder audioBinder = new AudioBinder();
-    private MediaPlayer bgm;
+    private MediaPlayer gameBGM;
+    private MediaPlayer homeBGM;
+    private boolean isPlaying = false;
 
     public class AudioBinder extends Binder {
         AudioService getService() {
@@ -19,20 +21,49 @@ public class AudioService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
+        init();
         return audioBinder;
     }
 
     @Override
     public void onDestroy() {
-        if (bgm != null){
-            bgm.stop();
-            bgm.release();
+        if (gameBGM != null) {
+            gameBGM.stop();
+            gameBGM.release();
+        }
+        if (homeBGM != null) {
+            homeBGM.stop();
+            homeBGM.release();
         }
         super.onDestroy();
     }
 
-    public void start() {
-        bgm = MediaPlayer.create(getApplicationContext(), R.raw.game_bgm);
-        bgm.start();
+    public void init() {
+        gameBGM = MediaPlayer.create(getApplicationContext(), R.raw.game_bgm);
+        homeBGM = MediaPlayer.create(getApplicationContext(), R.raw.home_bgm);
+    }
+
+    public void startGame() {
+        if (homeBGM.isPlaying()) {
+            homeBGM.pause();
+        }
+        gameBGM.seekTo(0);
+        gameBGM.start();
+        gameBGM.setLooping(true);
+        isPlaying = true;
+    }
+
+    public void startHome() {
+        if (gameBGM.isPlaying()) {
+            gameBGM.pause();
+        }
+        homeBGM.seekTo(0);
+        homeBGM.start();
+        homeBGM.setLooping(true);
+        isPlaying = true;
+    }
+
+    public boolean getIsPlaying() {
+        return isPlaying;
     }
 }
