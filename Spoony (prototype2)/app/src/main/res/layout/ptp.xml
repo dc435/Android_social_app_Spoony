@@ -72,8 +72,8 @@
 
         <ImageView
             android:id="@+id/imageView_compass_outer_circle"
-            android:layout_width="225dp"
-            android:layout_height="225dp"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.494"
@@ -84,18 +84,18 @@
 
         <ImageView
             android:id="@+id/imageView_compass_inner_circle"
-            android:layout_width="237dp"
-            android:layout_height="237dp"
+            android:layout_width="210dp"
+            android:layout_height="210dp"
             android:layout_alignStart="@+id/imageView_compass_outer_circle"
             android:layout_alignTop="@+id/imageView_compass_outer_circle"
             android:layout_alignEnd="@+id/imageView_compass_outer_circle"
             android:layout_alignBottom="@+id/imageView_compass_outer_circle"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="8dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView_compass_outer_circle"
             app:layout_constraintEnd_toEndOf="@+id/imageView_compass_outer_circle"
             app:layout_constraintStart_toStartOf="@+id/imageView_compass_outer_circle"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.388"
+            app:layout_constraintVertical_bias="0.878"
             app:srcCompat="@drawable/compass_ptp" />
 
 

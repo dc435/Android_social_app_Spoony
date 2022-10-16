@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
@@ -20,9 +21,11 @@ public class PToP extends SpoonyActivity {
     private ImageButton confirmBtn;
     private ImageButton backBtn;
     private ImageButton homeBtn;
+    private ImageView innerCompass;
     private TextView nameView;
 
     private boolean p1Located;
+    private float p1Orientation;
 
     private GameDetails gameDetails;
 
@@ -34,6 +37,7 @@ public class PToP extends SpoonyActivity {
         commonBtnSetup();
 
         p1Located = false;
+        p1Orientation = 0;
 
         Intent intent = getIntent();
         gameDetails = (GameDetails) intent.getSerializableExtra("GameDetails");
@@ -57,11 +61,14 @@ public class PToP extends SpoonyActivity {
         setContentView(currentLayout);
         nameSetup();
         exclusiveBtnSetup();
+        compassSetup();
     }
 
     @Override
     protected void updateTable() {
-
+        if(p1Located && currentLayout == POINT_TO_PLR_LAYOUT) {
+            innerCompass.setRotation(p1Orientation-deviceOrientation[0]);
+        }
     }
 
     @Override
@@ -76,12 +83,10 @@ public class PToP extends SpoonyActivity {
             nameView = (TextView) findViewById(R.id.entry_name_p1);
             if (!p1Located) {
                 nameView.setText(getGameDetails().getLead().getName());
-                // hardcode the color for now
                 nameView.setTextColor(ContextCompat.getColor(this, R.color.p1_color));
 //                nameView.setTextColor(getGameDetails().getLead().getColour());
             } else {
                 nameView.setText(getGameDetails().getFollow().getName());
-                // hardcode the color for now
                 nameView.setTextColor(ContextCompat.getColor(this, R.color.p2_color));
 //                nameView.setTextColor(getGameDetails().getFollow().getColour());
             }
@@ -105,10 +110,15 @@ public class PToP extends SpoonyActivity {
         });
     }
 
+    private void compassSetup() {
+        innerCompass = (ImageView) findViewById(R.id.imageView_compass_inner_circle);
+    }
+
     private void onConfirmPressed() {
         float zOrientation = deviceOrientation[0];
         Log.d("Orientation Prompt", String.valueOf(zOrientation));
         if (!p1Located) {
+            p1Orientation = zOrientation;
             getGameDetails().getLead().setDirection(zOrientation);
             p1Located = true;
             nameSetup();
@@ -119,5 +129,4 @@ public class PToP extends SpoonyActivity {
             startActivity(intent);
         }
     }
-
 }
