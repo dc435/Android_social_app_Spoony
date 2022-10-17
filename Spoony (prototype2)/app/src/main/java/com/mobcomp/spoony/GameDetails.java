@@ -55,12 +55,11 @@ public class GameDetails implements Serializable {
         Collections.shuffle(freshQuestions);
         Log.d("GDQUESTION", String.valueOf(freshQuestions));
 
-        if (freshQuestions.size() == 0)
-            populate();
-        currentQuestion = freshQuestions.pop();
         if (freshQuestions.size() < MINQUESTIONLEFT) {
-            // TODO: implement add new questions
+            populate();
         }
+
+        currentQuestion = freshQuestions.pop();
         return currentQuestion;
     }
 

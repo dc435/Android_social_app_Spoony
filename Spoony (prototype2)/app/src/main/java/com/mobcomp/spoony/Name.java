@@ -1,6 +1,7 @@
 package com.mobcomp.spoony;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,7 +33,7 @@ public class Name extends GameActivity {
             name_txt_getName = findViewById(R.id.name_input_p1);
             String p1Name = name_txt_getName.getText().toString();
 
-            Player player1 = new Player(p1Name);
+            Player player1 = new Player(p1Name, ContextCompat.getColor(this, R.color.p1_color));
             gameDetails.addPlayer(player1);
             Log.d("P1 name saved", p1Name);
             nextPlayerEntry(v);
@@ -48,15 +49,15 @@ public class Name extends GameActivity {
             name_txt_getName = findViewById(R.id.name_input_p1);
             String p2Name = name_txt_getName.getText().toString();
 
-            Player player2 = new Player(p2Name);
+            Player player2 = new Player(p2Name, ContextCompat.getColor(this, R.color.p2_color));
             gameDetails.addPlayer(player2);
 
             Log.d("P2 name saved", p2Name);
-            name_btn_next.setOnClickListener(this::nextPage);
+            nextPage();
         });
     }
 
-    public void nextPage(View view){
+    public void nextPage(){
         Intent intent = new Intent(this, PToP.class);
         intent.putExtra("GameDetails", gameDetails);
         startActivity(intent);

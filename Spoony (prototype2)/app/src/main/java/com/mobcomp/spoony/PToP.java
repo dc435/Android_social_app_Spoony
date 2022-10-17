@@ -115,12 +115,10 @@ public class PToP extends SpoonyActivity {
             nameView = (TextView) findViewById(R.id.entry_name_p1);
             if (!p1Located) {
                 nameView.setText(getGameDetails().getLead().getName());
-                nameView.setTextColor(ContextCompat.getColor(this, R.color.p1_color));
-//                nameView.setTextColor(getGameDetails().getLead().getColour());
+                nameView.setTextColor(getGameDetails().getLead().getColour());
             } else {
                 nameView.setText(getGameDetails().getFollow().getName());
-                nameView.setTextColor(ContextCompat.getColor(this, R.color.p2_color));
-//                nameView.setTextColor(getGameDetails().getFollow().getColour());
+                nameView.setTextColor(getGameDetails().getFollow().getColour());
             }
         }
     }
