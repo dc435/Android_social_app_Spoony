@@ -49,7 +49,7 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
         // fetch game details
         Intent intent = getIntent();
         gameDetails = (GameDetails) intent.getSerializableExtra("GameDetails");
-        if (gameDetails == null) gameDetails = new GameDetails();
+        if (gameDetails == null) gameDetails = new GameDetails(this);
 
         if (gameDetails.getLead() != null) leadPosition = gameDetails.getLead().getDirection();
         if (gameDetails.getFollow() != null) followPosition = gameDetails.getFollow().getDirection();

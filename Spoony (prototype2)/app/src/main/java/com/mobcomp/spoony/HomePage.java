@@ -57,7 +57,7 @@ public class HomePage extends AppCompatActivity {
         setting_button.setOnClickListener(this::jumpToSetting);
         firebase_button.setOnClickListener(this::jumpToFirebase);
 
-        gd = new GameDetails();
+        gd = new GameDetails(this);
     }
 
     @Override
