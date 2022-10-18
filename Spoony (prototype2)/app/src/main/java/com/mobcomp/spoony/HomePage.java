@@ -22,9 +22,7 @@ public class HomePage extends AppCompatActivity {
     ImageButton setting_button;
     ImageButton start_button;
     ImageButton firebase_button;
-    LinkedList<Question> questions;
     GameDetails gd;
-    FirebaseHandler fb = new FirebaseHandler();
 
     AudioService audioService;
     ServiceConnection connection = new ServiceConnection() {
@@ -60,17 +58,6 @@ public class HomePage extends AppCompatActivity {
         firebase_button.setOnClickListener(this::jumpToFirebase);
 
         gd = new GameDetails();
-        questions = new LinkedList<>();
-        fb.updateQuestions(fb.loadQuestionFromJSONFile(this, fb.isFirstBoot()), success -> {
-            if (success) {
-                questions = fb.getQuestions();
-                fb.saveQuestionToJSONFile(this, questions);
-                gd.setQuestions(questions);
-                Log.d("GDQ", String.valueOf(questions));
-            } else {
-                Log.e("GDQERR", "SOMETHING VERY WRONG HAS HAPPENED WITH ADDING QUESTIONS OH GOD");
-            }
-        });
     }
 
     @Override

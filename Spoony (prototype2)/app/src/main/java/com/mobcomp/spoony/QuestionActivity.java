@@ -1,9 +1,12 @@
 package com.mobcomp.spoony;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import java.util.LinkedList;
 
 public class QuestionActivity extends SpoonyActivity {
 
@@ -11,6 +14,10 @@ public class QuestionActivity extends SpoonyActivity {
     private int giveToDisplay;
 
     private Question question;
+    FirebaseHandler fb = new FirebaseHandler();
+    LinkedList<Question> questions;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,10 +27,23 @@ public class QuestionActivity extends SpoonyActivity {
         questionDisplay = R.layout.askq;
         giveToDisplay = R.layout.text;
 
-        // fetch question
-        question = getGameDetails().newQuestion();
+        // populate question
+        questions = new LinkedList<>();
+        fb.updateQuestions(fb.loadQuestionFromJSONFile(this, fb.isFirstBoot()), success -> {
+            if (success) {
+                questions = fb.getQuestions();
+                fb.saveQuestionToJSONFile(this, questions);
+                getGameDetails().setQuestions(questions);
+                Log.d("GDQ", String.valueOf(questions));
+                // fetch question
+                question = getGameDetails().newQuestion();
 
-        displayGiveToScreen(); // to avoid accidentally showing the question to the wrong player in the first frame
+                displayGiveToScreen(); // to avoid accidentally showing the question to the wrong player in the first frame
+            } else {
+                Log.e("GDQERR", "SOMETHING VERY WRONG HAS HAPPENED WITH ADDING QUESTIONS OH GOD");
+            }
+        });
+
     }
 
 
