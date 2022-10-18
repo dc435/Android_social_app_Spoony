@@ -18,16 +18,14 @@ public class GameDetails implements Serializable {
     private Player lead;
     private Player follow;
     private int round;
-    transient private FirebaseHandler fb = new FirebaseHandler();
-    transient private Context c;
 
-    public GameDetails(Context c) {
+    public GameDetails() {
         freshQuestions = new LinkedList<>();
         usedQuestions = new LinkedList<>();
         lead = null;
         follow = null;
-        this.c = c;
-        populate(this.c);
+
+        populate();
     }
 
     public void addPlayer(Player player) {
@@ -58,7 +56,7 @@ public class GameDetails implements Serializable {
         Log.d("GDQUESTION", String.valueOf(freshQuestions));
 
         if (freshQuestions.size() < MINQUESTIONLEFT) {
-            populate(this.c);
+            populate();
         }
 
         currentQuestion = freshQuestions.pop();
@@ -69,7 +67,7 @@ public class GameDetails implements Serializable {
     public Question getQuestionNonDestructive() {
         Random random = new Random();
         if (freshQuestions.size() == 0)
-            populate(this.c);
+            populate();
         return freshQuestions.get(random.nextInt(freshQuestions.size()));
     }
 
@@ -77,18 +75,14 @@ public class GameDetails implements Serializable {
         usedQuestions.add(question);
     }
 
-    private void populate(Context c) {
+    private void populate() {
         // pull from firebase here?
-        // cant put it all in 1 method cuz have to use callback to load and access questions (async)
-        fb.updateQuestions(fb.loadQuestionFromJSONFile(c, fb.isFirstBoot()), success -> {
-            if (success) {
-               freshQuestions = fb.getQuestions();
-                fb.saveQuestionToJSONFile(c, freshQuestions);
-                Log.d("GDQ", String.valueOf(freshQuestions));
-            } else {
-                Log.e("GDQERR", "SOMETHING VERY WRONG HAS HAPPENED WITH ADDING QUESTIONS OH GOD");
-            }
-        });
+//        freshQuestions.add(new Question("Who is more like a cat?"));
+//        freshQuestions.add(new Question("How much does each player talk?"));
+//        freshQuestions.add(new Question("Who is more likely to eat a raw onion?"));
+//        freshQuestions.add(new Question("Who is more like their mother?"));
+//        freshQuestions.add(new Question("Who is more like a dog"));
+//        freshQuestions.add(new Question("Who eats more?"));
     }
 
     public Question getCurrentQuestion() {
