@@ -55,7 +55,7 @@ public class FirebaseHandler {
     }
 
     public interface DocumentCallback {
-        void getDocumentSucess(boolean success);
+        void getDocumentSuccess(boolean success);
     }
 
     // get number of questions in firestore
@@ -106,17 +106,17 @@ public class FirebaseHandler {
                         multiQDoc.add(new Question(Integer.parseInt(document.getId()), (String) document.getData().get("question")));
                     }
                     Log.d("FSQ", String.valueOf(multiQDoc));
-                    documentCallback.getDocumentSucess(true);
+                    documentCallback.getDocumentSuccess(true);
                 } else {
                     Log.e("FSQERR", "Error getting documents.", task.getException());
-                    documentCallback.getDocumentSucess(false);
+                    documentCallback.getDocumentSuccess(false);
                 }
             });
         } else if (questionJSON != null) {
             Map<String, Object> data = new Gson().fromJson(questionJSON, Map.class);
             data.forEach((qid, qstr) -> multiQDoc.add(new Question(Integer.parseInt(qid), (String) qstr)));
             Log.d("FSQ", String.valueOf(multiQDoc));
-            documentCallback.getDocumentSucess(true);
+            documentCallback.getDocumentSuccess(true);
         }
     }
 
@@ -127,16 +127,16 @@ public class FirebaseHandler {
 
         // no question cleaning implemented yet (nice-to-haves)
         if (question == null || question.equals("")) {
-            documentCallback.getDocumentSucess(false);
+            documentCallback.getDocumentSuccess(false);
         } else {
             data.put("question", question);
             qdb.document(String.valueOf(numQuestion)).set(data).addOnSuccessListener(aVoid -> {
                 Log.d("FSQADD", "DocumentSnapshot successfully written!");
                 incrementQuestionCount();
-                documentCallback.getDocumentSucess(true);
+                documentCallback.getDocumentSuccess(true);
             }).addOnFailureListener(e -> {
                 Log.e("FSQADDERR", "Error adding document", e);
-                documentCallback.getDocumentSucess(false);
+                documentCallback.getDocumentSuccess(false);
             });
         }
     }
