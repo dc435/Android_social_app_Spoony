@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
@@ -119,15 +118,15 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
         // phone is within VIEW_DISTANCE degrees of player 1's position
         else if (rotationDistanceUnsigned(orientation[0], leadPosition) < VIEW_DISTANCE) {
             // note that if the z-rotation leaves the bounds [-90, 90] then the x-rotation is flipped
-            if (orientation[2] > -90 && orientation[2] < 90) setState(SpoonyState.P1_VIEW);
-            else setState(SpoonyState.P2_VIEW);
+            if (orientation[2] > -90 && orientation[2] < 90) setState(SpoonyState.LEAD_VIEW);
+            else setState(SpoonyState.FOLLOW_VIEW);
         }
 
         // phone is within VIEW_DISTANCE degrees of player 2's position
         else if (rotationDistanceUnsigned(orientation[0], followPosition) < VIEW_DISTANCE) {
             // again, handle flipping when leaving z-rot [-90, 90]
-            if (orientation[2] > -90 && orientation[2] < 90) setState(SpoonyState.P2_VIEW);
-            else setState(SpoonyState.P1_VIEW);
+            if (orientation[2] > -90 && orientation[2] < 90) setState(SpoonyState.FOLLOW_VIEW);
+            else setState(SpoonyState.LEAD_VIEW);
         }
 
         // none of the above, fall back to default
@@ -166,10 +165,10 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
             case TABLE:
                 onEnterTable();
                 break;
-            case P1_VIEW:
+            case LEAD_VIEW:
                 onEnterLeadView();
                 break;
-            case P2_VIEW:
+            case FOLLOW_VIEW:
                 onEnterFollowView();
                 break;
             default:
@@ -182,10 +181,10 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
             case TABLE:
                 onExitTable();
                 break;
-            case P1_VIEW:
+            case LEAD_VIEW:
                 onExitLeadView();
                 break;
-            case P2_VIEW:
+            case FOLLOW_VIEW:
                 onExitFollowView();
                 break;
             default:
@@ -201,10 +200,10 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
             case TABLE:
                 updateTable();
                 break;
-            case P1_VIEW:
+            case LEAD_VIEW:
                 updateLeadView();
                 break;
-            case P2_VIEW:
+            case FOLLOW_VIEW:
                 updateFollowView();
                 break;
             default:

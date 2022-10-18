@@ -19,6 +19,10 @@ public class AnswerActivity extends SpoonyActivity {
     private ConstraintLayout spinner;
     private GradientDrawable gradient;
 
+    private int leadPercent;
+    private TextView leadPercentText;
+    private TextView followPercentText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,12 +50,22 @@ public class AnswerActivity extends SpoonyActivity {
     @Override
     protected void updateTable() {
         spinner.setRotation(Angle.rotationDistanceSigned(deviceOrientation[0], gameDetails.getLead().getDirection()));
+
+        leadPercent = (int) (Angle.percentageBetween(deviceOrientation[0], gameDetails.getLead().getDirection(), gameDetails.getFollow().getDirection()) * 100);
+
+        if (leadPercentText != null) {
+            leadPercentText.setText(String.valueOf(leadPercent));
+        }
+
+        if (leadPercentText != null) {
+            leadPercentText.setText(String.valueOf(100 - leadPercent));
+        }
     }
 
     private void displaySpinnerScreen() {
         setContentView(answerDisplay);
 
-        ImageButton lockInButton = (ImageButton)findViewById(R.id.lock_button);
+        ImageButton lockInButton = findViewById(R.id.lock_button);
         lockInButton.setOnClickListener(this::lockInAnswer);
 
         TextView leadText = findViewById(R.id.answer_lead_text);
@@ -64,6 +78,9 @@ public class AnswerActivity extends SpoonyActivity {
 
         followText.setTextColor(gameDetails.getFollow().getColour());
         followText.setText(gameDetails.getFollow().getName());
+
+        leadPercentText = findViewById(R.id.answer_lead_pct);
+        followPercentText = findViewById(R.id.answer_follow_pct);
     }
 
     private void displayPutDownScreen() {

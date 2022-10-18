@@ -52,7 +52,6 @@ public class QuestionActivity extends SpoonyActivity {
 
         TextView introText = findViewById(R.id.textView_question_title);
         TextView questionText = findViewById(R.id.textView_question_content);
-        button = findViewById(R.id.next_button);
         introText.setText(String.format("Here's your question, %s. Don't tell %s!",
                 getGameDetails().getLead().getName(),
                 getGameDetails().getFollow().getName()));
