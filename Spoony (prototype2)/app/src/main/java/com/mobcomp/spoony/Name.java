@@ -1,5 +1,7 @@
 package com.mobcomp.spoony;
 
+import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -8,6 +10,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Name extends GameActivity {
@@ -16,11 +20,14 @@ public class Name extends GameActivity {
     TextView name_txt_getName;
     TextView name_txt_p1p2;
     GameDetails gameDetails;
+    ImageButton backBtn;
+    ImageView homeBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.name);
+        commonBtnSetup();
 
         Intent intent = getIntent();
         gameDetails = (GameDetails) intent.getSerializableExtra("GameDetails");
@@ -41,6 +48,19 @@ public class Name extends GameActivity {
                 nextPlayerEntry(v);
             }
         });
+
+    }
+    private void commonBtnSetup() {
+        backBtn = (ImageButton) findViewById(R.id.back_btn);
+        backBtn.setOnClickListener((View v) -> backToHomePage());
+        homeBtn = (ImageView) findViewById(R.id.home_btn);
+        homeBtn.setOnClickListener((View v) -> backToHomePage());
+    }
+
+    public void backToHomePage() {
+        Intent intent = new Intent(this, HomePage.class);
+        intent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 
     public void nextPlayerEntry(View view) {
