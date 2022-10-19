@@ -174,7 +174,7 @@ public class FirebaseHandler {
     protected void saveQuestionToJSONFile(Context c, LinkedList<Question> qlist) {
         AtomicReference<Map<String, Object>> qmap = new AtomicReference<>(new HashMap<>());
         for (int i = 0; i < qlist.size(); i++) {
-            qmap.get().put(String.valueOf(qlist.get(i).id), qlist.get(i).question);
+            qmap.get().put(String.valueOf(qlist.get(i).id), qlist.get(i).text);
         }
         try {
             FileWriter file = new FileWriter(c.getFilesDir() + QFILESTR);

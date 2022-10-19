@@ -8,6 +8,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import java.util.Map;
@@ -24,7 +25,7 @@ public class FirebaseActivity extends AppCompatActivity {
     private TextView outputTextView;
     private String questionJSON;
 
-    private CoordinatorLayout _layout;
+    private ConstraintLayout _layout;
 
     FirebaseHandler fb = new FirebaseHandler();
 

@@ -29,8 +29,10 @@ public class Name extends GameActivity {
         setContentView(R.layout.name);
         commonBtnSetup();
 
-        Intent intent = getIntent();
-        gameDetails = (GameDetails) intent.getSerializableExtra("GameDetails");
+        if (gameDetails == null) {
+            Intent intent = getIntent();
+            gameDetails = (GameDetails) intent.getSerializableExtra("GameDetails");
+        }
 
         // The textview that display "Spooner 1" or "Spooner 2" to prompt user input
         name_txt_p1p2 = findViewById(R.id.textView_p1p2);

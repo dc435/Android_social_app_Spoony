@@ -1,8 +1,8 @@
 package com.mobcomp.spoony;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.res.ResourcesCompat;
 
-import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -51,12 +51,14 @@ public class AnswerActivity extends SpoonyActivity {
     protected void updateTable() {
         spinner.setRotation(Angle.rotationDistanceSigned(deviceOrientation[0], gameDetails.getLead().getDirection()));
 
-        leadPercent = (int) (Angle.percentageBetween(deviceOrientation[0], gameDetails.getLead().getDirection(), gameDetails.getFollow().getDirection()) * 100);
+        leadPercent = Math.round(Angle.percentageBetween(deviceOrientation[0], gameDetails.getFollow().getDirection(), gameDetails.getLead().getDirection()) * 100);
 
         if (leadPercentText != null) {
             leadPercentText.setText(String.valueOf(leadPercent));
             followPercentText.setText(String.valueOf((100 - leadPercent)));
         }
+
+        gradient.setGradientCenter(0, leadPercent / 100f);
     }
 
     private void displaySpinnerScreen() {
@@ -78,6 +80,7 @@ public class AnswerActivity extends SpoonyActivity {
 
         leadPercentText = findViewById(R.id.answer_lead_pct);
         followPercentText = findViewById(R.id.answer_follow_pct);
+        gradient = (GradientDrawable) ResourcesCompat.getDrawable(getResources(), R.drawable.spinner_gradient, getTheme());
     }
 
     private void displayPutDownScreen() {
@@ -95,15 +98,11 @@ public class AnswerActivity extends SpoonyActivity {
             gameDetails.getCurrentQuestion().percentage = 100 - leadPercent;
         }
 
-        gameDetails.nextRound();
-
         Log.d("AnswerActivity.lockInAnswer", String.format("Question: %s; Answer: %d percent %s",
-                gameDetails.getCurrentQuestion().question,
+                gameDetails.getCurrentQuestion().text,
                 gameDetails.getCurrentQuestion().percentage,
                 gameDetails.getCurrentQuestion().answer.getName()));
 
-        Intent intent = new Intent(this, WhichQuestion.class);
-        intent.putExtra("GameDetails", gameDetails);
-        startActivity(intent);
+        changeActivity(WhichQuestion.class, gameDetails);
     }
 }
