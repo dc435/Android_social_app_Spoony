@@ -1,10 +1,16 @@
 package com.mobcomp.spoony;
 
+import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
+
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,6 +32,8 @@ public class FirebaseActivity extends AppCompatActivity {
     private String questionJSON;
 
     private ConstraintLayout _layout;
+    ImageButton backBtn;
+    ImageView homeBtn;
 
     FirebaseHandler fb = new FirebaseHandler();
 
@@ -34,6 +42,7 @@ public class FirebaseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.lib);
 
+        backBtnSetup();
         _layout = findViewById(R.id.firebaseLayout);
 //        dButton = findViewById(R.id.downloadButton);
         uButton = findViewById(R.id.uploadButton);
@@ -79,4 +88,13 @@ public class FirebaseActivity extends AppCompatActivity {
 //            });
         });
     }
+    private void backBtnSetup() {
+        backBtn = (ImageButton) findViewById(R.id.back_btn);
+        backBtn.setOnClickListener((View v) ->{
+            Intent intent = new Intent(this, HomePage.class);
+            intent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        });
+    }
+
 }

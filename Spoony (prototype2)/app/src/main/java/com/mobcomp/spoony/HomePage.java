@@ -49,12 +49,10 @@ public class HomePage extends AppCompatActivity {
 
         setting_button = (ImageButton)findViewById(R.id.btnSetting);
         start_button = (ImageButton)findViewById(R.id.btnStart);
-        setting_button = (ImageButton)findViewById(R.id.btnSetting);
         firebase_button = (ImageButton)findViewById(R.id.btnLibrary);
 
         setting_button.setOnClickListener(this::jumpToSetting);
         start_button.setOnClickListener(this::jumpToStart);
-        setting_button.setOnClickListener(this::jumpToSetting);
         firebase_button.setOnClickListener(this::jumpToFirebase);
 
         gd = new GameDetails();
