@@ -14,7 +14,8 @@ public class GameDetails implements Serializable {
     private LinkedList<Question> freshQuestions;
     private final LinkedList<Question> usedQuestions;
     private Question currentQuestion;
-    private Question guessedQuestion;
+    private String guessedString;
+    private String currentString;
     private Player lead;
     private Player follow;
     private int round;
@@ -93,9 +94,12 @@ public class GameDetails implements Serializable {
         return currentQuestion;
     }
 
-    public void setGuessedQuestion(Question question) {
-        guessedQuestion = question;
+    public void setGuessedString(String qString) {
+        guessedString = qString;
     }
+    public String getGuessedString() {return guessedString;}
+    public void setCurrentString(String cString) {currentString = cString;}
+    public String getCurrentString() {return currentString;}
 
     public Player getLead() {
         return lead;

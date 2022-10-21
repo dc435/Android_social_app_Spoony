@@ -13,6 +13,7 @@ public class Player implements Serializable {
     public Player(String name, int colour){
         this.name = name;
         this.colour = colour;
+        this.score = 0;
     }
 
     public String getName() {
@@ -42,4 +43,7 @@ public class Player implements Serializable {
     public int getScore() { return score; }
 
     public void setScore(int score) { this.score = score; }
+    public void incrementScore () {
+        this.score = score + 1;
+    }
 }
