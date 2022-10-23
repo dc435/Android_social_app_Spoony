@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 public class Name extends GameActivity {
 
-    Button name_btn_next;
+    ImageButton name_btn_next;
     TextView name_txt_getName;
     TextView name_txt_p1p2;
     GameDetails gameDetails;
@@ -39,7 +39,7 @@ public class Name extends GameActivity {
         name_txt_p1p2.setText("Spooner 1");
 
         // save player names to GameDetails
-        name_btn_next = (Button) findViewById(R.id.next_button);
+        name_btn_next = (ImageButton) findViewById(R.id.next_Button);
         name_btn_next.setOnClickListener((View v) -> {
             name_txt_getName = findViewById(R.id.name_input_p1);
             String p1Name = name_txt_getName.getText().toString();

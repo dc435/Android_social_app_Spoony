@@ -39,6 +39,7 @@
         android:layout_marginStart="66dp"
         android:layout_marginTop="192dp"
         android:layout_marginEnd="66dp"
+        android:background="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -46,9 +47,10 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/questionTextInput"
             android:layout_width="match_parent"
-            android:layout_height="137dp"
+            android:layout_height="115dp"
+            android:backgroundTint="#000000"
             android:hint="@string/question_input"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:textColorHint="#616161"
             tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
