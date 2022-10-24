@@ -104,7 +104,8 @@ public class PToP extends SpoonyActivity {
             p1Located = true;
             nameSetup();
         } else {
-            if (Math.abs(zOrientation - gameDetails.getLead().getDirection()) > 135) {
+            float offset = Math.abs(zOrientation - gameDetails.getLead().getDirection());
+            if (offset > 135 && offset < 215) {
                 gameDetails.getFollow().setDirection(zOrientation);
                 changeActivity(QuestionActivity.class, gameDetails);
             } else {
