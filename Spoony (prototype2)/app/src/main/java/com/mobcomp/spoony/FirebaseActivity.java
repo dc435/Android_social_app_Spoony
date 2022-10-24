@@ -90,11 +90,7 @@ public class FirebaseActivity extends AppCompatActivity {
     }
     private void backBtnSetup() {
         backBtn = (ImageButton) findViewById(R.id.back_btn);
-        backBtn.setOnClickListener((View v) ->{
-            Intent intent = new Intent(this, HomePage.class);
-            intent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-        });
+        backBtn.setOnClickListener((View v) -> onBackPressed());
     }
 
 }

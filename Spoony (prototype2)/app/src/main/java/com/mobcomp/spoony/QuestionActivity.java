@@ -84,6 +84,7 @@ public class QuestionActivity extends SpoonyActivity {
 
     private void displayGiveToScreen() {
         setContentView(giveToDisplay);
+        commonBtnSetup();
         TextView giveToText = findViewById(R.id.txt);
         giveToText.setText(String.format("Give the phone to %s, silly!",
                 getGameDetails().getLead().getName()));
@@ -94,6 +95,7 @@ public class QuestionActivity extends SpoonyActivity {
 
         Button button = findViewById(R.id.next_button);
         button.setOnClickListener(this::lockIn);
+        commonBtnSetup();
 
         TextView introText = findViewById(R.id.textView_question_title);
         TextView questionText = findViewById(R.id.textView_question_content);

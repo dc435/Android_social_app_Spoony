@@ -18,6 +18,7 @@ import android.widget.ImageButton;
 public class GameActivity extends AppCompatActivity {
 
     ImageButton homeBtn;
+    ImageButton backBtn;
     AudioService audioService;
     ServiceConnection connection = new ServiceConnection() {
 
@@ -50,20 +51,17 @@ public class GameActivity extends AppCompatActivity {
     protected void showHomeDialog() {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
 
-        dialog.setTitle("this is title");
-        dialog.setMessage("this is message");
+        dialog.setMessage("Are you sure to exit game?");
         dialog.setCancelable(false);
-        dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        dialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 goBackHome();
             }
         });
-        dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        dialog.setNegativeButton("NOT REALLY", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-
-            }
+            public void onClick(DialogInterface dialogInterface, int i) {}
         });
         dialog.show();
     }
@@ -77,6 +75,8 @@ public class GameActivity extends AppCompatActivity {
     protected void commonBtnSetup() {
         homeBtn = (ImageButton) findViewById(R.id.home_btn);
         homeBtn.setOnClickListener((View v) -> showHomeDialog());
+        backBtn = (ImageButton) findViewById(R.id.back_btn);
+        backBtn.setOnClickListener((View v) -> onBackPressed());
     }
 
     public GameDetails getGameDetails() {

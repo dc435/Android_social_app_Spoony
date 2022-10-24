@@ -56,17 +56,11 @@ public class WhichAnswer extends GameActivity {
         // Finalise view build:
         result_btn_home = findViewById(R.id.result_btn_home);
         result_btn_playAgain = findViewById(R.id.result_btn_playAgain);
-        View.OnClickListener jumpToHome = view -> jumpToHome();
+        View.OnClickListener jumpToHome = view -> goBackHome();
         View.OnClickListener playAgain = view -> playAgain();
         result_btn_home.setOnClickListener(jumpToHome);
         result_btn_playAgain.setOnClickListener(playAgain);
 
-    }
-
-    private void jumpToHome() {
-        Intent intent = new Intent(this, HomePage.class);
-        intent.putExtra("GameDetails", gd);
-        startActivity(intent);
     }
 
     private void playAgain() {

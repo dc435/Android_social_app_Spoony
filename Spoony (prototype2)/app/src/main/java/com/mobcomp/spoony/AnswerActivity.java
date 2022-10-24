@@ -49,9 +49,13 @@ public class AnswerActivity extends SpoonyActivity {
 
     @Override
     protected void updateTable() {
-        spinner.setRotation(Angle.rotationDistanceSigned(deviceOrientation[0], gameDetails.getLead().getDirection()));
+        spinner.setRotation(Angle.rotationDistanceSigned(
+                deviceOrientation[0], gameDetails.getLead().getDirection()));
 
-        leadPercent = Math.round(Angle.percentageBetween(deviceOrientation[0], gameDetails.getFollow().getDirection(), gameDetails.getLead().getDirection()) * 100);
+        leadPercent = Math.round(Angle.percentageBetween(
+                deviceOrientation[0],
+                gameDetails.getFollow().getDirection(),
+                gameDetails.getLead().getDirection()) * 100);
 
         if (leadPercentText != null) {
             leadPercentText.setText(String.valueOf(leadPercent));
@@ -80,7 +84,8 @@ public class AnswerActivity extends SpoonyActivity {
 
         leadPercentText = findViewById(R.id.answer_lead_pct);
         followPercentText = findViewById(R.id.answer_follow_pct);
-        gradient = (GradientDrawable) ResourcesCompat.getDrawable(getResources(), R.drawable.spinner_gradient, getTheme());
+        gradient = (GradientDrawable) ResourcesCompat.getDrawable(
+                getResources(), R.drawable.spinner_gradient, getTheme());
     }
 
     private void displayPutDownScreen() {
@@ -98,7 +103,8 @@ public class AnswerActivity extends SpoonyActivity {
             gameDetails.getCurrentQuestion().percentage = 100 - leadPercent;
         }
 
-        Log.d("AnswerActivity.lockInAnswer", String.format("Question: %s; Answer: %d percent %s",
+        Log.d("AnswerActivity.lockInAnswer", String.format(
+                "Question: %s; Answer: %d percent %s",
                 gameDetails.getCurrentQuestion().text,
                 gameDetails.getCurrentQuestion().percentage,
                 gameDetails.getCurrentQuestion().answer.getName()));

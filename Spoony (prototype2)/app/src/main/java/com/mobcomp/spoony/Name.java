@@ -68,15 +68,17 @@ public class Name extends GameActivity {
             p1Confirmed = false;
             textViewSetup();
         } else {
-            goBackHome();
+            super.onBackPressed();
         }
     }
 
     private void textViewSetup() {
         int color = p1Confirmed ? p2Color : p1Color;
         String name = p1Confirmed ? "Spooner 2" : "Spooner 1";
+        String hint = p1Confirmed ? "eg. Anna" : "eg. Bill";
         nameView.setText(name);
         nameView.setTextColor(color);
         nameEdit.setText("");
+        nameEdit.setHint(hint);
     }
 }

@@ -1,10 +1,18 @@
 package com.mobcomp.spoony;
 
+import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.lang.Math;
 
 public class PToP extends SpoonyActivity {
 
@@ -37,7 +45,7 @@ public class PToP extends SpoonyActivity {
             p1Located = false;
             nameSetup();
         } else {
-            changeActivity(Name.class, gameDetails);
+            super.onBackPressed();
         }
     }
 
@@ -96,8 +104,16 @@ public class PToP extends SpoonyActivity {
             p1Located = true;
             nameSetup();
         } else {
-            gameDetails.getFollow().setDirection(zOrientation);
-            changeActivity(QuestionActivity.class, gameDetails);
+            if (Math.abs(zOrientation - gameDetails.getLead().getDirection()) > 135) {
+                gameDetails.getFollow().setDirection(zOrientation);
+                changeActivity(QuestionActivity.class, gameDetails);
+            } else {
+                Animation shake = AnimationUtils.loadAnimation(this, R.anim.anim_refuse_shake);
+                confirmBtn.startAnimation(shake);
+                String prompt = "Please sit opposite to " + gameDetails.getLead().getName();
+                Toast toast = Toast.makeText(this, prompt, Toast.LENGTH_SHORT);
+                toast.show();
+            }
         }
     }
 }
