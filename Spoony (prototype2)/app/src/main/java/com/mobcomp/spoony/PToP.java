@@ -2,19 +2,13 @@ package com.mobcomp.spoony;
 
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 
-import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.core.content.ContextCompat;
 
 public class PToP extends SpoonyActivity {
 
@@ -23,29 +17,12 @@ public class PToP extends SpoonyActivity {
     private int currentLayout;
 
     private ImageButton confirmBtn;
-    private ImageButton backBtn;
-    private ImageButton homeBtn;
     private ImageView innerCompass;
     private TextView nameView;
 
     private boolean p1Located;
 
     private GameDetails gameDetails;
-
-//    private AudioService audioService;
-//    private ServiceConnection connection = new ServiceConnection() {
-//
-//        @Override
-//        public void onServiceConnected(ComponentName className, IBinder service) {
-//            AudioService.AudioBinder binder = (AudioService.AudioBinder) service;
-//            audioService = binder.getService();
-//            audioService.startGame();
-//        }
-//
-//        @Override
-//        public void onServiceDisconnected(ComponentName arg0) {
-//        }
-//    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,19 +34,6 @@ public class PToP extends SpoonyActivity {
         p1Located = false;
         gameDetails = getGameDetails();
     }
-
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        Intent intent = new Intent(this, AudioService.class);
-//        bindService(intent, connection, Context.BIND_AUTO_CREATE);
-//    }
-//
-//    @Override
-//    protected void onStop() {
-//        super.onStop();
-//        unbindService(connection);
-//    }
 
     @Override
     public void onBackPressed() {
@@ -88,14 +52,17 @@ public class PToP extends SpoonyActivity {
         currentLayout = POINT_TO_PLR_LAYOUT;
         setContentView(currentLayout);
         nameSetup();
-        exclusiveBtnSetup();
+        btnSetup();
         compassSetup();
     }
 
     @Override
     protected void updateTable() {
         if(p1Located && currentLayout == POINT_TO_PLR_LAYOUT) {
-            innerCompass.setRotation(Angle.rotationDistanceSigned(deviceOrientation[0], gameDetails.getLead().getDirection()));
+            float offset = Angle.rotationDistanceSigned(
+                    deviceOrientation[0],
+                    gameDetails.getLead().getDirection());
+            innerCompass.setRotation(offset);
         }
     }
 
@@ -119,21 +86,10 @@ public class PToP extends SpoonyActivity {
         }
     }
 
-    private void exclusiveBtnSetup() {
+    private void btnSetup() {
         confirmBtn = (ImageButton) findViewById(R.id.lock_button);
         confirmBtn.setOnClickListener((View v) -> onConfirmPressed());
         commonBtnSetup();
-    }
-
-    private void commonBtnSetup() {
-        backBtn = (ImageButton) findViewById(R.id.back_btn);
-        backBtn.setOnClickListener((View v) -> onBackPressed());
-        homeBtn = (ImageButton) findViewById(R.id.home_btn);
-        homeBtn.setOnClickListener((View v) -> {
-            Intent intent = new Intent(this, HomePage.class);
-            intent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
-        });
     }
 
     private void compassSetup() {

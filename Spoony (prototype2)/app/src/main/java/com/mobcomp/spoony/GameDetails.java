@@ -29,13 +29,11 @@ public class GameDetails implements Serializable {
         populate();
     }
 
-    public void addPlayer(Player player) {
-        if (lead == null)
+    public void addPlayer(Player player, boolean isLead) {
+        if (isLead)
             lead = player;
-        else if (follow == null)
-            follow = player;
         else
-            Log.e("GameDetails", "No player slots free to add new player " + player.getName());
+            follow = player;
     }
 
     public void clearPlayers() {

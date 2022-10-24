@@ -1,90 +1,89 @@
 package com.mobcomp.spoony;
 
-import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
-
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Name extends GameActivity {
 
-    Button name_btn_next;
-    TextView name_txt_getName;
-    TextView name_txt_p1p2;
+    int p1Color;
+    int p2Color;
+
+    Button confirmBtn;
+    TextView nameEdit;
+    TextView nameView;
     GameDetails gameDetails;
-    ImageButton backBtn;
-    ImageView homeBtn;
+
+    boolean p1Confirmed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.name);
+
+        p1Confirmed = false;
+        p1Color = ContextCompat.getColor(this, R.color.p1_color);
+        p2Color = ContextCompat.getColor(this, R.color.p2_color);
+
+        gameDetails = getGameDetails();
+
+        nameView = (TextView) findViewById(R.id.textView_p1p2);
+        nameEdit = (TextView) findViewById(R.id.name_input_p1);
+        textViewSetup();
+
+        confirmBtn = (Button) findViewById(R.id.next_button);
+        confirmBtn.setOnClickListener((View v) -> onConfirmPressed());
         commonBtnSetup();
-
-        if (gameDetails == null) {
-            Intent intent = getIntent();
-            gameDetails = (GameDetails) intent.getSerializableExtra("GameDetails");
-        }
-
-        // The textview that display "Spooner 1" or "Spooner 2" to prompt user input
-        name_txt_p1p2 = findViewById(R.id.textView_p1p2);
-        name_txt_p1p2.setText("Spooner 1");
-
-        // save player names to GameDetails
-        name_btn_next = (Button) findViewById(R.id.next_button);
-        name_btn_next.setOnClickListener((View v) -> {
-            name_txt_getName = findViewById(R.id.name_input_p1);
-            String p1Name = name_txt_getName.getText().toString();
-            if (p1Name.length() > 0){
-                Player player1 = new Player(p1Name, ContextCompat.getColor(this, R.color.p1_color));
-                gameDetails.addPlayer(player1);
-                Log.d("P1 name saved", p1Name);
-                nextPlayerEntry(v);
-            }
-        });
-
-    }
-    private void commonBtnSetup() {
-        backBtn = (ImageButton) findViewById(R.id.back_btn);
-        backBtn.setOnClickListener((View v) -> backToHomePage());
-        homeBtn = (ImageView) findViewById(R.id.home_btn);
-        homeBtn.setOnClickListener((View v) -> backToHomePage());
     }
 
-    public void backToHomePage() {
-        Intent intent = new Intent(this, HomePage.class);
-        intent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
-        startActivity(intent);
-    }
-
-    public void nextPlayerEntry(View view) {
-
-        // change textview "Spooner 1" to "Spooner 2"
-        name_txt_p1p2.setText("Spooner 2");
-        name_txt_getName.setText("");
-        name_btn_next.setOnClickListener((View v) -> {
-            name_txt_getName = findViewById(R.id.name_input_p1);
-            String p2Name = name_txt_getName.getText().toString();
-            if (p2Name.length() >0){
-                Player player2 = new Player(p2Name, ContextCompat.getColor(this, R.color.p2_color));
-                gameDetails.addPlayer(player2);
-                Log.d("P2 name saved", p2Name);
+    private void onConfirmPressed() {
+        String nameInput = nameEdit.getText().toString();
+        if (nameInput.length() > 0) {
+            int color = p1Confirmed ? p2Color : p1Color;
+            gameDetails.addPlayer(new Player(nameInput, color), !p1Confirmed);
+            if (p1Confirmed) {
                 nextPage();
+            } else {
+                p1Confirmed = true;
+                textViewSetup();
             }
-        });
+        } else {
+            Animation shake = AnimationUtils.loadAnimation(this, R.anim.anim_refuse_shake);
+            confirmBtn.startAnimation(shake);
+            String prompt = "Please enter the name";
+            Toast toast = Toast.makeText(this, prompt, Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 
-    public void nextPage(){
+    @Override
+    public void onBackPressed() {
+        if(p1Confirmed) {
+            p1Confirmed = false;
+            textViewSetup();
+        } else {
+            goBackHome();
+        }
+    }
+
+    private void nextPage() {
         Intent intent = new Intent(this, PToP.class);
         intent.putExtra("GameDetails", gameDetails);
         startActivity(intent);
+    }
+
+    private void textViewSetup() {
+        int color = p1Confirmed ? p2Color : p1Color;
+        String name = p1Confirmed ? "Spooner 2" : "Spooner 1";
+        nameView.setText(name);
+        nameView.setTextColor(color);
+        nameEdit.setText("");
     }
 }

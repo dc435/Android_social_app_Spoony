@@ -47,8 +47,7 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
         // fetch game details
-        Intent intent = getIntent();
-        gameDetails = (GameDetails) intent.getSerializableExtra("GameDetails");
+        gameDetails = getGameDetails();
         if (gameDetails == null) gameDetails = new GameDetails();
 
         if (gameDetails.getLead() != null) leadPosition = gameDetails.getLead().getDirection();
@@ -212,10 +211,6 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
             default:
                 updateDefault();
         }
-    }
-
-    public GameDetails getGameDetails() {
-        return gameDetails;
     }
 
     public void changeActivity(Class<?> cls, GameDetails gameDetails) {

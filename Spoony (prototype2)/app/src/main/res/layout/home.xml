@@ -115,41 +115,14 @@
         android:id="@+id/txt_library"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
+        android:layout_marginStart="40dp"
         android:fontFamily="@font/amiko_semibold"
         android:includeFontPadding="false"
-        android:text="@string/library_string"
+        android:text="Add Q"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnLibrary" />
-
-    <TextView
-        android:id="@+id/txt_instruction"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
-        android:fontFamily="@font/amiko_bold"
-        android:includeFontPadding="false"
-        android:text="@string/instruction_string"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/answer_view_background" />
-
-    <TextView
-        android:id="@+id/txt_setting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="35dp"
-        android:fontFamily="@font/amiko_semibold"
-        android:includeFontPadding="false"
-        android:text="@string/setting_string"
-        android:textColor="@color/white"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSetting" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -175,19 +148,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/library_icon" />
-
-    <ImageButton
-        android:id="@+id/btnSetting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="40dp"
-        android:backgroundTint="#00FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/btnLibrary"
-        app:srcCompat="@drawable/setting_icon" />
 
 
     <ImageView
