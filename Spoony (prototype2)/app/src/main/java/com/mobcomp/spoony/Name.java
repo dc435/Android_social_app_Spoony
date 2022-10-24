@@ -13,15 +13,15 @@ import android.widget.Toast;
 
 public class Name extends GameActivity {
 
-    int p1Color;
-    int p2Color;
+    private int p1Color;
+    private int p2Color;
 
-    Button confirmBtn;
-    TextView nameEdit;
-    TextView nameView;
-    GameDetails gameDetails;
+    private Button confirmBtn;
+    private TextView nameEdit;
+    private TextView nameView;
+    private GameDetails gameDetails;
 
-    boolean p1Confirmed;
+    private boolean p1Confirmed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class Name extends GameActivity {
             int color = p1Confirmed ? p2Color : p1Color;
             gameDetails.addPlayer(new Player(nameInput, color), !p1Confirmed);
             if (p1Confirmed) {
-                nextPage();
+                changeActivity(PToP.class, gameDetails);
             } else {
                 p1Confirmed = true;
                 textViewSetup();
@@ -71,12 +71,6 @@ public class Name extends GameActivity {
         } else {
             goBackHome();
         }
-    }
-
-    private void nextPage() {
-        Intent intent = new Intent(this, PToP.class);
-        intent.putExtra("GameDetails", gameDetails);
-        startActivity(intent);
     }
 
     private void textViewSetup() {

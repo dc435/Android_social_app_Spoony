@@ -41,9 +41,7 @@ public class PToP extends SpoonyActivity {
             p1Located = false;
             nameSetup();
         } else {
-            Intent intent = new Intent(this, Name.class);
-            intent.setFlags(FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
+            goBackHome();
         }
     }
 
@@ -76,29 +74,27 @@ public class PToP extends SpoonyActivity {
     private void nameSetup() {
         if (currentLayout == POINT_TO_PLR_LAYOUT) {
             nameView = (TextView) findViewById(R.id.entry_name_p1);
-            if (!p1Located) {
-                nameView.setText(gameDetails.getLead().getName());
-                nameView.setTextColor(gameDetails.getLead().getColour());
-            } else {
-                nameView.setText(gameDetails.getFollow().getName());
-                nameView.setTextColor(gameDetails.getFollow().getColour());
-            }
+            Player player = p1Located ? gameDetails.getFollow() : gameDetails.getLead();
+            nameView.setText(player.getName());
+            nameView.setTextColor(player.getColour());
         }
     }
 
     private void btnSetup() {
-        confirmBtn = (ImageButton) findViewById(R.id.lock_button);
-        confirmBtn.setOnClickListener((View v) -> onConfirmPressed());
-        commonBtnSetup();
+        if (currentLayout == POINT_TO_PLR_LAYOUT) {
+            confirmBtn = (ImageButton) findViewById(R.id.lock_button);
+            confirmBtn.setOnClickListener((View v) -> onConfirmPressed());
+            commonBtnSetup();
+        }
     }
 
     private void compassSetup() {
-        innerCompass = (ImageView) findViewById(R.id.imageView_compass_inner_circle);
+        if (currentLayout == POINT_TO_PLR_LAYOUT)
+            innerCompass = (ImageView) findViewById(R.id.imageView_compass_inner_circle);
     }
 
     private void onConfirmPressed() {
         float zOrientation = deviceOrientation[0];
-        Log.d("Orientation Prompt", String.valueOf(zOrientation));
         if (!p1Located) {
             gameDetails.getLead().setDirection(zOrientation);
             p1Located = true;

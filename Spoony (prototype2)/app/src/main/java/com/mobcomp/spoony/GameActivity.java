@@ -84,4 +84,10 @@ public class GameActivity extends AppCompatActivity {
         GameDetails gameDetails = (GameDetails) intent.getSerializableExtra("GameDetails");
         return gameDetails;
     }
+
+    public void changeActivity(Class<?> cls, GameDetails gameDetails) {
+        Intent intent = new Intent(this, cls);
+        intent.putExtra("GameDetails", gameDetails);
+        startActivity(intent);
+    }
 }

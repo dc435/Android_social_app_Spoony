@@ -213,12 +213,6 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
         }
     }
 
-    public void changeActivity(Class<?> cls, GameDetails gameDetails) {
-        Intent intent = new Intent(this, cls);
-        intent.putExtra("GameDetails", gameDetails);
-        startActivity(intent);
-    }
-
     // STATE CALLS
 
     public SpoonyState getState() {
