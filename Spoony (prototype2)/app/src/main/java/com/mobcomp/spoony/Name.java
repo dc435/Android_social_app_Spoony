@@ -2,12 +2,11 @@ package com.mobcomp.spoony;
 
 import androidx.core.content.ContextCompat;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,7 +15,7 @@ public class Name extends GameActivity {
     private int p1Color;
     private int p2Color;
 
-    private Button confirmBtn;
+    private ImageButton confirmBtn;
     private TextView nameEdit;
     private TextView nameView;
     private GameDetails gameDetails;
@@ -38,7 +37,7 @@ public class Name extends GameActivity {
         nameEdit = (TextView) findViewById(R.id.name_input_p1);
         textViewSetup();
 
-        confirmBtn = (Button) findViewById(R.id.next_button);
+        confirmBtn = (ImageButton) findViewById(R.id.next_Button);
         confirmBtn.setOnClickListener((View v) -> onConfirmPressed());
         commonBtnSetup();
     }

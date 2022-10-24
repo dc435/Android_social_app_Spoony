@@ -3,27 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/_state_screen_color">
 
-    <View
-        android:id="@+id/answer_view_background"
+
+    <ImageButton
+        android:id="@+id/back_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/default_background_style"
-        android:nestedScrollingEnabled="false"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#00FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:srcCompat="@drawable/back_button" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/home_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="30dp"
+        android:backgroundTint="#00FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/home_icon" />
@@ -33,7 +34,7 @@
         android:layout_width="271dp"
         android:layout_height="72dp"
         android:layout_gravity="center_horizontal|center"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="150dp"
         android:fontFamily="@font/baloo"
         android:gravity="center"
         android:text="@string/place_flat_string"
@@ -42,19 +43,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/answer_view_background"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
         android:id="@+id/imageView_table"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="300dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_place_flat_title"
-        app:layout_constraintVertical_bias="0.351"
+        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/table" />
 
     <ImageView
@@ -68,17 +70,6 @@
         app:layout_constraintTop_toBottomOf="@+id/textView_place_flat_title"
         app:layout_constraintVertical_bias="0.84"
         app:srcCompat="@drawable/phone_stand" />
-
-    <TextView
-        android:id="@+id/memo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="(sensing flatness)"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_table"
-        app:layout_constraintVertical_bias="0.209" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

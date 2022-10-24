@@ -1,10 +1,6 @@
 package com.mobcomp.spoony;
 
-import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -41,7 +37,7 @@ public class PToP extends SpoonyActivity {
             p1Located = false;
             nameSetup();
         } else {
-            goBackHome();
+            changeActivity(Name.class, gameDetails);
         }
     }
 
