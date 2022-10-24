@@ -150,5 +150,16 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:srcCompat="@drawable/cover_cloud_2" />
 
+    <ImageView
+        android:id="@+id/cat_anim"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/title_blur"
+        app:layout_constraintVertical_bias="0.411" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
