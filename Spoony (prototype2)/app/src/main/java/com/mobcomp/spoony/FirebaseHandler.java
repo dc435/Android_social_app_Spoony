@@ -152,8 +152,7 @@ public class FirebaseHandler {
         try {
             if (firstBoot) {
                 is = c.getAssets().open(ASSETQFILESTR);
-                Log.d("QFILEIN1", c.getAssets().toString() + QFILESTR);int size = is.available();
-
+                Log.d("QFILEIN1", c.getAssets().toString() + QFILESTR);
             } else {
                 is = new FileInputStream(c.getFilesDir() + QFILESTR);
                 Log.d("QFILEIN2", c.getFilesDir() + QFILESTR);

@@ -1,8 +1,5 @@
 package com.mobcomp.spoony;
 
-import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -11,8 +8,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.lang.Math;
 
 public class PToP extends SpoonyActivity {
 

@@ -163,7 +163,7 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
     }
 
     private void enterState(SpoonyState state) {
-        switch (this.state) {
+        switch (state) {
             case TABLE:
                 onEnterTable();
                 break;
@@ -211,12 +211,6 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
             default:
                 updateDefault();
         }
-    }
-
-    // STATE CALLS
-
-    public SpoonyState getState() {
-        return state;
     }
 
     // these methods are provided to child activities to easily change displayed information based on the device state

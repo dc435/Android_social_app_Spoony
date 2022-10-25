@@ -2,18 +2,17 @@ package com.mobcomp.spoony;
 
 import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.os.Bundle;
 import android.os.IBinder;
 import android.view.View;
 import android.widget.ImageButton;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -53,16 +52,8 @@ public class GameActivity extends AppCompatActivity {
 
         dialog.setMessage("Are you sure to exit game?");
         dialog.setCancelable(false);
-        dialog.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                goBackHome();
-            }
-        });
-        dialog.setNegativeButton("NOT REALLY", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {}
-        });
+        dialog.setPositiveButton("YES", (dialogInterface, i) -> goBackHome());
+        dialog.setNegativeButton("NOT REALLY", (dialogInterface, i) -> {});
         dialog.show();
     }
 
@@ -81,8 +72,7 @@ public class GameActivity extends AppCompatActivity {
 
     public GameDetails getGameDetails() {
         Intent intent = getIntent();
-        GameDetails gameDetails = (GameDetails) intent.getSerializableExtra("GameDetails");
-        return gameDetails;
+        return (GameDetails) intent.getSerializableExtra("GameDetails");
     }
 
     public void changeActivity(Class<?> cls, GameDetails gameDetails) {

@@ -1,6 +1,5 @@
 package com.mobcomp.spoony;
 
-import android.content.Context;
 import android.util.Log;
 
 import java.io.Serializable;
@@ -44,10 +43,6 @@ public class GameDetails implements Serializable {
     public void setQuestions(LinkedList<Question> qs) {
         freshQuestions = qs;
     }
-
-    // public void addQuestion(Question question) {
-    // freshQuestions.add(new Question(question));
-    // }
 
     // retrieves a random new question and removes it from the list
     public Question newQuestion() {

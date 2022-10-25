@@ -52,21 +52,18 @@ public class Splash extends AppCompatActivity {
 
         // on below line we are calling handler to run a task
         // for specific time interval
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                // on below line we are
-                // creating a new intent
-                Intent i = new Intent(Splash.this, HomePage.class);
+        new Handler().postDelayed(() -> {
+            // on below line we are
+            // creating a new intent
+            Intent i = new Intent(Splash.this, HomePage.class);
 
-                // on below line we are
-                // starting a new activity.
-                startActivity(i);
+            // on below line we are
+            // starting a new activity.
+            startActivity(i);
 
-                // on the below line we are finishing
-                // our current activity.
-                finish();
-            }
+            // on the below line we are finishing
+            // our current activity.
+            finish();
         }, 3800);
 
     }

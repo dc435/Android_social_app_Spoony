@@ -1,5 +1,6 @@
 package com.mobcomp.spoony;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +28,7 @@ public class WhichQuestion extends SpoonyActivity {
         gd = getGameDetails();
 
         // Fetch and shuffle questions
-        questionSet = new ArrayList<String>();
+        questionSet = new ArrayList<>();
         String q = gd.getCurrentQuestion().text;
         gd.setCurrentString(q);
         questionSet.add(q);
@@ -58,6 +59,7 @@ public class WhichQuestion extends SpoonyActivity {
 
     }
 
+    @SuppressLint("SetTextI18n")
     protected void onEnterLeadView() {
         setContentView(R.layout.text);
         text_txt_center = findViewById(R.id.txt);
@@ -74,7 +76,7 @@ public class WhichQuestion extends SpoonyActivity {
         whichq_btn_OptA = findViewById(R.id.whichq_btn_OptA);
         whichq_btn_OptB = findViewById(R.id.whichq_btn_OptB);
         whichq_btn_OptC = findViewById(R.id.whichq_btn_OptC);
-        View.OnClickListener optionClick = view -> optionClick(view);
+        View.OnClickListener optionClick = this::optionClick;
         whichq_btn_OptA.setOnClickListener(optionClick);
         whichq_btn_OptB.setOnClickListener(optionClick);
         whichq_btn_OptC.setOnClickListener(optionClick);
@@ -86,6 +88,7 @@ public class WhichQuestion extends SpoonyActivity {
 
     }
 
+    @SuppressLint("SetTextI18n")
     protected void onEnterTable() {
         setContentView(R.layout.text);
         text_txt_center = findViewById(R.id.txt);
