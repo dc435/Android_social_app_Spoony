@@ -55,22 +55,20 @@
         android:id="@+id/textView_Name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:fontFamily="@font/amiko_semibold"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/amiko_bold"
         android:text="@string/name_string"
         android:textColor="@color/white"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_p1p2" />
+        app:layout_constraintBottom_toTopOf="@+id/name_input_p1"
+        app:layout_constraintStart_toStartOf="@+id/name_input_p1" />
 
     <EditText
         android:id="@+id/name_input_p1"
-        android:layout_width="223dp"
+        android:layout_width="280dp"
         android:layout_height="54dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="100dp"
         android:autofillHints="name"
         android:background="@drawable/name_entry_style"
         android:ems="20"
@@ -82,13 +80,13 @@
         android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_Name" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_p1p2" />
 
     <Button
         android:id="@+id/next_Button"
         android:layout_width="150dp"
         android:layout_height="50dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="140dp"
         android:background="@drawable/btn_standard"
         android:elegantTextHeight="true"
         android:fontFamily="@font/amiko_bold"
@@ -96,7 +94,7 @@
         android:textAlignment="center"
         android:textAllCaps="false"
         android:textColor="@color/black"
-        android:textSize="24sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"

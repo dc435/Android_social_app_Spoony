@@ -11,7 +11,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <item name="android:windowBackground">@color/_state_screen_color</item> <!--the trasition screen background color setting-->
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/_state_screen_color</item>
         <!-- Customize your theme here. -->
     </style>
 

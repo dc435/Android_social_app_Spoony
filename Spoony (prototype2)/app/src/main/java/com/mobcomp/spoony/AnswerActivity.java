@@ -22,6 +22,9 @@ public class AnswerActivity extends SpoonyActivity {
     private int putDownDisplay;
     private int promptDisplay;
 
+    private ProgressBar progressBarTop;
+    private ProgressBar progressBarBottom;
+
     private ConstraintLayout spinner;
     private GradientDrawable gradient;
 
@@ -79,6 +82,9 @@ public class AnswerActivity extends SpoonyActivity {
         }
 
         gradient.setGradientCenter(0, leadPercent / 100f); // doesn't work on linear gradients >:(
+
+        progressBarTop.setProgress(leadPercent);
+        progressBarBottom.setProgress(leadPercent);
     }
 
     private void displayPrompt() {
@@ -101,6 +107,15 @@ public class AnswerActivity extends SpoonyActivity {
 
         TextView hintText = findViewById(R.id.ansq_txt_hint);
 
+        progressBarTop = findViewById(R.id.ansq_bar_top);
+        progressBarBottom = findViewById(R.id.ansq_bar_bottom);
+
+        // set bar colours
+        progressBarTop.setProgressTintList(ColorStateList.valueOf(gameDetails.getLead().getColour()));
+        progressBarBottom.setProgressTintList(ColorStateList.valueOf(gameDetails.getLead().getColour()));
+        progressBarTop.setBackgroundColor(gameDetails.getFollow().getColour());
+        progressBarBottom.setBackgroundColor(gameDetails.getFollow().getColour());
+
         leadPercentText = findViewById(R.id.answer_lead_pct);
         followPercentText = findViewById(R.id.answer_follow_pct);
 
@@ -108,13 +123,12 @@ public class AnswerActivity extends SpoonyActivity {
         followPercentText.setTextColor(gameDetails.getFollow().getColour());
         hintText.setText(String.format("%s, turn the phone to answer the question you were just asked.", gameDetails.getLead().getName()));
 
-        int[] gradientColours = {gameDetails.getLead().getColour(), gameDetails.getFollow().getColour()};
+        int[] gradientColours = {gameDetails.getFollow().getColour(), gameDetails.getLead().getColour()};
 
         gradient = (GradientDrawable) ResourcesCompat.getDrawable(
                 getResources(), R.drawable.spinner_gradient, getTheme());
 
         if (gradient != null) {
-            gradient.mutate();
             gradient.setColors(gradientColours);
         }
     }

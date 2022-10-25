@@ -39,7 +39,7 @@
         android:id="@+id/ansq_txt_hint_secondary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="45dp"
         android:fontFamily="@font/amiko_semibold"
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
@@ -56,7 +56,7 @@
         android:id="@+id/ansq_txt_hint"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="80dp"
         android:fontFamily="@font/amiko_bold"
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
@@ -198,6 +198,35 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/ansq_bar_top"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="4dp"
+        android:background="@color/p2_color"
+        android:indeterminate="false"
+        android:progress="50"
+        android:progressTint="@color/p1_color"
+        android:scaleY="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ProgressBar
+        android:id="@+id/ansq_bar_bottom"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="0dp"
+        android:layout_height="4dp"
+        android:background="@color/p2_color"
+        android:indeterminate="false"
+        android:progress="50"
+        android:progressTint="@color/p1_color"
+        android:scaleY="2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

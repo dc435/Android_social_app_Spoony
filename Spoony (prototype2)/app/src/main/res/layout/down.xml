@@ -35,13 +35,15 @@
 
     <TextView
         android:id="@+id/txt_place_flat_title"
-        android:layout_width="271dp"
-        android:layout_height="72dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|center"
         android:layout_marginTop="150dp"
-        android:fontFamily="@font/amiko_semibold"
+        android:fontFamily="@font/amiko_bold"
         android:gravity="center"
+        android:padding="30dp"
         android:text="@string/place_flat_string"
+        android:textAlignment="center"
         android:textColor="@color/text_primary"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -51,29 +53,16 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/img_table"
+        android:id="@+id/phone_down_image"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="300dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="104dp"
+        android:padding="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_place_flat_title"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/table" />
-
-    <ImageView
-        android:id="@+id/img_flat_phone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/img_table"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_place_flat_title"
-        app:layout_constraintVertical_bias="0.881"
-        app:srcCompat="@drawable/phone_flat" />
+        app:srcCompat="@drawable/phone_down" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

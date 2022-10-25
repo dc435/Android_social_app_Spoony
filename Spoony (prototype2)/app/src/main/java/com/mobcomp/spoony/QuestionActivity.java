@@ -37,8 +37,6 @@ public class QuestionActivity extends SpoonyActivity {
                 Log.d("GDQ", String.valueOf(questions));
                 // fetch question
                 question = getGameDetails().newQuestion();
-
-                displayGiveToScreen(); // to avoid accidentally showing the question to the wrong player in the first frame
             } else {
                 Log.e("GDQERR", "SOMETHING VERY WRONG HAS HAPPENED WITH ADDING QUESTIONS OH GOD");
             }
@@ -47,6 +45,8 @@ public class QuestionActivity extends SpoonyActivity {
         // safety net
         if (questions.isEmpty()) {
             questions = getBackupQuestions();
+            getGameDetails().setQuestions(questions);
+            question = getGameDetails().newQuestion();
         }
 
         for (Question question : questions) {
@@ -56,6 +56,8 @@ public class QuestionActivity extends SpoonyActivity {
                 break;
             }
         }
+
+        displayGiveToScreen(); // to avoid accidentally showing the question to the wrong player in the first frame
     }
 
     private LinkedList<Question> getBackupQuestions() {

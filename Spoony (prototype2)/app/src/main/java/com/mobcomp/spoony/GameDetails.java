@@ -53,6 +53,8 @@ public class GameDetails implements Serializable {
             populate();
         }
 
+        if (freshQuestions.isEmpty()) return null;
+
         currentQuestion = freshQuestions.pop();
         return currentQuestion;
     }
