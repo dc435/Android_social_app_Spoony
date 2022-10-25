@@ -96,48 +96,46 @@
             android:fontFamily="@font/baloo" android:layout_marginTop="8dp"/>
 
     <Button
-        android:id="@+id/result_btn_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/exit_button"
-        android:fontFamily="@font/amiko_bold"
-        android:text="@string/home_string"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/result_btn_playAgain" />
+            android:id="@+id/result_btn_home"
+            android:layout_width="237dp"
+            android:layout_height="71dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/btn_standard"
+            android:fontFamily="@font/amiko_bold"
+            android:text="@string/home_string"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/result_btn_playAgain" android:layout_marginTop="8dp"/>
 
     <Button
-        android:id="@+id/result_btn_playAgain"
-        android:layout_width="237dp"
-        android:layout_height="71dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="50dp"
-        android:background="@drawable/play_again_effect"
-        android:fontFamily="@font/amiko_bold"
-        android:text="@string/play_again_string"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/result_txt_followScore"
-        app:layout_constraintVertical_bias="0.0" />
+            android:id="@+id/result_btn_playAgain"
+            android:layout_width="237dp"
+            android:layout_height="71dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/btn_standard"
+            android:fontFamily="@font/amiko_bold"
+            android:text="@string/play_again_string"
+            android:textColor="@color/black"
+            android:textSize="24sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/result_txt_followScore"
+    />
 
     <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="50dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="32dp"
             android:layout_marginEnd="50dp"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -155,13 +153,13 @@
                 app:autoSizeTextType="uniform"/>
 
         <TextView
-            android:id="@+id/result_txt_chose"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/amiko_semibold"
-            android:text=" was asked:"
-            android:textColor="@color/white"
-            android:textSize="28sp" />
+                android:id="@+id/result_txt_chose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/amiko_semibold"
+                android:text=" was asked:"
+                android:textColor="@color/white"
+                android:textSize="28sp"/>
     </LinearLayout>
 
     <TextView

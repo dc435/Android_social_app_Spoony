@@ -52,6 +52,8 @@ public class WhichAnswer extends GameActivity {
         // Display scores:
         result_txt_leadScore.setText(gd.getLead().getName() + ": " + gd.getLead().getScore());
         result_txt_followScore.setText(gd.getFollow().getName() + ": " + gd.getFollow().getScore());
+        result_txt_leadScore.setTextColor(gd.getLead().getColour());
+        result_txt_followScore.setTextColor(gd.getFollow().getColour());
 
         // Finalise view build:
         result_btn_home = findViewById(R.id.result_btn_home);
