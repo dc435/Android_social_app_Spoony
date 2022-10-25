@@ -1,8 +1,5 @@
 package com.mobcomp.spoony;
 
-import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
-
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,10 +9,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import java.util.Map;
 
@@ -53,15 +50,11 @@ public class FirebaseActivity extends AppCompatActivity {
             outputTextView.setBackgroundColor(Color.BLACK);
             outputTextView.setTextColor(Color.GREEN);
 
-            // disabled for now to prevent accidentally adding stuff to firestore
             fb.addNewQuestion(input, success -> {
                 if (success) {
-                    outputTextView.setText("SUCCESS");
-                    outputTextView.setBackgroundColor(Color.BLACK);
+                    Toast.makeText(this, "Question added successfully!", Toast.LENGTH_SHORT).show();
                 } else {
-                    outputTextView.setText("ERROR");
-                    outputTextView.setTextColor(Color.RED);
-                    outputTextView.setBackgroundColor(Color.BLACK);
+                    Toast.makeText(this, "Question error!", Toast.LENGTH_SHORT).show();
                 }
             });
         });
