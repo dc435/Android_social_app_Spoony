@@ -105,14 +105,15 @@
         android:id="@+id/txt_library"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginBottom="48dp"
         android:fontFamily="@font/amiko_semibold"
         android:includeFontPadding="false"
         android:text="Add Q"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnLibrary" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnLibrary" />
 
     <ImageView
         android:id="@+id/imageView6"
@@ -126,19 +127,19 @@
         app:layout_constraintVertical_bias="0.411"
         app:srcCompat="@drawable/start_icon" />
 
+
     <ImageButton
         android:id="@+id/btnLibrary"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="31dp"
+        android:layout_height="38dp"
         android:layout_marginStart="40dp"
-        android:layout_marginBottom="40dp"
-        android:backgroundTint="#00FFFFFF"
+        android:layout_marginBottom="48dp"
+        android:background="@drawable/add_q_icon"
+        android:scaleType="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/library_icon" />
-
+        app:layout_constraintHorizontal_bias="0.344"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"

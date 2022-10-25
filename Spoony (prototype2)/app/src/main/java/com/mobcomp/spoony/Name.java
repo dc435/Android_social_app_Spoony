@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,7 +15,7 @@ public class Name extends GameActivity {
     private int p1Color;
     private int p2Color;
 
-    private ImageButton confirmBtn;
+    private Button confirmBtn;
     private TextView nameEdit;
     private TextView nameView;
     private GameDetails gameDetails;
@@ -37,7 +37,7 @@ public class Name extends GameActivity {
         nameEdit = (TextView) findViewById(R.id.name_input_p1);
         textViewSetup();
 
-        confirmBtn = (ImageButton) findViewById(R.id.next_Button);
+        confirmBtn = (Button) findViewById(R.id.next_Button);
         confirmBtn.setOnClickListener((View v) -> onConfirmPressed());
         commonBtnSetup();
     }

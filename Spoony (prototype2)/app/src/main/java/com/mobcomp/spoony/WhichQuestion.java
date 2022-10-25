@@ -80,9 +80,9 @@ public class WhichQuestion extends SpoonyActivity {
         whichq_btn_OptC.setOnClickListener(optionClick);
 
         // Set question text in buttons:
-        whichq_btn_OptA.setText("A. " + questionSet.get(0));
-        whichq_btn_OptB.setText("B. " + questionSet.get(1));
-        whichq_btn_OptC.setText("C. " + questionSet.get(2));
+        whichq_btn_OptA.setText( questionSet.get(0));
+        whichq_btn_OptB.setText( questionSet.get(1));
+        whichq_btn_OptC.setText( questionSet.get(2));
 
     }
 
