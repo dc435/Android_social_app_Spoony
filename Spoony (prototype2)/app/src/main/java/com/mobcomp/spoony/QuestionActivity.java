@@ -52,6 +52,7 @@ public class QuestionActivity extends SpoonyActivity {
         for (Question question : questions) {
             if (question == null) {
                 questions = getBackupQuestions();
+                question = getGameDetails().newQuestion();
                 break;
             }
         }

@@ -27,6 +27,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="32dp"
         android:backgroundTint="#00FFFFFF"
+        android:scaleX="0.75"
+        android:scaleY="0.75"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/back_button" />
@@ -35,12 +37,48 @@
         android:id="@+id/home_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
         android:backgroundTint="#00FFFFFF"
+        android:scaleX="0.75"
+        android:scaleY="0.75"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/home_icon" />
+
+    <TextView
+        android:id="@+id/ansq_txt_hint_secondary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="60dp"
+        android:fontFamily="@font/amiko_semibold"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:text="Can't remember it? Pick me up!"
+        android:textAlignment="center"
+        android:textColor="@color/_eg__anna_color"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/ansq_txt_hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:fontFamily="@font/amiko_bold"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:text="Turn the phone to answer the question you were just asked."
+        android:textAlignment="center"
+        android:textColor="@color/spooner_color"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
         android:id="@+id/ansq_arrow"
@@ -61,6 +99,8 @@
         android:id="@+id/ansq_spinner_background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:adjustViewBounds="false"
+        android:cropToPadding="true"
         android:translationY="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,54 +121,20 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/answer_lead_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/baloo"
-            android:text="TextView"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
             android:id="@+id/answer_lead_pct"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/baloo"
             android:text="TextView"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.07" />
-
-        <TextView
-            android:id="@+id/answer_follow_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/baloo"
-            android:rotation="180"
-            android:text="TextView"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:translationY="5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintVertical_bias="0.03" />
 
         <TextView
             android:id="@+id/answer_follow_pct"
@@ -138,7 +144,7 @@
             android:rotation="180"
             android:text="TextView"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="24sp"
             android:textStyle="bold"
             android:translationY="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -146,7 +152,7 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.93" />
+            app:layout_constraintVertical_bias="0.97" />
 
         <ImageView
             android:id="@+id/answer_spinner_rear"
@@ -154,7 +160,6 @@
             android:layout_height="wrap_content"
             android:scaleX="0.75"
             android:scaleY="0.75"
-            android:translationY="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -166,6 +171,8 @@
             android:id="@+id/answer_spinner_gradient"
             android:layout_width="220dp"
             android:layout_height="220dp"
+            android:scaleX="0.95"
+            android:scaleY="0.95"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -181,13 +188,13 @@
             android:rotation="90"
             android:scaleX="0.6"
             android:scaleY="0.6"
-            android:translationX="-5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/spinner_main_front" />
+            app:srcCompat="@drawable/spinner_top" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageButton
