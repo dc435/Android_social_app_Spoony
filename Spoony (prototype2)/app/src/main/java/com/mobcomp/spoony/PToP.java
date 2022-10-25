@@ -17,6 +17,7 @@ public class PToP extends SpoonyActivity {
 
     private ImageButton confirmBtn;
     private ImageView innerCompass;
+    private ImageView arrowP1;
     private TextView nameView;
 
     private boolean p1Located;
@@ -60,6 +61,7 @@ public class PToP extends SpoonyActivity {
                     deviceOrientation[0],
                     gameDetails.getLead().getDirection());
             innerCompass.setRotation(offset);
+            arrowP1.setRotation(offset);
         }
     }
 
@@ -90,6 +92,7 @@ public class PToP extends SpoonyActivity {
     private void compassSetup() {
         if (currentLayout == POINT_TO_PLR_LAYOUT)
             innerCompass = (ImageView) findViewById(R.id.imageView_compass_inner_circle);
+            arrowP1 = (ImageView) findViewById(R.id.imageView_compass_arrow_p1);
     }
 
     private void onConfirmPressed() {

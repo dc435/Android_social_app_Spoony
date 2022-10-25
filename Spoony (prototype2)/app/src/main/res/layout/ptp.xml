@@ -9,6 +9,23 @@
 
 
     <TextView
+        android:id="@+id/ansq_txt_hint2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp"
+        android:fontFamily="@font/amiko_bold"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:text="Rotate the phone to point to players."
+        android:textAlignment="center"
+        android:textColor="@color/text_primary"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
         android:id="@+id/point_to_p1"
         android:layout_width="173dp"
         android:layout_height="46dp"
@@ -51,34 +68,36 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/answer_spinner_layout"
-        android:layout_width="270dp"
-        android:layout_height="270dp"
+        android:layout_width="300dp"
+        android:layout_height="330dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/entry_name_p1"
         app:layout_constraintVertical_bias="0.0">
 
+
         <ImageView
-            android:id="@+id/imageView_compass_outer_pink"
-            android:layout_width="250dp"
-            android:layout_height="250dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/imageView_compass_arrow_p1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/compass_ptp_back_p1" />
+            app:srcCompat="@drawable/compass_arrow_p1" />
 
         <ImageView
             android:id="@+id/imageView_compass_outer_circle"
             android:layout_width="250dp"
             android:layout_height="250dp"
+            android:layout_marginTop="21dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.494"
+            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/compass_ptp_back" />
 
         <ImageView
@@ -89,56 +108,29 @@
             android:layout_alignTop="@+id/imageView_compass_outer_circle"
             android:layout_alignEnd="@+id/imageView_compass_outer_circle"
             android:layout_alignBottom="@+id/imageView_compass_outer_circle"
+            android:layout_marginTop="56dp"
             app:layout_constraintBottom_toBottomOf="@+id/imageView_compass_outer_circle"
             app:layout_constraintEnd_toEndOf="@+id/imageView_compass_outer_circle"
             app:layout_constraintStart_toStartOf="@+id/imageView_compass_outer_circle"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.80"
-            app:srcCompat="@drawable/compass_ptp" />
+            app:layout_constraintTop_toTopOf="@+id/imageView_compass_arrow_p1"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/compass_ellipse_inner" />
+
+        <ImageButton
+            android:id="@+id/lock_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="28dp"
+            android:background="@drawable/spinner_lock_btn_effect"
+            android:scaleX="0.5"
+            android:scaleY="0.5"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/imageView_compass_outer_circle" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ImageButton
-        android:id="@+id/lock_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
-        android:backgroundTint="#00FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/answer_spinner_layout"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/lock_rectangle_button" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/amiko_bold"
-        android:text="@string/lock_string"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/lock_button"
-        app:layout_constraintEnd_toEndOf="@+id/lock_button"
-        app:layout_constraintHorizontal_bias="0.371"
-        app:layout_constraintStart_toStartOf="@+id/lock_button"
-        app:layout_constraintTop_toTopOf="@+id/lock_button"
-        app:layout_constraintVertical_bias="0.438" />
-
-    <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/lock_button"
-        app:layout_constraintEnd_toEndOf="@+id/lock_button"
-        app:layout_constraintHorizontal_bias="0.266"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
-        app:layout_constraintTop_toTopOf="@+id/lock_button"
-        app:layout_constraintVertical_bias="0.410"
-        app:srcCompat="@drawable/lock_icon" />
 
     <ImageButton
         android:id="@+id/back_btn"
@@ -147,6 +139,8 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="32dp"
         android:backgroundTint="#00FFFFFF"
+        android:scaleX="0.75"
+        android:scaleY="0.75"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/back_button" />
@@ -155,11 +149,15 @@
         android:id="@+id/home_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="30dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
         android:backgroundTint="#00FFFFFF"
+        android:scaleX="0.75"
+        android:scaleY="0.75"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/home_icon" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
