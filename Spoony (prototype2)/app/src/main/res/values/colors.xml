@@ -24,10 +24,10 @@
     <!-- dark mode -->
     <color name="wrong_answer">#2F1010</color>
     <color name="_state_screen_color">#1F1F1F</color>
-    <color name="spooner_color">#ffffff</color>
+    <color name="text_primary">#ffffff</color>
     <color name="name_color">#ffffff</color>
     <color name="p1_color">#F267DF</color>
     <color name="p2_color">#516BC8</color>
 
-    <color name="_eg__anna_color">#d5d2d2</color>
+    <color name="text_secondary">#d5d2d2</color>
 </resources>

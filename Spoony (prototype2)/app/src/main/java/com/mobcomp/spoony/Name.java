@@ -56,7 +56,7 @@ public class Name extends GameActivity {
         } else {
             Animation shake = AnimationUtils.loadAnimation(this, R.anim.anim_refuse_shake);
             confirmBtn.startAnimation(shake);
-            String prompt = "Please enter the name";
+            String prompt = "Please enter a name";
             Toast toast = Toast.makeText(this, prompt, Toast.LENGTH_SHORT);
             toast.show();
         }

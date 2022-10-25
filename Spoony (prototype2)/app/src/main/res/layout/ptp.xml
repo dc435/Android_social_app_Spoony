@@ -20,7 +20,7 @@
         android:fontFamily="@font/baloo"
         android:text="@string/point_to_string"
         android:textAlignment="center"
-        android:textColor="@color/spooner_color"
+        android:textColor="@color/text_primary"
         android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"

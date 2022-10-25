@@ -52,7 +52,7 @@ public class QuestionActivity extends SpoonyActivity {
         for (Question question : questions) {
             if (question == null) {
                 questions = getBackupQuestions();
-                question = getGameDetails().newQuestion();
+                getGameDetails().newQuestion();
                 break;
             }
         }
@@ -94,15 +94,19 @@ public class QuestionActivity extends SpoonyActivity {
     private void displayQuestionScreen() {
         setContentView(questionDisplay);
 
-        Button button = findViewById(R.id.next_button);
+        Button button = findViewById(R.id.askq_next_button);
         button.setOnClickListener(this::lockIn);
         commonBtnSetup();
 
-        TextView introText = findViewById(R.id.textView_question_title);
-        TextView questionText = findViewById(R.id.textView_question_content);
-        introText.setText(String.format("Here's your question, %s. Don't tell %s!",
-                getGameDetails().getLead().getName(),
+        TextView introText = findViewById(R.id.askq_prompt_txt);
+        TextView questionText = findViewById(R.id.askq_question_txt);
+        TextView warningText = findViewById(R.id.askq_no_tell_txt);
+
+        introText.setText(String.format("%s, this is your question:",
+                getGameDetails().getLead().getName()));
+        warningText.setText(String.format("Don't tell %s, and don't forget the question!",
                 getGameDetails().getFollow().getName()));
+
         questionText.setText(question.text);
     }
 
