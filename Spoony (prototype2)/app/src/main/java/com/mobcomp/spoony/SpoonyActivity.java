@@ -18,6 +18,7 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
     private static final float VIEW_DISTANCE = 80.0f; // degrees from player position that counts as being in their 'view'
     private static final int TRANSITION_FRAMES = 3; // the number of frames a new state must maintain before we change to it
     private static final int GAUSSIAN_FILTER_SIZE = 5;
+    private static final float GAUSSIAN_FILTER_WIDTH = 0.2f;
 
     // fake state machine
     private SpoonyState state = SpoonyState.DEFAULT;
@@ -33,7 +34,7 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
     private final float[] rotationMatrix = new float[9];
     private final float[] deviceOrientationRadians = new float[3];
     public float[] deviceOrientation = new float[3];
-    private GaussianAngleFilter xRotationFilter;
+    private GaussianDeltaFilter xRotationFilter;
 
     // player positions
     private float leadPosition = 0.0f;
@@ -44,7 +45,7 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
         super.onCreate(savedInstanceState);
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
-        xRotationFilter = new GaussianAngleFilter(GAUSSIAN_FILTER_SIZE);
+        xRotationFilter = new GaussianDeltaFilter(GAUSSIAN_FILTER_SIZE, GAUSSIAN_FILTER_WIDTH);
 
         // fetch game details
         GameDetails gameDetails = getGameDetails();
