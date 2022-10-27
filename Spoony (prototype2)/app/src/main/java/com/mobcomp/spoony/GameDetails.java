@@ -9,9 +9,7 @@ import java.util.Random;
 
 public class GameDetails implements Serializable {
 
-    private static final int MINQUESTIONLEFT = 3;
     private LinkedList<Question> freshQuestions;
-    private final LinkedList<Question> usedQuestions;
     private Question currentQuestion;
     private String guessedString;
     private String currentString;
@@ -21,11 +19,8 @@ public class GameDetails implements Serializable {
 
     public GameDetails() {
         freshQuestions = new LinkedList<>();
-        usedQuestions = new LinkedList<>();
         lead = null;
         follow = null;
-
-        populate();
     }
 
     public void addPlayer(Player player, boolean isLead) {
@@ -33,11 +28,6 @@ public class GameDetails implements Serializable {
             lead = player;
         else
             follow = player;
-    }
-
-    public void clearPlayers() {
-        lead = null;
-        follow = null;
     }
 
     public void setQuestions(LinkedList<Question> qs) {
@@ -49,12 +39,6 @@ public class GameDetails implements Serializable {
         Collections.shuffle(freshQuestions);
         Log.d("GDQUESTION", String.valueOf(freshQuestions));
 
-        if (freshQuestions.size() < MINQUESTIONLEFT) {
-            populate();
-        }
-
-        if (freshQuestions.isEmpty()) return null;
-
         currentQuestion = freshQuestions.pop();
         return currentQuestion;
     }
@@ -62,30 +46,10 @@ public class GameDetails implements Serializable {
     // retrieves a random new question without removing it from the list
     public Question getQuestionNonDestructive() {
         Random random = new Random();
-        if (freshQuestions.size() == 0)
-            populate();
         return freshQuestions.get(random.nextInt(freshQuestions.size()));
     }
 
-    public void discardQuestion(Question question) {
-        usedQuestions.add(question);
-    }
-
-    private void populate() {
-        // pull from firebase here?
-//        freshQuestions.add(new Question("Who is more like a cat?"));
-//        freshQuestions.add(new Question("How much does each player talk?"));
-//        freshQuestions.add(new Question("Who is more likely to eat a raw onion?"));
-//        freshQuestions.add(new Question("Who is more like their mother?"));
-//        freshQuestions.add(new Question("Who is more like a dog"));
-//        freshQuestions.add(new Question("Who eats more?"));
-    }
-
     public Question getCurrentQuestion() {
-        return currentQuestion;
-    }
-
-    public Question getGuessedQuestion() {
         return currentQuestion;
     }
 

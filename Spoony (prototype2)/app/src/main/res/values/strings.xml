@@ -9,7 +9,7 @@
     <string name="download">Download</string>
     <string name="question_input">Question Input</string>
     <string name="textview">TextView</string>
-    <string name="type_here">type it here</string>
+    <string name="type_here">Enter question...</string>
 
     <string name="ek_img_content">ExportKit Image</string>
     <string name="name_string">Name</string>
