@@ -2,27 +2,26 @@ package com.mobcomp.spoony;
 
 import static com.mobcomp.spoony.Angle.rotationDistanceUnsigned;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
-import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.hardware.SensorEvent;
 
 import android.os.Bundle;
+import android.util.Log;
 
 public class SpoonyActivity extends GameActivity implements SensorEventListener {
 
     private static final int SENSOR_DELAY = SensorManager.SENSOR_DELAY_UI; // 60ms, the interval between sensor reports
     private static final float TABLE_THRESHOLD = -20.f; // y-bearing above which the phone is considered 'on the table'
     private static final float VIEW_DISTANCE = 80.0f; // degrees from player position that counts as being in their 'view'
-    private static final float TRANSITION_FRAMES = 3; // the number of frames a new state must maintain before we change to it
+    private static final int TRANSITION_FRAMES = 3; // the number of frames a new state must maintain before we change to it
+    private static final int GAUSSIAN_FILTER_SIZE = 5;
 
     // fake state machine
     private SpoonyState state = SpoonyState.DEFAULT;
-    private SpoonyState prevState = SpoonyState.DEFAULT; // state must have changed for two frames to register (to avoid jitter)
+    private SpoonyState prevState = SpoonyState.DEFAULT; // state must have changed for several frames to register (to avoid jitter)
     private int framesInState = 0;
 
     // orientation sensors
@@ -34,20 +33,21 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
     private final float[] rotationMatrix = new float[9];
     private final float[] deviceOrientationRadians = new float[3];
     public float[] deviceOrientation = new float[3];
+    private GaussianFilter xRotationFilter;
 
     // player positions
     private float leadPosition = 0.0f;
     private float followPosition = 180.0f;
-
-    private GameDetails gameDetails;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
+        xRotationFilter = new GaussianFilter(GAUSSIAN_FILTER_SIZE);
+
         // fetch game details
-        gameDetails = getGameDetails();
+        GameDetails gameDetails = getGameDetails();
         if (gameDetails == null) gameDetails = new GameDetails();
 
         if (gameDetails.getLead() != null) leadPosition = gameDetails.getLead().getDirection();
@@ -89,6 +89,7 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
             System.arraycopy(sensorEvent.values, 0 , accelReading, 0, accelReading.length);
 
         }
+
         else if (sensorEvent.sensor.getType() == Sensor.TYPE_MAGNETIC_FIELD) {
             // magnetometer update
             System.arraycopy(sensorEvent.values, 0 , magReading, 0, magReading.length);
@@ -96,11 +97,15 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
             // only update on mag change
             SensorManager.getRotationMatrix(rotationMatrix, null, accelReading, magReading); // uses gravity and geo readings to calculate orientation vectors
             SensorManager.getOrientation(rotationMatrix, deviceOrientationRadians); // convert orientation vectors into radians
-            deviceOrientation[0] = (float) Math.toDegrees(deviceOrientationRadians[0]);
+
+            // filter only x-rotation to prevent flicker - it is the only rotation displayed in the UI
+            xRotationFilter.add((float) Math.toDegrees(deviceOrientationRadians[0]));
+
+            deviceOrientation[0] = xRotationFilter.read();
             deviceOrientation[1] = (float) Math.toDegrees(deviceOrientationRadians[1]);
             deviceOrientation[2] = (float) Math.toDegrees(deviceOrientationRadians[2]);
 
-            // TODO: just use radians in state calculation?
+            Log.d("GAUSSIAN", String.format("Raw rotation: %f | Gaussian filtered: %f", Math.toDegrees(deviceOrientationRadians[0]), deviceOrientation[0]));
 
             checkState(deviceOrientation);
             update();
