@@ -106,8 +106,6 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
             deviceOrientation[1] = (float) Math.toDegrees(deviceOrientationRadians[1]);
             deviceOrientation[2] = (float) Math.toDegrees(deviceOrientationRadians[2]);
 
-            Log.d("GAUSSIAN", String.format("Raw rotation: %f | Gaussian filtered: %f", Math.toDegrees(deviceOrientationRadians[0]), deviceOrientation[0]));
-
             checkState(deviceOrientation);
             update();
         }

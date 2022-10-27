@@ -19,6 +19,10 @@ public class WhichQuestion extends SpoonyActivity {
     private Button whichq_btn_OptA;
     private Button whichq_btn_OptB;
     private Button whichq_btn_OptC;
+    private TextView whichq_txt_leadScore;
+    private TextView whichq_txt_followScore;
+    private TextView whichq_txt_leadScoreName;
+    private TextView whichq_txt_followScoreName;
     private ArrayList<String> questionSet;
 
     @Override
@@ -93,6 +97,27 @@ public class WhichQuestion extends SpoonyActivity {
         whichq_btn_OptA.setText( questionSet.get(0));
         whichq_btn_OptB.setText( questionSet.get(1));
         whichq_btn_OptC.setText( questionSet.get(2));
-    }
 
+        // Set answer display
+        whichq_txt_leadScore = findViewById(R.id.whichq_txt_leadScore);
+        whichq_txt_followScore = findViewById(R.id.whichq_txt_followScore);
+        whichq_txt_leadScoreName = findViewById(R.id.whichq_txt_leadScoreName);
+        whichq_txt_followScoreName = findViewById(R.id.whichq_txt_followScoreName);
+
+        int leadPercent;
+
+        if (gd.getLead() == gd.getCurrentQuestion().answer) {
+            leadPercent = gd.getCurrentQuestion().percentage;
+        }
+        else leadPercent = 100 - gd.getCurrentQuestion().percentage;
+
+        whichq_txt_leadScore.setText(String.format("%d%%", leadPercent));
+        whichq_txt_followScore.setText(String.format("%d%%", 100 - leadPercent));
+        whichq_txt_leadScoreName.setText(gd.getLead().getName());
+        whichq_txt_followScoreName.setText(gd.getFollow().getName());
+        whichq_txt_leadScore.setTextColor(gd.getLead().getColour());
+        whichq_txt_followScore.setTextColor(gd.getFollow().getColour());
+        whichq_txt_leadScoreName.setTextColor(gd.getLead().getColour());
+        whichq_txt_followScoreName.setTextColor(gd.getFollow().getColour());
+    }
 }

@@ -34,10 +34,10 @@ public class WhichAnswer extends GameActivity {
         result_txt_question = findViewById(R.id.result_txt_question);
         result_txt_outcome = findViewById(R.id.result_txt_outcome);
         result_txt_qguessed = findViewById(R.id.result_txt_qguessed);
-        result_txt_leadScore = findViewById(R.id.result_txt_leadScore);
-        result_txt_followScore = findViewById(R.id.result_txt_followScore);
-        result_txt_leadScoreName = findViewById(R.id.result_txt_leadScoreName);
-        result_txt_followScoreName = findViewById(R.id.result_txt_followScoreName);
+        result_txt_leadScore = findViewById(R.id.whichq_txt_leadScore);
+        result_txt_followScore = findViewById(R.id.whichq_txt_followScore);
+        result_txt_leadScoreName = findViewById(R.id.whichq_txt_leadScoreName);
+        result_txt_followScoreName = findViewById(R.id.whichq_txt_followScoreName);
         result_btn_home = findViewById(R.id.result_btn_home);
         result_btn_playAgain = findViewById(R.id.result_btn_playAgain);
 

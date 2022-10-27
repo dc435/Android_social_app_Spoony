@@ -88,7 +88,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/result_txt_leadScoreName"
+                android:id="@+id/whichq_txt_leadScoreName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo"
@@ -98,7 +98,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/result_txt_leadScore"
+                android:id="@+id/whichq_txt_leadScore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo"
@@ -117,7 +117,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/result_txt_followScoreName"
+                android:id="@+id/whichq_txt_followScoreName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo"
@@ -127,7 +127,7 @@
                 android:textSize="24sp" />
 
             <TextView
-                android:id="@+id/result_txt_followScore"
+                android:id="@+id/whichq_txt_followScore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/baloo"
