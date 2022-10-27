@@ -80,7 +80,7 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
         sensorManager.unregisterListener(this);
     }
 
-    // this gets called when EITHER sensor changes - do we want to update the values every time?
+    // this gets called when EITHER sensor changes
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
         // check which sensor has been updated

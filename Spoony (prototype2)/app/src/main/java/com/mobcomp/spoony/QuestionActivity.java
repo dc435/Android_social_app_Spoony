@@ -64,12 +64,12 @@ public class QuestionActivity extends SpoonyActivity {
         Log.e("Question List Error", "Question list is null or contains nulls, defaulting to backup questions.");
 
         LinkedList<Question> backupQuestions = new LinkedList<>();
-        backupQuestions.add(new Question(0, "!! Who is more like a cat?"));
-        backupQuestions.add(new Question(0, "!! Who is more like a dog?"));
-        backupQuestions.add(new Question(0, "!! Who is more like a horse?"));
-        backupQuestions.add(new Question(0, "!! Who is more like a cow?"));
-        backupQuestions.add(new Question(0, "!! Who is more like a flea?"));
-        backupQuestions.add(new Question(0, "!! Who is more like a fetid little sewer rat?"));
+        backupQuestions.add(new Question(0, "Who is more like a cat?"));
+        backupQuestions.add(new Question(0, "Who is more like a dog?"));
+        backupQuestions.add(new Question(0, "Who is more like a horse?"));
+        backupQuestions.add(new Question(0, "Who is more like a cow?"));
+        backupQuestions.add(new Question(0, "Who is more like a flea?"));
+        backupQuestions.add(new Question(0, "Who is more like a fetid little sewer rat?"));
         Collections.shuffle(backupQuestions);
         return backupQuestions;
     }

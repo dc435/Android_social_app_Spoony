@@ -16,6 +16,8 @@ public class WhichAnswer extends GameActivity {
     private TextView result_txt_qguessed;
     private TextView result_txt_leadScore;
     private TextView result_txt_followScore;
+    private TextView result_txt_leadScoreName;
+    private TextView result_txt_followScoreName;
     private Button result_btn_home;
     private Button result_btn_playAgain;
 
@@ -34,6 +36,8 @@ public class WhichAnswer extends GameActivity {
         result_txt_qguessed = findViewById(R.id.result_txt_qguessed);
         result_txt_leadScore = findViewById(R.id.result_txt_leadScore);
         result_txt_followScore = findViewById(R.id.result_txt_followScore);
+        result_txt_leadScoreName = findViewById(R.id.result_txt_leadScoreName);
+        result_txt_followScoreName = findViewById(R.id.result_txt_followScoreName);
         result_btn_home = findViewById(R.id.result_btn_home);
         result_btn_playAgain = findViewById(R.id.result_btn_playAgain);
 
@@ -50,10 +54,14 @@ public class WhichAnswer extends GameActivity {
         }
 
         // Display scores:
-        result_txt_leadScore.setText(gd.getLead().getName() + ": " + gd.getLead().getScore());
-        result_txt_followScore.setText(gd.getFollow().getName() + ": " + gd.getFollow().getScore());
+        result_txt_leadScore.setText(Integer.toString(gd.getLead().getScore()));
+        result_txt_followScore.setText(Integer.toString(gd.getFollow().getScore()));
+        result_txt_leadScoreName.setText(gd.getLead().getName());
+        result_txt_followScoreName.setText(gd.getFollow().getName());
         result_txt_leadScore.setTextColor(gd.getLead().getColour());
         result_txt_followScore.setTextColor(gd.getFollow().getColour());
+        result_txt_leadScoreName.setTextColor(gd.getLead().getColour());
+        result_txt_followScoreName.setTextColor(gd.getFollow().getColour());
 
         // Finalise view build:
         result_btn_home = findViewById(R.id.result_btn_home);
