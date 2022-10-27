@@ -58,6 +58,9 @@ public class AngleTest {
     public void normaliseRotationLarge() { assertEquals(45f, Angle.normaliseAngle(765f), 0.1f); }
 
     @Test
+    public void normaliseRotationMedium() { assertEquals(-165f, Angle.normaliseAngle(195f), 0.1f); }
+
+    @Test
     public void normaliseRotationSmall() { assertEquals(70f, Angle.normaliseAngle(70f), 0.1f); }
 
     @Test

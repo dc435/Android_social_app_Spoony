@@ -67,7 +67,15 @@ public class WhichQuestion extends SpoonyActivity {
     }
 
     protected void onEnterFollowView() {
+        displayQuestions();
+    }
 
+    @SuppressLint("SetTextI18n")
+    protected void onEnterTable() {
+        displayQuestions();
+    }
+
+    private void displayQuestions() {
         // Construct view:
         setContentView(R.layout.whichq);
         whichq_txt_leadName = findViewById(R.id.whichq_txt_leadName);
@@ -85,14 +93,6 @@ public class WhichQuestion extends SpoonyActivity {
         whichq_btn_OptA.setText( questionSet.get(0));
         whichq_btn_OptB.setText( questionSet.get(1));
         whichq_btn_OptC.setText( questionSet.get(2));
-
-    }
-
-    @SuppressLint("SetTextI18n")
-    protected void onEnterTable() {
-        setContentView(R.layout.text);
-        text_txt_center = findViewById(R.id.txt);
-        text_txt_center.setText(gd.getFollow().getName() + ", pick me up!");
     }
 
 }
