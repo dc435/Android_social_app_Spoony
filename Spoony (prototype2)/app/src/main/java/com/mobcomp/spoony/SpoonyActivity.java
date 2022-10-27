@@ -33,7 +33,7 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
     private final float[] rotationMatrix = new float[9];
     private final float[] deviceOrientationRadians = new float[3];
     public float[] deviceOrientation = new float[3];
-    private MedianFilter xRotationFilter;
+    private GaussianFilter xRotationFilter;
 
     // player positions
     private float leadPosition = 0.0f;
@@ -44,7 +44,7 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
         super.onCreate(savedInstanceState);
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
-        xRotationFilter = new MedianFilter(GAUSSIAN_FILTER_SIZE);
+        xRotationFilter = new GaussianFilter(GAUSSIAN_FILTER_SIZE);
 
         // fetch game details
         GameDetails gameDetails = getGameDetails();
