@@ -8,7 +8,10 @@ import java.util.ArrayList;
 // on the midpoint of the buffer
 public class GaussianFilter {
 
-    private final float WIDTH = 0.2f; // weierstrass width (t)
+    private final float WIDTH = 0.2f; // weierstrass width (t), determines intensity of smoothing
+    private final float UPPER_BOUND = 180f;
+    private final float LOWER_BOUND = -180f;
+    private final float THRESHOLD = 20f;
     private final int bufferSize;
     private ArrayList<Float> buffer;
 
@@ -36,6 +39,13 @@ public class GaussianFilter {
             result += buffer.get(i) *
                     ((1f / (Math.sqrt(4f * Math.PI * WIDTH))) *
                     Math.pow(Math.E, -1f * ((x * x) / (4f * WIDTH))));
+        }
+
+        // gaussian filter struggles when crossing discontinuous portion of the angle representation
+        // (i.e. as 180 crosses to -180), so we will use raw data for that section
+        if (buffer.get(buffer.size() - 1) - THRESHOLD < LOWER_BOUND ||
+                buffer.get(buffer.size() - 1) + THRESHOLD > UPPER_BOUND) {
+            return buffer.get(buffer.size() - 1);
         }
 
         return result;
