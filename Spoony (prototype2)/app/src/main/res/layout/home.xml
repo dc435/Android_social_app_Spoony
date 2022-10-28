@@ -23,13 +23,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
-        android:layout_marginEnd="56dp"
         android:fontFamily="@font/baloo"
         android:text="@string/app_name"
         android:textColor="@color/text_primary"
         android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/title_blur"
+        app:layout_constraintStart_toStartOf="@+id/title_blur"
         app:layout_constraintTop_toTopOf="@+id/title_blur" />
 
 
@@ -74,14 +74,14 @@
         app:srcCompat="@drawable/home_cloud_3" />
 
     <ImageButton
-        android:id="@+id/btnStart"
+        android:id="@+id/btn_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="104dp"
+        android:layout_marginBottom="124dp"
         android:backgroundTint="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/lock_rectangle_button" />
 
@@ -94,51 +94,56 @@
         android:text="@string/start_string"
         android:textColor="@color/black"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnStart"
-        app:layout_constraintEnd_toEndOf="@+id/btnStart"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_start"
+        app:layout_constraintEnd_toEndOf="@+id/btn_start"
         app:layout_constraintHorizontal_bias="0.36"
-        app:layout_constraintStart_toStartOf="@+id/btnStart"
-        app:layout_constraintTop_toTopOf="@+id/btnStart"
+        app:layout_constraintStart_toStartOf="@+id/btn_start"
+        app:layout_constraintTop_toTopOf="@+id/btn_start"
         app:layout_constraintVertical_bias="0.40" />
 
     <TextView
         android:id="@+id/txt_library"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_marginBottom="48dp"
+        android:layout_width="114dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="4dp"
         android:fontFamily="@font/amiko_semibold"
         android:includeFontPadding="false"
-        android:text="Add Q"
+        android:text="Add your own Questions"
+        android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="11sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnLibrary" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_add_question"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/image_start"
         android:layout_width="20dp"
         android:layout_height="21dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnStart"
-        app:layout_constraintEnd_toEndOf="@+id/btnStart"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_start"
+        app:layout_constraintEnd_toEndOf="@+id/btn_start"
         app:layout_constraintHorizontal_bias="0.755"
-        app:layout_constraintStart_toStartOf="@+id/btnStart"
-        app:layout_constraintTop_toTopOf="@+id/btnStart"
+        app:layout_constraintStart_toStartOf="@+id/btn_start"
+        app:layout_constraintTop_toTopOf="@+id/btn_start"
         app:layout_constraintVertical_bias="0.411"
         app:srcCompat="@drawable/start_icon" />
 
 
     <ImageButton
-        android:id="@+id/btnLibrary"
-        android:layout_width="31dp"
-        android:layout_height="38dp"
+        android:id="@+id/btn_add_question"
+        android:layout_width="33dp"
+        android:layout_height="40dp"
         android:layout_marginStart="40dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="72dp"
         android:background="@drawable/add_q_icon"
         android:scaleType="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.344"
+        app:layout_constraintHorizontal_bias="0.441"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
@@ -151,16 +156,107 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:srcCompat="@drawable/cover_cloud_2" />
 
-    <ImageView
-        android:id="@+id/cat_anim"
-        android:layout_width="160dp"
-        android:layout_height="160dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/eg_question_layout"
+        android:layout_width="314dp"
+        android:layout_height="181dp"
+        android:layout_marginTop="83dp"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/title_blur"
-        app:layout_constraintVertical_bias="0.411" />
+        app:layout_constraintTop_toBottomOf="@+id/title_blur">
+
+        <TextView
+            android:id="@+id/eg_question_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/amiko_semibold"
+            android:text="Who's more cat?"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.166"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.496" />
+
+        <ImageView
+            android:id="@+id/cat_anim"
+            android:layout_width="104dp"
+            android:layout_height="119dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.285" />
+
+        <TextView
+            android:id="@+id/question_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="60dp"
+            android:fontFamily="@font/amiko_bold"
+            android:text="Posed a question ,"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/eg_rotate_layout"
+        android:layout_width="238dp"
+        android:layout_height="177dp"
+        android:layout_marginTop="83dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_blur">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="197dp"
+            android:layout_height="59dp"
+            android:fontFamily="@font/amiko_bold"
+            android:text="Rotate to give your answer !"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/eg_phone_anim"
+            android:layout_width="56dp"
+            android:layout_height="97dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/eg_phone" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/startGame_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="160dp"
+        android:fontFamily="@font/amiko_bold"
+        android:text="Start Spoony"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_blur" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

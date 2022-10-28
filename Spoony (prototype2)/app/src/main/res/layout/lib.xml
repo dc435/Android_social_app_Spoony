@@ -67,7 +67,7 @@
         android:fontFamily="@font/amiko_bold"
         android:text="@string/upload"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/questionTextInputLayout" />
@@ -95,7 +95,7 @@
         android:layout_height="75dp"
         android:layout_marginTop="140dp"
         android:fontFamily="@font/amiko_semibold"
-        android:text="Upload your own Spoony questions!"
+        android:text="Upload your own Spoony questions !"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="26sp"
