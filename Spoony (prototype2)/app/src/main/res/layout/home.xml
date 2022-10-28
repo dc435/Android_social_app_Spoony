@@ -8,30 +8,15 @@
     tools:context=".HomePage">
 
 
-
     <ImageView
-        android:id="@+id/title_blur"
-        android:layout_width="228dp"
-        android:layout_height="156dp"
+        android:id="@+id/app_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/home_title_blur" />
-
-    <TextView
-        android:id="@+id/textView_app_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:fontFamily="@font/baloo"
-        android:text="@string/app_name"
-        android:textColor="@color/text_primary"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/title_blur"
-        app:layout_constraintStart_toStartOf="@+id/title_blur"
-        app:layout_constraintTop_toTopOf="@+id/title_blur" />
-
+        app:srcCompat="@drawable/spoony_app_home_logo" />
 
     <ImageView
         android:id="@+id/imageView2"
@@ -160,12 +145,12 @@
         android:id="@+id/eg_question_layout"
         android:layout_width="314dp"
         android:layout_height="181dp"
-        android:layout_marginTop="83dp"
+        android:layout_marginTop="145dp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.55"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_blur">
+        app:layout_constraintTop_toBottomOf="@+id/app_icon">
 
         <TextView
             android:id="@+id/eg_question_text"
@@ -212,11 +197,11 @@
         android:id="@+id/eg_rotate_layout"
         android:layout_width="238dp"
         android:layout_height="177dp"
-        android:layout_marginTop="83dp"
+        android:layout_marginTop="145dp"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_blur">
+        app:layout_constraintTop_toBottomOf="@+id/app_icon">
 
         <TextView
             android:id="@+id/textView2"
@@ -248,7 +233,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="160dp"
+        android:layout_marginTop="215dp"
         android:fontFamily="@font/amiko_bold"
         android:text="Start Spoony"
         android:textColor="@color/white"
@@ -256,7 +241,7 @@
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_blur" />
+        app:layout_constraintTop_toBottomOf="@+id/app_icon" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,16 +27,16 @@ public class HomePage extends AppCompatActivity {
     ImageView[] clouds;
     ImageView phone;
     TextView startMsg;
+    Animation startMsg_fadein;
+    Animation startMsg_fadeout;
     ConstraintLayout egQuestion;
+    Animation egQuestion_fadein;
+    Animation egQuestion_fadeout;
     ConstraintLayout egRotate;
+    Animation egRotate_fadein;
+    Animation egRotate_fadeout;
     Animation cloudMove1;
     Animation cloudMove2;
-    Animation fadein;
-    Animation fadein2;
-    Animation fadein3;
-    Animation fadeout;
-    Animation fadeout2;
-    Animation fadeout3;
     Animation rotate;
 
     AudioService audioService;
@@ -72,13 +72,21 @@ public class HomePage extends AppCompatActivity {
         catAnimation = (AnimationDrawable) catView.getBackground();
 
 
-        fadein = AnimationUtils.loadAnimation(this, R.anim.anim_fade_in);
-        fadein2 = AnimationUtils.loadAnimation(this, R.anim.anim_fade_in);
-        fadein3 = AnimationUtils.loadAnimation(this, R.anim.anim_fade_in);
-        fadeout = AnimationUtils.loadAnimation(this, R.anim.anim_fade_out);
-        fadeout2 = AnimationUtils.loadAnimation(this, R.anim.anim_fade_out);
-        fadeout3 = AnimationUtils.loadAnimation(this, R.anim.anim_fade_out);
+        startMsg_fadein = AnimationUtils.loadAnimation(this, R.anim.anim_fade_in);
+        egQuestion_fadein = AnimationUtils.loadAnimation(this, R.anim.anim_fade_in);
+        egRotate_fadein = AnimationUtils.loadAnimation(this, R.anim.anim_fade_in);
+
+        startMsg_fadeout = AnimationUtils.loadAnimation(this, R.anim.anim_fade_out);
+        egQuestion_fadeout = AnimationUtils.loadAnimation(this, R.anim.anim_fade_out);
+        egRotate_fadeout = AnimationUtils.loadAnimation(this, R.anim.anim_fade_out);
+
         rotate = AnimationUtils.loadAnimation(this, R.anim.anim_rotate);
+
+        egQuestion = (ConstraintLayout) findViewById(R.id.eg_question_layout);
+        egRotate = (ConstraintLayout) findViewById(R.id.eg_rotate_layout);
+        phone = (ImageView) findViewById(R.id.eg_phone_anim);
+        startMsg = (TextView) findViewById(R.id.startGame_text);
+
         cloudMove1 = AnimationUtils.loadAnimation(this, R.anim.anim_cloud_move1);
         cloudMove2 = AnimationUtils.loadAnimation(this, R.anim.anim_cloud_move2);
         cloudMove1.setRepeatCount(Animation.INFINITE);
@@ -91,13 +99,8 @@ public class HomePage extends AppCompatActivity {
         clouds[3] = (ImageView) findViewById(R.id.imageView3);
         clouds[4] = (ImageView) findViewById(R.id.imageView);
 
-        egQuestion = (ConstraintLayout) findViewById(R.id.eg_question_layout);
-        egRotate = (ConstraintLayout) findViewById(R.id.eg_rotate_layout);
-        phone = (ImageView) findViewById(R.id.eg_phone_anim);
-        startMsg = (TextView) findViewById(R.id.startGame_text);
 
-
-        fadeout.setAnimationListener(new Animation.AnimationListener() {
+        startMsg_fadeout.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
                 // TODO Auto-generated method stub
@@ -109,13 +112,13 @@ public class HomePage extends AppCompatActivity {
             }
             @Override
             public void onAnimationEnd(Animation animation) {
-                fadein.setStartOffset(8000);
-                startMsg.startAnimation(fadein);
+                startMsg_fadein.setStartOffset(8000);
+                startMsg.startAnimation(startMsg_fadein);
 
             }
         });
 
-        fadein.setAnimationListener(new Animation.AnimationListener() {
+        startMsg_fadein.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
                 // TODO Auto-generated method stub
@@ -127,13 +130,13 @@ public class HomePage extends AppCompatActivity {
             }
             @Override
             public void onAnimationEnd(Animation animation) {
-                fadeout.setStartOffset(2000);
-                startMsg.startAnimation(fadeout);
+                startMsg_fadeout.setStartOffset(2000);
+                startMsg.startAnimation(startMsg_fadeout);
             }
         });
 
-        fadein2.setStartOffset(4000);
-        fadeout2.setAnimationListener(new Animation.AnimationListener() {
+        egQuestion_fadein.setStartOffset(4000);
+        egQuestion_fadeout.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
                 // TODO Auto-generated method stub
@@ -146,13 +149,13 @@ public class HomePage extends AppCompatActivity {
             }
             @Override
             public void onAnimationEnd(Animation animation) {
-                fadein2.setStartOffset(8000);
-                egQuestion.startAnimation(fadein2);
+                egQuestion_fadein.setStartOffset(8000);
+                egQuestion.startAnimation(egQuestion_fadein);
 
             }
         });
 
-        fadein2.setAnimationListener(new Animation.AnimationListener() {
+        egQuestion_fadein.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
                 // TODO Auto-generated method stub
@@ -164,13 +167,13 @@ public class HomePage extends AppCompatActivity {
             }
             @Override
             public void onAnimationEnd(Animation animation) {
-                fadeout2.setStartOffset(2000);
-                egQuestion.startAnimation(fadeout2);
+                egQuestion_fadeout.setStartOffset(2000);
+                egQuestion.startAnimation(egQuestion_fadeout);
             }
         });
 
-        fadein3.setStartOffset(8000);
-        fadeout3.setAnimationListener(new Animation.AnimationListener() {
+        egRotate_fadein.setStartOffset(8000);
+        egRotate_fadeout.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
                 // TODO Auto-generated method stub
@@ -182,14 +185,14 @@ public class HomePage extends AppCompatActivity {
             }
             @Override
             public void onAnimationEnd(Animation animation) {
-                fadein3.setStartOffset(8000);
-                egRotate.startAnimation(fadein3);
+                egRotate_fadein.setStartOffset(8000);
+                egRotate.startAnimation(egRotate_fadein);
 
             }
         });
 
 
-        fadein3.setAnimationListener(new Animation.AnimationListener() {
+        egRotate_fadein.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
                 // TODO Auto-generated method stub
@@ -200,8 +203,8 @@ public class HomePage extends AppCompatActivity {
             }
             @Override
             public void onAnimationEnd(Animation animation) {
-                fadeout3.setStartOffset(2000);
-                egRotate.startAnimation(fadeout3);
+                egRotate_fadeout.setStartOffset(2000);
+                egRotate.startAnimation(egRotate_fadeout);
             }
         });
 
@@ -218,9 +221,9 @@ public class HomePage extends AppCompatActivity {
         Intent intent = new Intent(this, AudioService.class);
         bindService(intent, connection, Context.BIND_AUTO_CREATE);
         catAnimation.start();
-        startMsg.startAnimation(fadein);
-        egQuestion.startAnimation(fadein2);
-        egRotate.startAnimation(fadein3);
+        startMsg.startAnimation(startMsg_fadein);
+        egQuestion.startAnimation(egQuestion_fadein);
+        egRotate.startAnimation(egRotate_fadein);
         phone.startAnimation(rotate);
         clouds[0].startAnimation(cloudMove1);
         clouds[1].startAnimation(cloudMove2);
