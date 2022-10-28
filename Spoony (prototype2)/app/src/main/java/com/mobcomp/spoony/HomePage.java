@@ -26,7 +26,8 @@ public class HomePage extends AppCompatActivity {
     AnimationDrawable catAnimation;
     ImageView[] clouds;
     ImageView phone;
-    TextView startMsg;
+    TextView startTxt;
+    TextView spoonyTxt;
     Animation startMsg_fadein;
     Animation startMsg_fadeout;
     ConstraintLayout egQuestion;
@@ -85,7 +86,8 @@ public class HomePage extends AppCompatActivity {
         egQuestion = (ConstraintLayout) findViewById(R.id.eg_question_layout);
         egRotate = (ConstraintLayout) findViewById(R.id.eg_rotate_layout);
         phone = (ImageView) findViewById(R.id.eg_phone_anim);
-        startMsg = (TextView) findViewById(R.id.startGame_text);
+        startTxt = (TextView) findViewById(R.id.start_text);
+        spoonyTxt = (TextView) findViewById(R.id.spoony_text);
 
         cloudMove1 = AnimationUtils.loadAnimation(this, R.anim.anim_cloud_move1);
         cloudMove2 = AnimationUtils.loadAnimation(this, R.anim.anim_cloud_move2);
@@ -113,7 +115,8 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animation animation) {
                 startMsg_fadein.setStartOffset(8000);
-                startMsg.startAnimation(startMsg_fadein);
+                startTxt.startAnimation(startMsg_fadein);
+                spoonyTxt.startAnimation(startMsg_fadein);
 
             }
         });
@@ -131,7 +134,8 @@ public class HomePage extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animation animation) {
                 startMsg_fadeout.setStartOffset(2000);
-                startMsg.startAnimation(startMsg_fadeout);
+                startTxt.startAnimation(startMsg_fadeout);
+                spoonyTxt.startAnimation(startMsg_fadeout);
             }
         });
 
@@ -221,7 +225,8 @@ public class HomePage extends AppCompatActivity {
         Intent intent = new Intent(this, AudioService.class);
         bindService(intent, connection, Context.BIND_AUTO_CREATE);
         catAnimation.start();
-        startMsg.startAnimation(startMsg_fadein);
+        startTxt.startAnimation(startMsg_fadein);
+        spoonyTxt.startAnimation(startMsg_fadein);
         egQuestion.startAnimation(egQuestion_fadein);
         egRotate.startAnimation(egRotate_fadein);
         phone.startAnimation(rotate);
@@ -240,7 +245,8 @@ public class HomePage extends AppCompatActivity {
         for (ImageView v: clouds) {
             v.clearAnimation();
         }
-        startMsg.clearAnimation();
+        startTxt.clearAnimation();
+        spoonyTxt.clearAnimation();
         egQuestion.clearAnimation();
         egRotate.clearAnimation();
         phone.clearAnimation();

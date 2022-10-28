@@ -142,6 +142,51 @@
         app:srcCompat="@drawable/cover_cloud_2" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/startGame_layout"
+        android:layout_width="261dp"
+        android:layout_height="119dp"
+        android:layout_marginTop="180dp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_icon">
+
+        <TextView
+            android:id="@+id/start_text"
+            android:layout_width="80dp"
+            android:layout_height="42dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="35dp"
+            android:fontFamily="@font/amiko_bold"
+            android:text="Start"
+            android:textColor="@color/white"
+            android:textSize="27sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/spoony_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="@font/baloo"
+            android:text="Spoony"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/start_text"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/eg_question_layout"
         android:layout_width="314dp"
         android:layout_height="181dp"
@@ -156,13 +201,12 @@
             android:id="@+id/eg_question_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="12dp"
-            android:fontFamily="@font/amiko_semibold"
+            android:fontFamily="@font/nunito_italic"
             android:text="Who's more cat?"
             android:textColor="@color/white"
             android:textSize="22sp"
-            android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.166"
@@ -174,6 +218,7 @@
             android:id="@+id/cat_anim"
             android:layout_width="104dp"
             android:layout_height="119dp"
+            android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -204,7 +249,7 @@
         app:layout_constraintTop_toBottomOf="@+id/app_icon">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/rotate_text"
             android:layout_width="197dp"
             android:layout_height="59dp"
             android:fontFamily="@font/amiko_bold"
@@ -223,25 +268,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintTop_toBottomOf="@+id/rotate_text"
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/eg_phone" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/startGame_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="215dp"
-        android:fontFamily="@font/amiko_bold"
-        android:text="Start Spoony"
-        android:textColor="@color/white"
-        android:textSize="25sp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/app_icon" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
