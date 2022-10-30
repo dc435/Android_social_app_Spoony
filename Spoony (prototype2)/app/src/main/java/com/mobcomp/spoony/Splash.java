@@ -23,7 +23,7 @@ public class Splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // on below line we are configuring our window to full screen
+        // configure our window to full screen
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
@@ -50,19 +50,13 @@ public class Splash extends AppCompatActivity {
         cloud_white.startAnimation(anim_cloud_white);
         cloud_watercolor.startAnimation(anim_cloud_watercolor);
 
-        // on below line we are calling handler to run a task
-        // for specific time interval
+        // call handler to run a task for specific time interval
         new Handler().postDelayed(() -> {
-            // on below line we are
             // creating a new intent
             Intent i = new Intent(Splash.this, HomePage.class);
-
-            // on below line we are
-            // starting a new activity.
             startActivity(i);
 
-            // on the below line we are finishing
-            // our current activity.
+            // finish our current activity.
             finish();
         }, 3800);
 

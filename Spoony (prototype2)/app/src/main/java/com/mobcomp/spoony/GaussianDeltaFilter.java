@@ -18,6 +18,10 @@ public class GaussianDeltaFilter {
         deltas = new ArrayList<>();
     }
 
+    /**
+     * Adds a datapoint to the filter buffer, freeing space for it if the buffer is full.
+     * @param x the value to add
+     */
     public void add(float x) {
         if (buffer.size() >= bufferSize) {
             buffer.remove(0);
@@ -26,6 +30,14 @@ public class GaussianDeltaFilter {
         buffer.add(x);
     }
 
+    /**
+     * Reads the current smoothed value from the filter. The filter uses the differences of the values
+     * from the midpoint (i.e. the value in the centre of the buffer) so that it can seamlessly cross
+     * the discontinuous portion of the angle data stream (when the device orientation crosses from -180
+     * to 180). The filter calculates the smoothed value using a gaussian curve centred at the midpoint
+     * of the buffer.
+     * @return the smoothed value
+     */
     public float read() {
         // use midpoint as centre of gaussian distribution
         int midpoint = (buffer.size() - 1) / 2;

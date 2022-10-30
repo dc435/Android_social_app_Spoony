@@ -30,8 +30,7 @@ public class FirebaseHandler {
     private final CollectionReference qcdb;
     private Map<String, Object> qCountDoc;
     private LinkedList<Question> multiQDoc;
-//     TODO: TBD if necessary
-//    private Map<String, Object> fullQDoc;
+
     private int numQuestion;
     private java.util.Date lastUpdatedTime;
     private boolean firstBoot;
@@ -41,11 +40,6 @@ public class FirebaseHandler {
     }
 
     public FirebaseHandler() {
-        // disable firestore caching by default
-//        FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
-//                .setPersistenceEnabled(false)
-//                .build();
-//        db.setFirestoreSettings(settings);
         qdb = db.collection("questions");
         qcdb = db.collection("questionCount");
         qCountDoc = null;
@@ -91,7 +85,6 @@ public class FirebaseHandler {
 
     // return a mapping of multiple questions
     // key: id, val: question string
-    @SuppressWarnings (value="unchecked")
     public void updateQuestions(String questionJSON, DocumentCallback documentCallback) {
         AtomicReference<Boolean> successFlag = new AtomicReference<>(false);
         multiQDoc = new LinkedList<>();

@@ -111,6 +111,10 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
         }
     }
 
+    /**
+     * Determines the current state of the device based on its orientation
+     * @param orientation the device orientation to derive the state from
+     */
     private void checkState(float[] orientation) {
 
         // phone is within table surface rotation limit
@@ -166,6 +170,10 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
         enterState(state);
     }
 
+    /**
+     * Changes state, triggering entry methods
+     * @param state the state to enter
+     */
     private void enterState(SpoonyState state) {
         switch (state) {
             case TABLE:
@@ -182,6 +190,10 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
         }
     }
 
+    /**
+     * Exits state, triggering exit methods
+     * @param state the state to exit
+     */
     private void exitState(SpoonyState state) {
         switch (state) {
             case TABLE:
@@ -198,6 +210,9 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
         }
     }
 
+    /**
+     * Called every time the magnetometer reading is updated, providing an update loop to child activities
+     */
     private void update() {
 
         updateAlways();

@@ -87,6 +87,7 @@ public class AnswerActivity extends SpoonyActivity {
         progressBarBottom.setProgress(leadPercent);
     }
 
+    // displays a prompt reminding the player of the question and explaining how to answer it
     private void displayPrompt() {
         setContentView(promptDisplay);
 
@@ -97,6 +98,7 @@ public class AnswerActivity extends SpoonyActivity {
         questionText.setText(gameDetails.getCurrentQuestion().text);
     }
 
+    // displays spinner that points to both players, allowing the lead player to answer the question by turning the phone
     private void displaySpinnerScreen() {
         setContentView(answerDisplay);
 

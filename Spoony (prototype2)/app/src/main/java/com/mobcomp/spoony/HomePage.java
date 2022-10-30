@@ -104,14 +104,11 @@ public class HomePage extends AppCompatActivity {
 
         startMsg_fadeout.setAnimationListener(new Animation.AnimationListener() {
             @Override
-            public void onAnimationStart(Animation animation) {
-                // TODO Auto-generated method stub
+            public void onAnimationStart(Animation animation) {}
 
-            }
             @Override
-            public void onAnimationRepeat(Animation animation) {
-                // TODO Auto-generated method stub
-            }
+            public void onAnimationRepeat(Animation animation) {}
+
             @Override
             public void onAnimationEnd(Animation animation) {
                 startMsg_fadein.setStartOffset(8000);
@@ -123,14 +120,11 @@ public class HomePage extends AppCompatActivity {
 
         startMsg_fadein.setAnimationListener(new Animation.AnimationListener() {
             @Override
-            public void onAnimationStart(Animation animation) {
-                // TODO Auto-generated method stub
+            public void onAnimationStart(Animation animation) {}
 
-            }
             @Override
-            public void onAnimationRepeat(Animation animation) {
-                // TODO Auto-generated method stub
-            }
+            public void onAnimationRepeat(Animation animation) {}
+
             @Override
             public void onAnimationEnd(Animation animation) {
                 startMsg_fadeout.setStartOffset(2000);
@@ -142,15 +136,11 @@ public class HomePage extends AppCompatActivity {
         egQuestion_fadein.setStartOffset(4000);
         egQuestion_fadeout.setAnimationListener(new Animation.AnimationListener() {
             @Override
-            public void onAnimationStart(Animation animation) {
-                // TODO Auto-generated method stub
+            public void onAnimationStart(Animation animation) {}
 
-
-            }
             @Override
-            public void onAnimationRepeat(Animation animation) {
-                // TODO Auto-generated method stub
-            }
+            public void onAnimationRepeat(Animation animation) {}
+
             @Override
             public void onAnimationEnd(Animation animation) {
                 egQuestion_fadein.setStartOffset(8000);
@@ -161,14 +151,11 @@ public class HomePage extends AppCompatActivity {
 
         egQuestion_fadein.setAnimationListener(new Animation.AnimationListener() {
             @Override
-            public void onAnimationStart(Animation animation) {
-                // TODO Auto-generated method stub
+            public void onAnimationStart(Animation animation) {}
 
-            }
             @Override
-            public void onAnimationRepeat(Animation animation) {
-                // TODO Auto-generated method stub
-            }
+            public void onAnimationRepeat(Animation animation) {}
+
             @Override
             public void onAnimationEnd(Animation animation) {
                 egQuestion_fadeout.setStartOffset(2000);
@@ -179,14 +166,11 @@ public class HomePage extends AppCompatActivity {
         egRotate_fadein.setStartOffset(8000);
         egRotate_fadeout.setAnimationListener(new Animation.AnimationListener() {
             @Override
-            public void onAnimationStart(Animation animation) {
-                // TODO Auto-generated method stub
+            public void onAnimationStart(Animation animation) {}
 
-            }
             @Override
-            public void onAnimationRepeat(Animation animation) {
-                // TODO Auto-generated method stub
-            }
+            public void onAnimationRepeat(Animation animation) {}
+
             @Override
             public void onAnimationEnd(Animation animation) {
                 egRotate_fadein.setStartOffset(8000);
@@ -198,23 +182,17 @@ public class HomePage extends AppCompatActivity {
 
         egRotate_fadein.setAnimationListener(new Animation.AnimationListener() {
             @Override
-            public void onAnimationStart(Animation animation) {
-                // TODO Auto-generated method stub
-            }
+            public void onAnimationStart(Animation animation) {}
+
             @Override
-            public void onAnimationRepeat(Animation animation) {
-                // TODO Auto-generated method stub
-            }
+            public void onAnimationRepeat(Animation animation) {}
+
             @Override
             public void onAnimationEnd(Animation animation) {
                 egRotate_fadeout.setStartOffset(2000);
                 egRotate.startAnimation(egRotate_fadeout);
             }
         });
-
-
-
-
 
         gd = new GameDetails();
     }
