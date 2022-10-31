@@ -17,6 +17,11 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+/**
+ * This activity define the homepage when open up the app.
+ * Including animations in the page and including two buttons that one lead to
+ * trigger start playing and one lead to the question adding page.
+ */
 public class HomePage extends AppCompatActivity {
 
     ImageButton start_button;
@@ -44,6 +49,9 @@ public class HomePage extends AppCompatActivity {
     AudioService audioService;
     ServiceConnection connection = new ServiceConnection() {
 
+        /**
+         * define to start playing bgm once open up the app
+         */
         @Override
         public void onServiceConnected(ComponentName className, IBinder service) {
             AudioService.AudioBinder binder = (AudioService.AudioBinder) service;
@@ -56,6 +64,9 @@ public class HomePage extends AppCompatActivity {
         }
     };
 
+    /**
+     * define the start button and add question button that lead to other activities
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -69,8 +80,6 @@ public class HomePage extends AppCompatActivity {
         start_button.setOnClickListener(this::jumpToStart);
         firebase_button.setOnClickListener(this::jumpToFirebase);
 
-
-
         gd = new GameDetails();
     }
 
@@ -82,6 +91,9 @@ public class HomePage extends AppCompatActivity {
 
     }
 
+    /**
+     * define all animations on homepage
+     */
     @Override
     protected void onResume() {
         super.onResume();
@@ -118,7 +130,7 @@ public class HomePage extends AppCompatActivity {
 
 
 
-
+        // Animations on the three tutorial messages on the home screen
         startMsg_fadeout.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {}
@@ -211,6 +223,8 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
+
+        // calling all animations to start
         catAnimation.start();
         startTxt.startAnimation(startMsg_fadein);
         start_btn_bkg.startAnimation(blink);
@@ -221,6 +235,9 @@ public class HomePage extends AppCompatActivity {
         shadow.startAnimation(moveLeftRight);
     }
 
+    /**
+     * define pausing all animations once changing to activities other than home activity
+     */
     @Override
     protected void onPause() {
         super.onPause();
@@ -240,6 +257,10 @@ public class HomePage extends AppCompatActivity {
         unbindService(connection);
     }
 
+
+    /**
+     * define what start button does
+     */
     public void jumpToStart(View view) {
         audioService.startGame();
         Intent intent = new Intent(this, Name.class);
@@ -247,7 +268,11 @@ public class HomePage extends AppCompatActivity {
         startActivity(intent);
     }
 
+    /**
+     * define what add question button does
+     */
     public void jumpToFirebase(View view) {
+
         Intent intent = new Intent(this, FirebaseActivity.class);
         startActivity(intent);
     }
