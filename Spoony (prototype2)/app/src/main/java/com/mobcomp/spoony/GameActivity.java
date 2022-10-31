@@ -50,7 +50,7 @@ public class GameActivity extends AppCompatActivity {
     protected void showHomeDialog() {
         AlertDialog.Builder dialog = new AlertDialog.Builder(this);
 
-        dialog.setMessage("Are you sure to exit game?");
+        dialog.setMessage("Are you sure you want to exit the game?");
         dialog.setCancelable(false);
         dialog.setPositiveButton("YES", (dialogInterface, i) -> goBackHome());
         dialog.setNegativeButton("NOT REALLY", (dialogInterface, i) -> {});

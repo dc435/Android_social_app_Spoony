@@ -17,8 +17,8 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
     private static final float TABLE_THRESHOLD = -20.f; // y-bearing above which the phone is considered 'on the table'
     private static final float VIEW_DISTANCE = 80.0f; // degrees from player position that counts as being in their 'view'
     private static final int TRANSITION_FRAMES = 3; // the number of frames a new state must maintain before we change to it
-    private static final int GAUSSIAN_FILTER_SIZE = 5;
-    private static final float GAUSSIAN_FILTER_WIDTH = 0.2f;
+    private static final int GAUSSIAN_FILTER_SIZE = 7;
+    private static final float GAUSSIAN_FILTER_WIDTH = 2f;
 
     // fake state machine
     private SpoonyState state = SpoonyState.DEFAULT;
