@@ -19,6 +19,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import java.util.Map;
 
+/**
+ * This activity defines the page where users uplaod their own questions to the database
+ */
 @SuppressWarnings("ALL")
 public class FirebaseActivity extends AppCompatActivity {
 

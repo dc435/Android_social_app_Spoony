@@ -12,6 +12,10 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+/**
+ * This activity defines the page where the player can answer the question quantitatively
+ * by rotating the phone and play with compass
+ */
 public class AnswerActivity extends SpoonyActivity {
 
     private GameDetails gameDetails;

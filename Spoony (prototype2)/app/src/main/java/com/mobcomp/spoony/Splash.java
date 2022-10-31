@@ -10,6 +10,10 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * This activity define the welcome page (with animation) when entering
+ * the app from the outside
+ */
 public class Splash extends AppCompatActivity {
 
     ImageView shadow;

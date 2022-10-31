@@ -7,6 +7,9 @@ import android.widget.TextView;
 
 import android.os.Bundle;
 
+/**
+ * This activity defines the page that prompts the final answer and scoreboard
+ */
 public class WhichAnswer extends GameActivity {
 
     private GameDetails gd;

@@ -7,6 +7,10 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.Random;
 
+/**
+ * This class records player info and questions. It is carried by intent
+ * and passed between activities.
+ */
 public class GameDetails implements Serializable {
 
     private LinkedList<Question> freshQuestions;

@@ -11,6 +11,9 @@ import android.os.Bundle;
 import java.util.ArrayList;
 import java.util.Collections;
 
+/**
+ * This activity define the page that prompt 3 options for player to guess
+ */
 public class WhichQuestion extends SpoonyActivity {
 
     private GameDetails gd;

@@ -9,6 +9,10 @@ import android.widget.TextView;
 import java.util.Collections;
 import java.util.LinkedList;
 
+/**
+ * This activity defines the page where the player was first shown the target question
+ * before he/she can answer with compass
+ */
 public class QuestionActivity extends SpoonyActivity {
 
     private int questionDisplay;

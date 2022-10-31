@@ -10,6 +10,11 @@ import android.hardware.SensorEvent;
 
 import android.os.Bundle;
 
+/**
+ * This class is the framework of game logic, which follows the state machine model. The methods,
+ * which handle the interactions with sensors, are also defined here. The activities need to change
+ * prompt or response according to phone position (on the table or hand) will extend this class.
+ */
 public class SpoonyActivity extends GameActivity implements SensorEventListener {
 
     private static final int SENSOR_DELAY = SensorManager.SENSOR_DELAY_UI; // 60ms, the interval between sensor reports
