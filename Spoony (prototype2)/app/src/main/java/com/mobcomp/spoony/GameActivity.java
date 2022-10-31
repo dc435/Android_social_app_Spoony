@@ -65,9 +65,14 @@ public class GameActivity extends AppCompatActivity {
 
     protected void commonBtnSetup() {
         homeBtn = (ImageButton) findViewById(R.id.home_btn);
-        homeBtn.setOnClickListener((View v) -> showHomeDialog());
+        if (homeBtn != null) {
+            homeBtn.setOnClickListener((View v) -> showHomeDialog());
+        }
+
         backBtn = (ImageButton) findViewById(R.id.back_btn);
-        backBtn.setOnClickListener((View v) -> onBackPressed());
+        if (backBtn != null) {
+            backBtn.setOnClickListener((View v) -> onBackPressed());
+        }
     }
 
     public GameDetails getGameDetails() {

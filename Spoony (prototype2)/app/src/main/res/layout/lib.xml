@@ -40,7 +40,7 @@
         android:layout_marginStart="66dp"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="66dp"
-        android:textColorHint="@color/white"
+        android:textColorHint="@color/text_primary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,7 +53,7 @@
             android:backgroundTint="@color/white"
             android:fontFamily="@font/baloo"
             android:hint="@string/type_here"
-            android:textColor="@color/white"
+            android:textColor="@color/text_primary"
             tools:ignore="TextContrastCheck" />
     </com.google.android.material.textfield.TextInputLayout>
 

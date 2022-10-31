@@ -15,23 +15,23 @@
         android:textAlignment="center"
         android:textColor="@color/text_secondary"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/prompt_guide_txt" />
 
     <TextView
         android:id="@+id/prompt_question_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/amiko_semibold"
         android:paddingLeft="40dp"
         android:paddingRight="40dp"
         android:text="QUESTION"
         android:textAlignment="center"
-        android:textColor="@color/text_primary"
+        android:textColor="@color/text_secondary"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/prompt_name_txt" />
 
@@ -43,12 +43,12 @@
         android:padding="40dp"
         android:text="Put the phone down to answer the question."
         android:textAlignment="center"
-        android:textColor="@color/text_secondary"
+        android:textColor="@color/text_primary"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintVertical_bias="0.25" />
 </androidx.constraintlayout.widget.ConstraintLayout>

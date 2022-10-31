@@ -69,6 +69,23 @@ public class HomePage extends AppCompatActivity {
         start_button.setOnClickListener(this::jumpToStart);
         firebase_button.setOnClickListener(this::jumpToFirebase);
 
+
+
+        gd = new GameDetails();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Intent intent = new Intent(this, AudioService.class);
+        bindService(intent, connection, Context.BIND_AUTO_CREATE);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
         ImageView catView = (ImageView) findViewById(R.id.cat_anim);
         catView.setBackgroundResource(R.drawable.cat_animation);
         catAnimation = (AnimationDrawable) catView.getBackground();
@@ -194,20 +211,6 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
-        gd = new GameDetails();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Intent intent = new Intent(this, AudioService.class);
-        bindService(intent, connection, Context.BIND_AUTO_CREATE);
-
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
         catAnimation.start();
         startTxt.startAnimation(startMsg_fadein);
         start_btn_bkg.startAnimation(blink);

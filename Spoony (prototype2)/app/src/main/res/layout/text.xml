@@ -14,7 +14,7 @@
         android:id="@+id/phone_upright_image"
         android:layout_width="400dp"
         android:layout_height="400dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="80dp"
         android:layout_marginEnd="-54dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -22,38 +22,12 @@
         app:layout_constraintTop_toBottomOf="@+id/txt"
         app:srcCompat="@drawable/phone_upright" />
 
-    <ImageButton
-        android:id="@+id/back_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="32dp"
-        android:backgroundTint="#00FFFFFF"
-        android:scaleX="0.75"
-        android:scaleY="0.75"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/back_button" />
-
-    <ImageButton
-        android:id="@+id/home_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="25dp"
-        android:backgroundTint="#00FFFFFF"
-        android:scaleX="0.75"
-        android:scaleY="0.75"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/home_icon" />
-
     <TextView
         android:id="@+id/txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal|center"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="60dp"
         android:fontFamily="@font/amiko_bold"
         android:gravity="center"
         android:padding="30dp"
