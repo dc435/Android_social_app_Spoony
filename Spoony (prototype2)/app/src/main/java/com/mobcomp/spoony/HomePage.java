@@ -37,8 +37,7 @@ public class HomePage extends AppCompatActivity {
     ConstraintLayout egRotate;
     Animation egRotate_fadein;
     Animation egRotate_fadeout;
-    Animation cloudMove1;
-    Animation cloudMove2;
+    Animation moveLeftRight;
     Animation rotate;
     Animation blink;
 
@@ -92,14 +91,14 @@ public class HomePage extends AppCompatActivity {
         startTxt = (TextView) findViewById(R.id.start_text);
         spoonyTxt = (TextView) findViewById(R.id.spoony_text);
 
-        cloudMove1 = AnimationUtils.loadAnimation(this, R.anim.anim_cloud_move1);
-        cloudMove2 = AnimationUtils.loadAnimation(this, R.anim.anim_cloud_move2);
-        cloudMove1.setRepeatCount(Animation.INFINITE);
-        cloudMove2.setRepeatCount(Animation.INFINITE);
+
+        moveLeftRight = AnimationUtils.loadAnimation(this, R.anim.anim_move_leftright);
+        moveLeftRight.setRepeatCount(Animation.INFINITE);
 
         shadow = (ImageView) findViewById(R.id.splash_black_circle);
 
         start_btn_bkg = (ImageView) findViewById(R.id.start_btn_bkg);
+
 
 
 
@@ -203,6 +202,12 @@ public class HomePage extends AppCompatActivity {
         super.onStart();
         Intent intent = new Intent(this, AudioService.class);
         bindService(intent, connection, Context.BIND_AUTO_CREATE);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         catAnimation.start();
         startTxt.startAnimation(startMsg_fadein);
         start_btn_bkg.startAnimation(blink);
@@ -210,13 +215,12 @@ public class HomePage extends AppCompatActivity {
         egQuestion.startAnimation(egQuestion_fadein);
         egRotate.startAnimation(egRotate_fadein);
         phone.startAnimation(rotate);
-        shadow.startAnimation(cloudMove1);
+        shadow.startAnimation(moveLeftRight);
     }
 
     @Override
-    protected void onStop() {
-        super.onStop();
-        unbindService(connection);
+    protected void onPause() {
+        super.onPause();
         catAnimation.stop();
         shadow.clearAnimation();
         startTxt.clearAnimation();
@@ -225,6 +229,12 @@ public class HomePage extends AppCompatActivity {
         egQuestion.clearAnimation();
         egRotate.clearAnimation();
         phone.clearAnimation();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unbindService(connection);
     }
 
     public void jumpToStart(View view) {

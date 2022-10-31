@@ -21,50 +21,60 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" /> -->
 
-    <ImageView
-        android:id="@+id/splash_gradient_circle"
-        android:layout_width="400dp"
-        android:layout_height="430dp"
-        android:layout_marginBottom="212dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/home_bkg_circle_gradient" />
+        app:layout_constraintVertical_bias="0.35">
 
-    <ImageView
-        android:id="@+id/splash_black_circle"
-        android:layout_width="417dp"
-        android:layout_height="430dp"
-        android:layout_marginBottom="212dp"
-        android:background="@drawable/home_bkg_cicle_clack"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        <ImageView
+            android:id="@+id/splash_gradient_circle"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/circle_gradient" />
 
-    <ImageView
-        android:id="@+id/splash_app_icon"
-        android:layout_width="130dp"
-        android:layout_height="130dp"
-        app:layout_constraintBottom_toBottomOf="@+id/shadow_circular"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/shadow_circular"
-        app:srcCompat="@drawable/spoony_menu_icon" />
+        <ImageView
+            android:id="@+id/splash_black_circle"
+            android:layout_width="310dp"
+            android:layout_height="310dp"
+            android:background="@drawable/circle_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/shadow_circular"
-        android:layout_width="280dp"
-        android:layout_height="280dp"
-        android:background="@drawable/shadow_circular"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.37" />
+        <ImageView
+            android:id="@+id/shadow_circular"
+            android:layout_width="280dp"
+            android:layout_height="280dp"
+            android:background="@drawable/shadow_circular"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/splash_app_icon"
+            android:layout_width="130dp"
+            android:layout_height="130dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/spoony_menu_icon" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!--
     <ImageView

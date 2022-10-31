@@ -12,8 +12,6 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import org.checkerframework.checker.units.qual.C;
-
 public class AnswerActivity extends SpoonyActivity {
 
     private GameDetails gameDetails;
@@ -128,7 +126,7 @@ public class AnswerActivity extends SpoonyActivity {
         int[] gradientColours = {gameDetails.getFollow().getColour(), gameDetails.getLead().getColour()};
 
         gradient = (GradientDrawable) ResourcesCompat.getDrawable(
-                getResources(), R.drawable.spinner_gradient, getTheme());
+                getResources(), R.drawable.circle_gradient, getTheme());
 
         if (gradient != null) {
             gradient.setColors(gradientColours);

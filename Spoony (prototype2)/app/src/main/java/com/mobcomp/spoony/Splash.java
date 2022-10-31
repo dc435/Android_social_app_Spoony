@@ -59,7 +59,7 @@ public class Splash extends AppCompatActivity {
 
             // finish our current activity.
             finish();
-        }, 3500);
+        }, 2500);
 
     }
 }

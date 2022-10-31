@@ -8,45 +8,59 @@
     tools:context=".HomePage">
 
 
-    <ImageView
-        android:id="@+id/app_icon"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginTop="48dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="175dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/spoony_menu_icon" />
+        app:layout_constraintVertical_bias="0.0">
 
+        <ImageView
+            android:id="@+id/splash_gradient_circle"
+            android:layout_width="170dp"
+            android:layout_height="170dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/circle_gradient" />
 
-    <ImageView
-        android:id="@+id/splash_gradient_circle"
-        android:layout_width="400dp"
-        android:layout_height="430dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/app_icon"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/home_bkg_circle_gradient" />
+        <ImageView
+            android:id="@+id/splash_black_circle"
+            android:layout_width="174dp"
+            android:layout_height="174dp"
+            android:backgroundTint="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/circle_background" />
 
-    <ImageView
-        android:id="@+id/splash_black_circle"
-        android:layout_width="415dp"
-        android:layout_height="430dp"
-        android:layout_marginEnd="4dp"
-        android:backgroundTint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/app_icon"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/home_bkg_cicle_clack" />
+        <ImageView
+            android:id="@+id/app_icon"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/spoony_menu_icon" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <ImageView
         android:id="@+id/start_btn_bkg"
         android:layout_width="175dp"
         android:layout_height="62dp"
-        android:layout_marginBottom="124dp"
+        android:layout_marginBottom="130dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +97,7 @@
         android:layout_width="116dp"
         android:layout_height="28dp"
         android:layout_marginTop="6dp"
-        android:layout_marginBottom="4dp"
+        android:layout_marginBottom="15dp"
         android:fontFamily="@font/amiko_semibold"
         android:includeFontPadding="false"
         android:text="Add your own questions!"
@@ -127,7 +141,7 @@
         android:id="@+id/startGame_layout"
         android:layout_width="261dp"
         android:layout_height="119dp"
-        android:layout_marginBottom="140dp"
+        android:layout_marginBottom="80dp"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/btn_start"
         app:layout_constraintEnd_toEndOf="parent"
@@ -171,7 +185,7 @@
         android:id="@+id/eg_question_layout"
         android:layout_width="314dp"
         android:layout_height="181dp"
-        android:layout_marginBottom="90dp"
+        android:layout_marginBottom="30dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/btn_start"
         app:layout_constraintEnd_toEndOf="parent"
@@ -189,7 +203,7 @@
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.166"
+            app:layout_constraintHorizontal_bias="0.08"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.496" />
@@ -222,7 +236,7 @@
         android:id="@+id/eg_rotate_layout"
         android:layout_width="238dp"
         android:layout_height="177dp"
-        android:layout_marginBottom="90dp"
+        android:layout_marginBottom="30dp"
         android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/btn_start"
         app:layout_constraintEnd_toEndOf="parent"

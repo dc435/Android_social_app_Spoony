@@ -2,7 +2,7 @@
     android:fillAfter="true" >
 
     <scale
-        android:duration="1200"
+        android:duration="600"
         android:fromXScale="1.0"
         android:fromYScale="1.0"
         android:pivotX="50%"
