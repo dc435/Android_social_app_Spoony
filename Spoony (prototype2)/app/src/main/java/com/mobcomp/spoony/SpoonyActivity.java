@@ -9,7 +9,6 @@ import android.hardware.SensorManager;
 import android.hardware.SensorEvent;
 
 import android.os.Bundle;
-import android.util.Log;
 
 public class SpoonyActivity extends GameActivity implements SensorEventListener {
 
@@ -34,7 +33,7 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
     private final float[] rotationMatrix = new float[9];
     private final float[] deviceOrientationRadians = new float[3];
     public float[] deviceOrientation = new float[3];
-    private GaussianDeltaFilter xRotationFilter;
+    private GaussianMedianDeltaFilter xRotationFilter;
 
     // player positions
     private float leadPosition = 0.0f;
@@ -45,7 +44,7 @@ public class SpoonyActivity extends GameActivity implements SensorEventListener 
         super.onCreate(savedInstanceState);
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
 
-        xRotationFilter = new GaussianDeltaFilter(GAUSSIAN_FILTER_SIZE, GAUSSIAN_FILTER_WIDTH);
+        xRotationFilter = new GaussianMedianDeltaFilter(GAUSSIAN_FILTER_SIZE, GAUSSIAN_FILTER_WIDTH);
 
         // fetch game details
         GameDetails gameDetails = getGameDetails();
