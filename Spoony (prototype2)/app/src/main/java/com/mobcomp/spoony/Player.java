@@ -2,6 +2,9 @@ package com.mobcomp.spoony;
 
 import java.io.Serializable;
 
+/**
+ * This class define the attributes for the player
+ */
 public class Player implements Serializable {
     private String name;
     private float direction;
@@ -14,6 +17,7 @@ public class Player implements Serializable {
         this.score = 0;
     }
 
+    // following methods are used for access member variables
     public String getName() {
         return name;
     }

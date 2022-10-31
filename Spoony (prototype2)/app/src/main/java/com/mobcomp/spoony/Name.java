@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * This activity define the page querying for player name
+ */
 public class Name extends GameActivity {
 
     private int p1Color;
@@ -42,8 +45,13 @@ public class Name extends GameActivity {
         commonBtnSetup();
     }
 
+    /**
+     * define the response when player press the confirm button, handle the
+     * illegal input and activity switch.
+     */
     private void onConfirmPressed() {
         String nameInput = nameEdit.getText().toString();
+        // name entered should not be empty
         if (nameInput.length() > 0) {
             int color = p1Confirmed ? p2Color : p1Color;
             gameDetails.addPlayer(new Player(nameInput, color), !p1Confirmed);
@@ -64,6 +72,7 @@ public class Name extends GameActivity {
 
     @Override
     public void onBackPressed() {
+        // user may want to switch within this activity to reset names
         if(p1Confirmed) {
             p1Confirmed = false;
             textViewSetup();
@@ -72,6 +81,9 @@ public class Name extends GameActivity {
         }
     }
 
+    /**
+     * set the prompt name according to the player in turn
+     */
     private void textViewSetup() {
         int color = p1Confirmed ? p2Color : p1Color;
         String name = p1Confirmed ? "Spooner 2" : "Spooner 1";
