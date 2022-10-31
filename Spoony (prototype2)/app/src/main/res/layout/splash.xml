@@ -22,96 +22,49 @@
         app:layout_constraintVertical_bias="0.0" /> -->
 
     <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        app:layout_constraintBottom_toBottomOf="@+id/app_icon"
+        android:id="@+id/splash_gradient_circle"
+        android:layout_width="400dp"
+        android:layout_height="430dp"
+        android:layout_marginBottom="212dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.454"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/app_icon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/home_bkg_circle_gradient" />
+
+    <ImageView
+        android:id="@+id/splash_black_circle"
+        android:layout_width="417dp"
+        android:layout_height="430dp"
+        android:layout_marginBottom="212dp"
+        android:background="@drawable/home_bkg_cicle_clack"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/splash_app_icon"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        app:layout_constraintBottom_toBottomOf="@+id/shadow_circular"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/shadow_circular"
         app:srcCompat="@drawable/spoony_menu_icon" />
 
     <ImageView
-        android:id="@+id/app_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:alpha="0.75"
+        android:id="@+id/shadow_circular"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:background="@drawable/shadow_circular"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.251"
-        app:srcCompat="@drawable/home_title_blur" />
-
-    <ImageView
-        android:id="@+id/cover_cloud_upRight"
-        android:layout_width="164dp"
-        android:layout_height="136dp"
-        android:layout_marginStart="188dp"
-        android:layout_marginTop="140dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/home_cloud_3"
-        tools:visibility="invisible" />
-
-
-    <ImageView
-        android:id="@+id/cover_cloud_downRight"
-        android:layout_width="154dp"
-        android:layout_height="137dp"
-        android:layout_marginStart="240dp"
-        android:layout_marginTop="236dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/home_cloud_2"
-        tools:visibility="invisible" />
-
-    <ImageView
-        android:id="@+id/cover_cloud_upLeft"
-        android:layout_width="171dp"
-        android:layout_height="143dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="140dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/home_cloud_1"
-        tools:visibility="invisible" />
-
-    <ImageView
-        android:id="@+id/cover_cloud_downLeft"
-        android:layout_width="173dp"
-        android:layout_height="138dp"
-        android:layout_marginTop="236dp"
-        android:layout_marginEnd="236dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/home_cloud_4"
-        tools:visibility="invisible" />
-
-    <ImageView
-        android:id="@+id/cover_cloud_white"
-        android:layout_width="173dp"
-        android:layout_height="158dp"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="184dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cover_cloud_1"
-        tools:visibility="invisible" />
-
-    <ImageView
-        android:id="@+id/cover_cloud_watercolor"
-        android:layout_width="160dp"
-        android:layout_height="144dp"
-        android:layout_marginTop="232dp"
-        android:layout_marginEnd="76dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/cover_cloud_2"
-        tools:visibility="invisible" />
-
+        app:layout_constraintVertical_bias="0.37" />
 
     <!--
     <ImageView

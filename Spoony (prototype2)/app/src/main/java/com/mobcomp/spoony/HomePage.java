@@ -24,8 +24,9 @@ public class HomePage extends AppCompatActivity {
     GameDetails gd;
 
     AnimationDrawable catAnimation;
-    ImageView[] clouds;
+    ImageView shadow;
     ImageView phone;
+    ImageView start_btn_bkg;
     TextView startTxt;
     TextView spoonyTxt;
     Animation startMsg_fadein;
@@ -39,6 +40,7 @@ public class HomePage extends AppCompatActivity {
     Animation cloudMove1;
     Animation cloudMove2;
     Animation rotate;
+    Animation blink;
 
     AudioService audioService;
     ServiceConnection connection = new ServiceConnection() {
@@ -81,7 +83,8 @@ public class HomePage extends AppCompatActivity {
         egQuestion_fadeout = AnimationUtils.loadAnimation(this, R.anim.anim_fade_out);
         egRotate_fadeout = AnimationUtils.loadAnimation(this, R.anim.anim_fade_out);
 
-        rotate = AnimationUtils.loadAnimation(this, R.anim.anim_rotate);
+        rotate = AnimationUtils.loadAnimation(this, R.anim.anim_rotate_phone);
+        blink = AnimationUtils.loadAnimation(this,R.anim.anim_blink);
 
         egQuestion = (ConstraintLayout) findViewById(R.id.eg_question_layout);
         egRotate = (ConstraintLayout) findViewById(R.id.eg_rotate_layout);
@@ -94,12 +97,10 @@ public class HomePage extends AppCompatActivity {
         cloudMove1.setRepeatCount(Animation.INFINITE);
         cloudMove2.setRepeatCount(Animation.INFINITE);
 
-        clouds = new ImageView[5];
-        clouds[0] = (ImageView) findViewById(R.id.imageView4);
-        clouds[1] = (ImageView) findViewById(R.id.imageView2);
-        clouds[2] = (ImageView) findViewById(R.id.imageView7);
-        clouds[3] = (ImageView) findViewById(R.id.imageView3);
-        clouds[4] = (ImageView) findViewById(R.id.imageView);
+        shadow = (ImageView) findViewById(R.id.splash_black_circle);
+
+        start_btn_bkg = (ImageView) findViewById(R.id.start_btn_bkg);
+
 
 
         startMsg_fadeout.setAnimationListener(new Animation.AnimationListener() {
@@ -173,7 +174,7 @@ public class HomePage extends AppCompatActivity {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                egRotate_fadein.setStartOffset(8000);
+                egRotate_fadein.setStartOffset(8050);
                 egRotate.startAnimation(egRotate_fadein);
 
             }
@@ -204,15 +205,12 @@ public class HomePage extends AppCompatActivity {
         bindService(intent, connection, Context.BIND_AUTO_CREATE);
         catAnimation.start();
         startTxt.startAnimation(startMsg_fadein);
+        start_btn_bkg.startAnimation(blink);
         spoonyTxt.startAnimation(startMsg_fadein);
         egQuestion.startAnimation(egQuestion_fadein);
         egRotate.startAnimation(egRotate_fadein);
         phone.startAnimation(rotate);
-        clouds[0].startAnimation(cloudMove1);
-        clouds[1].startAnimation(cloudMove2);
-        clouds[2].startAnimation(cloudMove2);
-        clouds[3].startAnimation(cloudMove1);
-        clouds[4].startAnimation(cloudMove2);
+        shadow.startAnimation(cloudMove1);
     }
 
     @Override
@@ -220,10 +218,9 @@ public class HomePage extends AppCompatActivity {
         super.onStop();
         unbindService(connection);
         catAnimation.stop();
-        for (ImageView v: clouds) {
-            v.clearAnimation();
-        }
+        shadow.clearAnimation();
         startTxt.clearAnimation();
+        start_btn_bkg.clearAnimation();
         spoonyTxt.clearAnimation();
         egQuestion.clearAnimation();
         egRotate.clearAnimation();

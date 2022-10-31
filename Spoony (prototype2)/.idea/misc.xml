@@ -20,11 +20,11 @@
         <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/activity_point_to_p2.xml" value="0.31354166666666666" />
         <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/activity_question.xml" value="0.33" />
         <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/ansq.xml" value="0.4548952543822146" />
-        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/askq.xml" value="0.33" />
+        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/askq.xml" value="0.4548952543822146" />
         <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/fragment_first.xml" value="0.31354166666666666" />
         <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/fragment_second.xml" value="0.31354166666666666" />
         <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/give_to_xxx.xml" value="0.33" />
-        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/home.xml" value="0.2" />
+        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/home.xml" value="0.4548952543822146" />
         <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/lib.xml" value="0.4548952543822146" />
         <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/name.xml" value="0.4548952543822146" />
         <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/place_flat_flat.xml" value="0.31354166666666666" />
@@ -33,7 +33,6 @@
         <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/rotate_default.xml" value="0.31354166666666666" />
         <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/rotate_left.xml" value="0.31354166666666666" />
         <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/rotate_right.xml" value="0.31354166666666666" />
-        <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/splash.xml" value="0.42883046237534" />
         <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/which_answer_correct_p1.xml" value="0.31354166666666666" />
         <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/which_answer_correct_p2.xml" value="0.31354166666666666" />
         <entry key="..\:/Users/Ben/AndroidStudioProjects/COMP90018_Final_Project_Android/Spoony (prototype2)/app/src/main/res/layout/which_answer_wrong_p1.xml" value="0.31354166666666666" />
@@ -87,7 +86,7 @@
         <entry key="app/src/main/res/layout/content_main.xml" value="0.10764944275582573" />
         <entry key="app/src/main/res/layout/down.xml" value="0.20153985507246377" />
         <entry key="app/src/main/res/layout/give_to_xxx.xml" value="0.21822916666666667" />
-        <entry key="app/src/main/res/layout/home.xml" value="0.23974914550781246" />
+        <entry key="app/src/main/res/layout/home.xml" value="0.3946548461914063" />
         <entry key="app/src/main/res/layout/lib.xml" value="0.24134368896484382" />
         <entry key="app/src/main/res/layout/name.xml" value="0.2143637084960938" />
         <entry key="app/src/main/res/layout/place_flat_flat.xml" value="0.21822916666666667" />
@@ -99,10 +98,10 @@
         <entry key="app/src/main/res/layout/rotate_left.xml" value="0.21822916666666667" />
         <entry key="app/src/main/res/layout/rotate_right.xml" value="0.21822916666666667" />
         <entry key="app/src/main/res/layout/setting.xml" value="0.20153985507246377" />
-        <entry key="app/src/main/res/layout/splash.xml" value="0.13504638671875002" />
+        <entry key="app/src/main/res/layout/splash.xml" value="0.25399932861328134" />
         <entry key="app/src/main/res/layout/splash_screen.xml" value="0.2171875" />
         <entry key="app/src/main/res/layout/text.xml" value="0.23669230143229164" />
-        <entry key="app/src/main/res/layout/whichq.xml" value="0.37001626371133206" />
+        <entry key="app/src/main/res/layout/whichq.xml" value="0.1" />
         <entry key="app/src/main/res/menu/menu_main.xml" value="0.20925925925925926" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1285" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1285" />
