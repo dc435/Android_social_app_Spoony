@@ -1,4 +1,4 @@
-# Spoony
+# Android social app: Spoony
 
 A two-player social app for Android. 
 
